@@ -17,20 +17,26 @@ model usage or Copilot Credits.
 
 ### Route through the demo
 
-| Stop | User or consumer view | Management view |
+| Stop | User or consumer view | Where to go to manage it |
 | --- | --- | --- |
 | [Copilot Chat](#1-microsoft-365-copilot-chat) | Select the existing standalone skill plugin and summarize notes | Microsoft 365 admin center: Agents > Tools > Registry |
 | [Declarative agent](#2-microsoft-365-declarative-agent) | Open the dedicated agent and summarize notes | Microsoft 365 admin center: Agents > All agents |
-| [Cowork](#3-copilot-cowork) | Show the managed plugin, run a task, inspect activity | Same central Tools registry; contrast managed and shared copies |
-| [Copilot Studio](#4-copilot-studio) | Use the published agent, not just maker Preview | Agent Build > Skills; skill sharing and agent sharing |
-| [Foundry](#5-microsoft-foundry-preview) | Use the existing agent playground or a recorded REST run | Agent skill binding, versioned skill inventory, read-only inspection |
-| [GitHub Copilot](#6-github-copilot-walkthrough-not-runtime-tested-in-this-lab) | Static walkthrough here; live only with an entitled client | Enterprise governance repository and managed plugin settings |
-| [API Center](#7-additional-approach-foundry--azure-api-center) | Discover the skill and follow its source | Assets inventory and Git integration status |
-| [SharePoint site skills](#8-sharepoint-site-skills) | Review a selected project brief against team standards | Site Settings > Site skills; Overview and Versions |
-| [SharePoint personal skills](#9-sharepoint-personal-skills) | Use the owner's preferred reading brief | Personal skill listing and owner OneDrive governance |
-| [Word](#10-word-project-brief-skill) | Source walkthrough only; native creation unsupported | Existing plugin surface, not a deployment claim for this source |
-| [Excel](#11-excel-pipeline-review-skill) | Show verified saved worksheet findings and totals | Manage plugins > Custom skills and native OneDrive source |
-| [PowerPoint](#12-powerpoint-executive-story-skill) | Show verified four-slide deck and concise summary | Manage plugins > Custom skills and native OneDrive source |
+| [Cowork](#3-copilot-cowork) | Show the managed plugin, run a task, inspect activity | Microsoft 365 admin center > Agents > Tools > Registry > OGE Meeting Notes Managed > Users |
+| [Copilot Studio](#4-copilot-studio) | Use the published agent, not just maker Preview | Copilot Studio > select the demo environment > Agents > OGE Meeting Notes > Build > Skills > meeting-notes |
+| [Foundry](#5-microsoft-foundry-preview) | Use the existing agent playground or a recorded REST run | VS Code > Microsoft Foundry Toolkit (configured for the demo project) > Tools > Skills > meeting-notes. Documented UI; this lab managed it through REST instead (see stop 5) |
+| [GitHub Copilot](#6-github-copilot-walkthrough-not-runtime-tested-in-this-lab) | Static walkthrough here; live only with an entitled client | GitHub > enterprise's designated .github-private repository > copilot/managed-settings.json. This is a policy file, not an admin-center skill page; not deployed in this lab |
+| [API Center](#7-additional-approach-foundry--azure-api-center) | Discover the skill and follow its source | Azure portal > API Centers > open the demo resource > Inventory > Assets > select the meeting-notes Skill entry. For Git sync: same resource > Platforms > Integrations > open the Git integration |
+| [SharePoint site skills](#8-sharepoint-site-skills) | Review a selected project brief against team standards | Open the OGE Skills Lab SharePoint site > Settings > Site skills > sharepoint-site-review > Overview or Versions (documented management page; not exercised in this lab) |
+| [SharePoint personal skills](#9-sharepoint-personal-skills) | Use the owner's preferred reading brief | OneDrive > My files > Documents > Copilot > Agent Assets > Skills > sharepoint-personal-brief > SKILL.md (observed lab path; also linked from the personal skill's chat indicator) |
+| [Word](#10-word-project-brief-skill) | Source walkthrough only; native creation unsupported | No deployed word-project-brief to manage. For existing, unrelated plugins: Word > Copilot pane > Settings and more > Manage plugins |
+| [Excel](#11-excel-pipeline-review-skill) | Show verified saved worksheet findings and totals | Excel > Copilot pane > Settings and more > Manage plugins > Custom skills > excel-pipeline-review. Open Skills OneDrive folder there to see its source |
+| [PowerPoint](#12-powerpoint-executive-story-skill) | Show verified four-slide deck and concise summary | PowerPoint > Copilot pane > Settings and more > Manage plugins > Custom skills > powerpoint-executive-story |
+
+These are navigation paths, not a single shared administration portal.
+Microsoft 365 admin center manages the containing plugin or agent and its
+audience. Studio and Foundry expose maker/project management; personal
+SharePoint and Office skills expose owner management. API Center manages
+the catalog entry, not copies installed in consuming platforms.
 
 Use the [lab evidence ledger](lab-status.md) for what was actually tested.
 UI labels can change. Preview status and client limitations are in the
@@ -202,9 +208,12 @@ or use the clean-recipient setup described above.
 
 ### Show the admin experience
 
-Return to **Agents > Tools > Registry > OGE Meeting Notes Managed** in
-Microsoft 365 admin center. Show the same saved availability/installation
-audience and management controls as in stop 1.
+1. Open [Microsoft 365 admin center](https://admin.cloud.microsoft/).
+2. Select **Agents > Tools > Registry**.
+3. Search for **OGE Meeting Notes Managed** and open that plugin.
+4. Open **Users** to show the saved availability/installation audience.
+   The plugin details also contain the update/block/uninstall/delete controls;
+   do not activate them.
 
 **Say:** "Cowork and Chat share this plugin management surface; they are
 separate runtime experiences, not separate universal skill registries.
@@ -267,13 +276,15 @@ to every Microsoft 365 user's Copilot."
 
 ### Show the project management experience
 
-1. Show the agent's configured skill reference and pinned immutable version.
-   The verified lab configuration is agent version `4` bound to skill
-   version `3`, containing canonical revision `0.1.1`.
-2. If the Microsoft Foundry Toolkit extension is already installed/configured,
-   open its **Tools > Skills** tab for the intended project and select
-   `meeting-notes`. This is a documented management view; rehearse it rather
-   than implying this lab separately verified every Toolkit UI action.
+1. For the documented graphical skill-management location, open **VS Code >
+   Microsoft Foundry Toolkit**, configured for the intended Foundry project.
+   Open the **Tools** view, select the **Skills** tab, then `meeting-notes`.
+   This is the extension's UI, not an Azure portal blade. It is documented
+   but was not separately exercised in this lab; prepare it before presenting.
+2. The lab actually managed the skill through the **project-scoped Skills
+   REST API**, not a verified portal skill-management page. If the Toolkit
+   isn't prepared, present the following command as the tested alternative,
+   not as a graphical admin experience.
 3. For the lab-tested read-only management fallback, run from the repository
    root in PowerShell 7 with the existing intended Azure CLI session:
 
@@ -292,8 +303,10 @@ update creates an immutable version. The default pointer and the agent's
 pinned version are different controls: changing the default alone does not
 update existing agents."
 
-Do not infer the consumer binding from `default_version`; show the saved
-agent configuration/definition independently. No default promotion or
+To show which skill version an agent uses, inspect its saved
+configuration/definition separately. The verified lab configuration is agent
+version `4` bound to skill version `3`, containing canonical revision `0.1.1`.
+Do not infer this binding from `default_version`. No default promotion or
 rollback needs to be performed in this walkthrough.
 See the [Foundry guide](../platforms/foundry/README.md) and official
 [skill management documentation](https://learn.microsoft.com/azure/foundry/agents/how-to/tools/skills).
