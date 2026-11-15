@@ -2,19 +2,26 @@
 
 ## Common rollout
 
-1. Assign an owner and review the canonical skill and synthetic tests.
-2. Validate source, generate target packages, validate the actual built ZIP,
-   and record source/artifact hashes.
-3. Review required permissions and the signed-in tenant/project.
-4. Register/provision the target artifact only after authorization.
-5. Assign a pilot audience; verify as a recipient, not only as the author.
-6. Confirm actual invocation and output against the shared rubric.
-7. Expand assignment to the authorized organization audience.
-8. For updates, preserve previous content, evaluate the candidate, promote,
-   update consumers, and verify a fresh conversation.
-9. Roll back the selected content **and consumer bindings** where necessary.
-10. Block/uninstall/revoke per host; inventory remaining copies/snapshots
-    before deleting registry artifacts.
+The deployment steps differ by product; use its [platform guide](../README.md#approaches)
+for the actual menus and commands. The common decisions are:
+
+1. Assign an owner and review the source instructions and fictional test input.
+2. Build the package required by that product and check the actual ZIP.
+   Record its version and file hash (a fingerprint for identifying the bytes).
+3. Check permissions and confirm you are signed in to the intended organization
+   and project, not production by mistake.
+4. Upload/register the package only after authorization.
+5. Assign a small test group and verify using a recipient's account, not only
+   the author's.
+6. Confirm the installed skill was used and compare the result with the
+   expected-behavior checklist, called the rubric.
+7. Expand access to the authorized audience.
+8. For an update, keep the old package, test the new one, then update each
+   installed package or agent that uses it. Test a new conversation.
+9. To roll back, restore the reviewed previous content **and configure agents
+   to use that version**. Restoring a registry default alone may not do that.
+10. To withdraw a skill, use the product's block/uninstall/access controls.
+    Find remaining copied instructions before deleting the original listing.
 
 ## Version and evidence record
 
@@ -22,14 +29,14 @@ Keep detailed records outside the public repository:
 
 | Field | Purpose |
 | --- | --- |
-| Source commit and skill hash | Which instructions were reviewed |
-| Artifact hash and package/app version | What was actually shipped |
-| Registry skill version/default | What the registry currently selects |
-| Consumer-bound version | What an existing agent/package actually uses |
-| Assignment and principal | Who can access it |
-| Host/harness/client version | Which runtime was tested |
+| Source commit and skill hash | Which instructions were reviewed; the commit identifies a saved Git revision |
+| ZIP hash and package/app version | What was actually shipped |
+| Skill's stored version/default | Which version the registry offers for a new reference |
+| Version selected by each agent/package | What the existing assistant actually uses |
+| Assigned users and groups | Who can access it |
+| Service, agent engine and app version | Which experience was tested |
 | Observed invocation and output | Proof beyond package validation |
-| Rollback artifact/binding | How to restore reviewed behavior |
+| Previous package and agent version selection | How to restore reviewed behavior |
 | Block/uninstall verification | Whether fresh sessions can still invoke it |
 
 Do not commit tenant IDs, resource IDs, account details, tokens, environment
@@ -37,14 +44,16 @@ files, screenshots containing tenant data, or model transcripts from real work.
 Use only synthetic test input. The public lab ledger should contain sanitized
 status and limitations.
 
-## Platform-specific revocation
+## Withdrawing access, by product
 
 - Microsoft 365/Cowork: block/uninstall and test a fresh conversation;
   in-progress sessions can have different revocation semantics.
-- Declarative agents: manage the packaged agent as well as skill copies.
-- Studio: revoke sharing and handle already embedded snapshots/published agents.
-- Foundry: change consumer version bindings; default-pointer rollback alone
-  does not alter existing prompt-agent versions.
+- Declarative agents: open **Microsoft 365 admin center > Agents > All
+  agents > select the agent**; manage its access as well as separate skill copies.
+- Studio: open the agent's **Share** panel to change who can use it. Other
+  authors may already have saved copies of a shared skill in published agents.
+- Foundry: update the version selected in each agent's definition; changing
+  only the skill's default does not alter existing prompt-agent versions.
 - GitHub: enterprise block policy and repository file removal are separate.
 - API Center: hiding/removing a catalog entry does not revoke runtime access
   or delete instructions installed elsewhere.

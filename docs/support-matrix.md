@@ -2,25 +2,30 @@
 
 SharePoint and Office documentation checked November 15, 2026; original
 platform research checked November 13, 2026. Runtime availability depends on the
-actual tenant, harness, client, region, license and rollout.
+organization's settings, agent engine, app version, region, license and rollout.
+This table describes available routes. The [lab results](lab-status.md)
+separately identify which deployments and tests were completed.
 
-| Target | Portable instructions | Central mechanism | Update semantics |
+| Where it is used | What the skill provides | Where to install or manage it | How changes reach users |
 | --- | --- | --- | --- |
-| Copilot Chat | Standalone skills GA | Microsoft 365 plugin/skill registry and install/assignment | Package lifecycle; verify installed skills. WIQD tooling is preview/alpha. |
-| Declarative agent | Native bundled skill | Agents Toolkit package and organization agent deployment | Repackage the consumer; not a live cross-agent reference. |
-| Cowork | Native custom/plugin skills | Microsoft 365 plugin administration | Owner-shared changes require re-sharing; admin-installed packages can still be disabled by users. |
-| SharePoint site skills | Native selected-content workflows | Settings > Site skills; site-managed Agent Assets library | Replace/edit and version restoration; copying to sites is not live synchronization. |
-| SharePoint personal skills | Native personal workflows | Owner's OneDrive and Copilot in SharePoint creation/management | Owner-specific across authorized sites; not site-wide or tenant-wide assignment. |
-| Word web | Existing shared/managed skills visible; creation within Word unsupported by current documentation and observed behavior | New source is a local workflow example only; Word exploration closed after failed native creation | No Chat-upload handoff or alternative deployment inferred; Excel/PowerPoint folders do not install a Word skill. |
-| Excel | Native workbook-editing custom skills | Owner's app-specific OneDrive folder and native skill controls | Refresh source changes; automatic-use disablement does not block explicit mentions. |
-| PowerPoint | Native presentation-editing custom skills | Personal upload/form or app-specific OneDrive folder | Refresh changes; disabled skills disappear from the documented dropdown. |
-| Studio Microsoft Copilot harness | Markdown/ZIP native upload | Agent deployment; marketplace skill sharing in preview | Snapshot acceptance plus agent republishing. General plugin support unavailable. |
-| Foundry | Skills API preview | Project-scoped immutable skill versions | Default promotion and consumer-bound versions are distinct. |
-| Agent Framework / compatible remote-skill clients | Foundry toolbox skills preview | Authenticated toolbox MCP endpoint over HTTPS; MCP Resources plus skills discovery (`resources/list`, `resources/read`) | Pin toolbox/skill versions deliberately; documented consumption path, not runtime-tested in this lab. |
-| GitHub Copilot | Repository, personal and plugin skills | Repository delivery or enterprise-managed plugin marketplaces | Standalone pinning/provenance versus marketplace update policy; client coverage differs. |
-| API Center | Cataloged Skill assets/source links | Registry discovery and optional Git sync | Catalog metadata is not installation, execution, or revocation of copies. |
+| Copilot Chat | Reusable workflows selected in general chat; skills are generally available | Personal upload: Copilot > Agents > More agents > Add > Upload skill. Organization plugin: Microsoft 365 admin center > Agents > Tools > Registry | Update the personal skill or distribute an updated plugin package. The WIQD packaging tool is still preview/alpha. |
+| Declarative agent | A skill bundled inside a dedicated Copilot assistant | Author in Agent Builder or Agents Toolkit; manage the published agent in Microsoft 365 admin center > Agents > All agents | Rebuild and publish the containing agent. Editing another agent's copy does not update this one. |
+| Cowork | Reusable instructions for Cowork tasks | Personal skills: Cowork > Customize > Skills. Organization plugins: Microsoft 365 admin center > Agents > Tools > Registry | Owner-shared changes require re-sharing. Users can turn off admin-installed plugins for their conversations. |
+| SharePoint site skills | A review workflow available on the associated site | Open the SharePoint site > Settings > Site skills > select the skill > Overview or Versions | Edit/replace the skill or restore a previous version. Copying it to another site does not keep the copies synchronized. |
+| SharePoint personal skills | The owner's preferred workflow across authorized sites | Create/save a personal skill in Copilot in SharePoint; follow Open skill location on its card or the source link on Used personal skill to OneDrive | The owner manages the saved skill file. This does not assign it to every site visitor or everyone in the organization. |
+| Word web | [Skills attached to a declarative agent; Word supplies open-document text/selection](../platforms/word/README.md) | Agent Builder > Configure > Skills > Add (skill ZIP), or Toolkit > Add Skill (source directory); publish/assign the containing agent through Microsoft 365 admin center > Agents > All agents | Repackage/republish the agent. No Word-specific OneDrive installation folder established by reviewed docs. This Word agent is not yet deployed; in-place text/style editing still requires verification. |
+| Excel | Workbook-editing custom skills | Excel > Copilot pane > Settings and more > Manage plugins > Custom skills: create/open Skills OneDrive folder, upload the skill folder, select Refresh and turn on its toggle | Edit/replace the OneDrive source, then select Refresh. The automatic-use toggle does not block explicit mentions. |
+| PowerPoint | Presentation-editing custom skills | PowerPoint > Copilot pane > Settings and more > Manage plugins > Custom skills: add the skill by upload/form or app-specific OneDrive folder, then refresh and enable it | Refresh changes; disabled skills disappear from the documented dropdown. |
+| Copilot Studio agent using the Microsoft Copilot engine (UI label: harness) | A Markdown file or ZIP uploaded into an agent | Copilot Studio > select environment > Agents > select agent > Build > Skills; publish and share the agent separately | Authors accept updates to imported copies, then republish their agents. Sharing a skill with authors is preview functionality. General plugin support is unavailable. |
+| Foundry | Numbered skill versions stored in a project; preview | VS Code > Microsoft Foundry Toolkit > Tools > Skills, or the project Skills API | Upload a new fixed-content version. Update the agent's selected version too; changing the skill's default does not update an existing agent. |
+| Agent Framework / compatible remote-skill clients | Skill content read from a Foundry toolbox; preview | Connect the application to the toolbox's authenticated MCP endpoint over HTTPS, using MCP Resources and skills discovery (`resources/list`, `resources/read`) | Choose the toolbox/skill versions the application should use. This route is documented, not runtime-tested in this lab. See the [connection guide](../platforms/foundry-api-center/README.md). |
+| GitHub Copilot | Skills in a code repository or an installed plugin | Repository: .github/skills/skill-name/SKILL.md. Enterprise plugin policy: designated .github-private repository > copilot/managed-settings.json | Update repository files or the approved plugin version/policy. Supported behavior varies by client; this lab lacks Copilot entitlement. |
+| API Center | A searchable catalog entry linking to the skill's source | Azure portal > API Centers > select resource > Inventory > Assets > select skill; Git synchronization is under Platforms > Integrations | Update the entry or its Git source. This changes discovery information, not installed copies or their runtime permissions. |
 
-## Conservative portable subset
+## Technical authoring rules used by this repository
+
+The examples use a deliberately small common file format. These are build
+checks for authors, not user installation instructions.
 
 - `name` and `description`, plain single-line YAML scalar values.
 - Matching lowercase-hyphen directory name; no consecutive hyphens.

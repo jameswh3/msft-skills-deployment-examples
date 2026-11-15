@@ -13,6 +13,7 @@ CLI help before changing deployment commands.
 | Declarative agents | [Skills/support matrix](https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-skills), [Toolkit integration](https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-declarative-agents-add-custom-skills) |
 | Cowork | [Author plugins](https://learn.microsoft.com/copilot/cowork/cowork-plugin-development), [administer plugins](https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins), [personal skills and sharing](https://learn.microsoft.com/copilot/cowork/cowork-customize) |
 | SharePoint | [Native site/personal skills and management](https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills), [availability/licensing and retired preview controls](https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started) |
+| Word | [Declarative agents supported in Word](https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-declarative-agents), [open document and Add selection](https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-document-interaction), [Agent Builder skill upload](https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder-add-skills), [Toolkit skill registration](https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-declarative-agents-add-custom-skills) |
 | Excel | [Native custom skills, OneDrive layout and management](https://support.microsoft.com/en-us/excel/copilot/copilot-in-excel-skills) |
 | PowerPoint | [Native custom skills, upload, scope and management](https://support.microsoft.com/en-us/powerpoint/copilot/copilot-in-powerpoint-skills) |
 | OneDrive file transfer | [Documented SharePoint folder/file REST operations](https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/working-with-folders-and-files-with-rest); used to copy the PowerPoint source into its discovered native folder, not to invent a skill registry |
@@ -59,17 +60,25 @@ or switch another user's active runtime/subscription to run these examples.
   dropdown when disabled; do not infer identical revocation semantics.
 - The general Copilot Chat skill builder article is not Word-specific
   documentation or proof that a Word client supports custom skills.
-- Word web's native picker and management surfaced existing shared/managed
-  skills in this lab. Creation within Word is classified as unsupported:
-  current documentation does not establish it, and the native attempt
-  produced only an unsaved draft with no skill-saving capability.
+- Word web's plugin menus displayed existing shared/managed packages.
+  Separately, Microsoft documents skills attached to declarative agents and
+  declarative agents running in Word. That supplies an agent-packaging route,
+  not evidence of a Word-specific OneDrive watch-folder. The new Word source
+  has not been deployed through that route.
+- Asking Word itself to create/save a skill produced only an unsaved draft,
+  and the reviewed documentation does not establish Word-native creation.
+  That does not rule out consuming externally authored skills in an agent.
+- Word supplies document text/selection to a declarative agent. The document
+  interaction article does not establish arbitrary in-place text/style
+  editing by an attached skill; those results require separate verification.
 - Excel and PowerPoint OneDrive storage was observed in separate app folders;
   do not assume a shared Office-wide custom-skill directory.
 - Copilot Chat documentation specifies tenant-scoped SharePoint Embedded
   storage for uploaded skill files. This differs from native Office personal
   OneDrive storage; it does not establish creation within Word.
-- Word investigation stops after the unsuccessful native creation attempt.
-  No speculative Chat upload-to-Word handoff is part of this lab.
+- No further Word-native creation attempts or speculative Chat-upload-to-Word
+  handoff were performed. The later documentation review identifies agent
+  packaging without claiming a completed Word deployment.
 - The verified PowerPoint web UI labels its controls **Manage plugins** and
   **Choose plugins**, while the support article says **Manage skills** and
   **Choose skills**. Native custom listing, selection and saved output were

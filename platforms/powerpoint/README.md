@@ -2,8 +2,8 @@
 
 The [powerpoint-executive-story skill](skills/powerpoint-executive-story/SKILL.md)
 adds a concise executive summary first while retaining the detailed slides.
-It defines the editing workflow and factual checks, not artificial capability
-or permission bans.
+It uses the presentation access already available to Copilot; it grants no
+additional permissions.
 
 ## Prepare the example
 
@@ -12,7 +12,12 @@ presentation using the three-slide [outline](../../samples/powerpoint/slide-outl
 Use a licensed account with the relevant Copilot features available; browser
 availability must be checked in the actual client and tenant.
 
-## Native deployment
+## Add the skill in PowerPoint
+
+Start in the **Copilot pane** (the chat side panel), not PowerPoint's
+**File > Options** settings. The verified web client uses **Settings and more >
+Manage plugins > Custom skills**. Microsoft's support article calls this
+**Manage skills** instead.
 
 PowerPoint documents three personal custom-skill routes:
 
@@ -26,7 +31,8 @@ PowerPoint documents three personal custom-skill routes:
 3. **Manage skills > Custom skills**: create/open the native OneDrive skills
    folder and upload a matching-name folder containing `SKILL.md`.
 
-Refresh the list and confirm enablement and source before invoking the skill.
+Select **Refresh**, turn on the skill's toggle, and check its saved instructions
+before selecting it for a request.
 The lab's PowerPoint OneDrive folder was separate from Excel's. Discover
 the intended app's folder rather than copying another app's path.
 ZIP uploads have product-specific resource restrictions; this example uses
@@ -45,7 +51,8 @@ SHA-256. The native custom list and picker then recognized the skill.
 
 ## Run and verify
 
-Select `powerpoint-executive-story` from the prompt's skills picker and ask:
+In the Copilot prompt, open **Add sources, skills, and more > Choose plugins**,
+select `powerpoint-executive-story`, and ask:
 
 ```text
 Add the executive summary to this presentation for a support-group sponsor.
@@ -73,8 +80,11 @@ of discovery or invocation; see [lab evidence](../../docs/lab-status.md).
 
 ## Owner and administrator experience
 
-Show **Manage skills**, the example's enablement, edit controls and source
-without modifying them during the presentation. PowerPoint documents that
+Open **Copilot pane > Settings and more > Manage plugins > Custom skills >
+powerpoint-executive-story**. Show its toggle and saved instructions.
+Use **Add** to show the available addition methods, or **Refresh** to reload
+the list, without uploading or changing anything during the presentation.
+Some releases label the menu **Manage skills**. PowerPoint documents that
 disabled skills stop automatic use and disappear from the dropdown; do not
 copy Excel's explicit-mention semantics onto PowerPoint.
 

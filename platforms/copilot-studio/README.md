@@ -1,16 +1,23 @@
 # Copilot Studio
 
-Use an agent powered by the **Microsoft Copilot harness**. Native Markdown
-skill upload is not interchangeable with standard-harness topics or legacy
-Bot Framework skills.
+Copilot Studio is the web application where an author builds and publishes
+an agent for other people to use. For this example, choose an agent powered
+by the **Microsoft Copilot harness**: "harness" is the product's label for the
+engine that runs the agent. Other agent types have different skill features.
+
+To manage this example, open **Copilot Studio > select the environment >
+Agents > select the agent > Build > Skills > meeting-notes**. An environment
+is the workspace containing the agent. Use **Share** on the agent to manage
+who can use it; sharing the skill itself with other authors is separate.
 
 ## Create and deploy
 
 1. Choose the intended lab environment, not the default or production
    environment accidentally.
 2. Create a dedicated agent using the Microsoft Copilot harness.
-3. Build > Skills > Upload a skill: upload the canonical `SKILL.md` or the
-   root-correct standalone skill ZIP produced by `npm run build`.
+3. **Build > Skills > Upload a skill**: upload the reviewed `SKILL.md` or the
+   standalone ZIP produced by `npm run build`. In that ZIP, `SKILL.md` must
+   be at the top level, not inside another folder.
 4. Set agent instructions to use the meeting-notes skill for supplied notes
    and return drafts only.
 5. Preview with the shared input and edge-case rubric; inspect skill use.
@@ -24,7 +31,8 @@ Channel/data policies, authentication, licensing, and Copilot Credits apply.
 
 From a skill's details, Share > Only you or Specific users/groups. Makers can
 browse marketplace skills shared by administrators or owners and add them to
-agents. Each agent receives a **snapshot** and retains a source reference.
+agents. Each agent receives a **snapshot**: its own saved copy at that point
+in time, with a link back to the original.
 
 Changes require re-sharing. Makers receive an update notification and choose
 to update their snapshot; then republish the consuming agent. This is not
@@ -51,7 +59,8 @@ showed **Used skill: meeting-notes** and passed the shared baseline fixture.
 Do not treat maker-library publication as organization-wide skill assignment.
 
 **Automation boundary:** general plugin support in Copilot Studio is not yet
-available. Its standard-harness solution/ALM documentation does not establish
+available. Its standard-harness solution/application lifecycle management
+(ALM) documentation does not establish
 an API for this harness's skill deployment. This example deliberately uses
 the documented maker/administrator workflow instead of inventing an endpoint.
 

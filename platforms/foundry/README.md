@@ -1,12 +1,32 @@
 # Foundry skills (preview)
 
-Foundry provides a project-scoped Skills API with immutable content versions
-and a `default_version` pointer. Authentication uses the Azure AI scope and
-the `Foundry-Features: Skills=V1Preview` request header.
+Foundry is the agent-building service used by an application developer.
+It stores skills in a selected project, with a new numbered version for each
+content update. An **immutable** version cannot be edited after creation.
+`default_version` identifies which version a new, unpinned reference selects;
+it does not change the version already used by an existing agent.
+
+## Where to manage the skill
+
+- **Documented graphical interface:** in VS Code, open **Microsoft Foundry
+  Toolkit** for the intended project, then **Tools > Skills > meeting-notes**.
+  This is an extension in VS Code, not a Microsoft 365 admin center page.
+- **Lab-tested management route:** run this repository's
+  `Invoke-FoundrySkill.ps1` with **Inspect** to read the skill and its versions.
+  The commands below show the other operations for developers.
+- **Which version an agent uses:** inspect that agent's saved definition.
+  A pinned reference names a specific version rather than following the
+  skill's default.
+
+The API uses the Azure AI authentication scope and the
+`Foundry-Features: Skills=V1Preview` request header. The API commands below
+require an authorized project account; ordinary users of the finished
+application do not run them.
 
 ## Prerequisites
 
-- A Foundry project in a supported Copilot-harness region.
+- A Foundry project in a supported Copilot-harness region. The harness is the
+  agent's execution engine; this example requires the Microsoft Copilot one.
 - Foundry User (formerly Azure AI User) or equivalent project permissions.
 - An existing reasoning/tool-calling model deployment for runtime testing.
 - An Azure CLI session for the intended tenant/subscription.

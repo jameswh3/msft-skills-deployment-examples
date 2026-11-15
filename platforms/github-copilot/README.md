@@ -4,6 +4,21 @@ The root [plugin manifest](../../plugin.json) discovers the canonical `skills`
 directory. The root [marketplace](../../.claude-plugin/marketplace.json) exposes
 that plugin. No second authored skill copy is needed.
 
+## Where to manage it
+
+- **One code repository:** maintain
+  `.github/skills/meeting-notes/SKILL.md` in that repository. Changes are
+  reviewed and delivered through its normal Git workflow.
+- **Organization-wide plugin policy:** enterprise administrators maintain
+  `copilot/managed-settings.json` in the enterprise's designated
+  `.github-private` repository. That is a private Git policy repository,
+  not a Microsoft 365 admin center page.
+- A **marketplace** here is a listing that tells a supported coding client
+  where to find installable plugins; it is not the skill's runtime.
+
+This lab has no GitHub Copilot entitlement, so these are documented deployment
+instructions, not a claim that the policy or skill ran in a coding client.
+
 ## Repository-scoped skill
 
 Inspect the source before installation. With GitHub CLI 2.90.0+ (`gh skill`

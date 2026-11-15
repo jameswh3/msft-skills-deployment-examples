@@ -1,6 +1,6 @@
 # Verification
 
-## Offline
+## Local checks: validate files without deploying them
 
 ```powershell
 npm ci
@@ -17,14 +17,16 @@ Generate and inspect both official Microsoft 365 projects separately.
 Source validation for a skills-only WIQD project does not cover its actual
 skill or full package; report that limitation.
 
-## Runtime checklist for each host
+## Live checks: test the installed skill in each product
 
 Use the [same input](../samples/meeting-notes/input.md),
 [rubric](../samples/meeting-notes/expected-behavior.md), and
-[edge cases](../samples/meeting-notes/edge-cases.md).
+[edge cases](../samples/meeting-notes/edge-cases.md). The rubric is the
+expected-behavior checklist. Use the corresponding sample/rubric instead
+when testing a SharePoint or Office-specific workflow.
 
-1. Confirm tenant, audience, installed package, consumer-bound skill version,
-   and host/harness/client.
+1. Confirm the organization, assigned users, installed package, the skill
+   version selected by its agent, and the product/app version.
 2. Find/select the skill explicitly where supported; record observed loading.
 3. Run a naturally matching prompt with automatic discovery enabled.
 4. Run an unrelated prompt; ensure this skill is not spuriously invoked.
@@ -38,7 +40,7 @@ Use the [same input](../samples/meeting-notes/input.md),
 9. Roll back and verify the prior content/binding in a new conversation.
 10. Revoke/block and check a fresh session.
 
-Do not report every test as passed because one happy-path call worked.
+Do not report every test as passed because one normal-input request worked.
 
 ## Evidence levels
 

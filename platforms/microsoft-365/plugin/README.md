@@ -4,6 +4,19 @@ Chat standalone skills are GA. WIQD 0.26.0 is preview and its plugin CLI is
 alpha. The repository generates the app from the official WIQD scaffold;
 it does not hand-author cloud lifecycle files.
 
+## Where users and administrators find it
+
+- **Copilot Chat user:** select the installed skill/plugin in the chat's
+  skills/plugin picker.
+- **Cowork user:** open **Customize > Plugins > Added > select the plugin**.
+- **Administrator:** open **Microsoft 365 admin center > Agents > Tools >
+  Registry > select the plugin > Users** to review who can use it and who
+  has it installed. The plugin details contain block/uninstall controls.
+
+The steps below are for the developer packaging the skill, not tasks every
+end user must perform. A scaffold is a generated starter project; WIQD
+(Work IQ Dev Tools) creates that project's package and deployment files.
+
 ## Create locally
 
 From the repository root:

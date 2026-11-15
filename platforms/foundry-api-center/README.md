@@ -9,6 +9,27 @@ API Center supports registering **Skill** assets, source links, lifecycle and
 compatibility metadata, optional assessments, and Git synchronization.
 Foundry supports immutable skill versions, content export, and preview
 toolbox-based remote skill discovery for compatible clients.
+The **Microsoft Copilot harness** is the agent engine selected in Foundry;
+an **immutable version** is saved content that cannot later be edited.
+
+## Where to manage each part
+
+- **Catalog entry:** Azure portal > **API Centers > select your API Center >
+  Inventory > Assets > select the Skill entry**. Use **Edit** for its
+  description, source link and compatibility information.
+- **Catalog's Git synchronization:** in the same API Center, open
+  **Platforms > Integrations > select the Git integration**.
+- **Stored skill versions:** in VS Code, open **Microsoft Foundry Toolkit**
+  for the intended project, then **Tools > Skills > select the skill**, or
+  use the project's Skills API. The lab used the API.
+- **Remote connection:** configure the consuming application to use the
+  chosen Foundry toolbox endpoint, not the API Center resource address.
+
+**MCP** means Model Context Protocol: the connection used here to discover
+and retrieve skill content from a server. A **toolbox** is a named, versioned
+Foundry bundle; its **endpoint** is the HTTPS address the application connects
+to. **MCP Resources** carry retrievable content such as skill instructions;
+they are distinct from tools that execute actions.
 
 ## Who consumes the skills, and through which connection?
 
@@ -137,7 +158,8 @@ of those runtime capabilities.
 
 Promote a reviewed Foundry version; update the catalog's approved reference;
 rebuild/assign consumer packages or change pinned remote bindings; verify.
-Rollback must restore consumer-bound versions too. Catalog unpublication does
+Rollback must also restore the versions selected by each agent/application.
+Catalog unpublication does
 not revoke embedded skill copies; use each host's block/uninstall controls.
 
 Sources: [Register skills](https://learn.microsoft.com/azure/api-center/register-discover-skills),

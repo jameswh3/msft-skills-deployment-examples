@@ -2,11 +2,15 @@
 
 The [excel-pipeline-review skill](skills/excel-pipeline-review/SKILL.md)
 creates a review worksheet with source-row evidence and reconciled totals.
-It defines a workflow, not additional permission restrictions.
+It uses the workbook access already available to Copilot; it grants no
+additional permissions.
 
-This native custom-skill example uses the owner's OneDrive and Excel's
-skill controls. Centrally reviewing and distributing the source is different
-from assigning a Microsoft 365 plugin to an organization.
+This example stores its instructions in the owner's OneDrive. In Excel's
+**Copilot pane > Settings and more > Manage plugins > Custom skills**, the
+owner opens the **Skills OneDrive folder**, selects **Refresh** after source
+changes, and turns the skill's toggle on or off. Centrally reviewing and
+distributing the source is different from assigning a Microsoft 365 plugin
+to an organization.
 
 ## Prepare and deploy
 

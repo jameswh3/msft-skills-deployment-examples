@@ -1,10 +1,18 @@
 # Copilot in SharePoint: site and personal skills
 
-These are native Copilot in SharePoint skills, not SharePoint agents, saved
-prompts, Microsoft 365 plugin packages, or a new tenant-wide skill registry.
-The examples focus on the review workflow and preferred output, leaving
-permissions and available actions to the host. The walkthrough uses synthetic
-documents and explicitly requests chat output to keep its fixtures unchanged.
+These skills add reusable review instructions to **Copilot in SharePoint**,
+the chat experience on a SharePoint site. They use the content permissions
+the user already has. The examples use fictional documents and request
+responses in chat so the source documents remain unchanged.
+
+- **Site owner:** open the relevant SharePoint site, then **Settings > Site
+  skills > select the skill > Overview or Versions** to manage a site skill.
+- **Personal skill owner:** in Copilot's saved **Your skill** card, select
+  **Open skill location**, or follow the source link on **Used personal
+  skill**, to inspect the saved file in OneDrive.
+
+These are not separately published SharePoint agents or Microsoft 365 plugin
+packages. They do not create an organization-wide skill assignment.
 
 | Example | Intended use | Ownership and scope |
 | --- | --- | --- |
@@ -73,18 +81,22 @@ skill using the reviewed workflow, review the draft, then confirm saving.
 Generated instructions need content review; do not assume they are
 byte-identical to this source. Download/inspect the saved skill if needed.
 
-The management page exposes enable/disable, copy to sites, and deletion.
-Its detail page exposes editing, replacement, download and Versions.
+On **Settings > Site skills**, select the skill to find enable/disable,
+**Copy to sites**, and deletion actions. Open its details for editing,
+**Replace**, **Download**, and **Versions**.
 Restoring an earlier version creates a new current version, preserving history.
 For a demo, show these controls without changing them.
+These management steps are documented; the lab verified chat-based creation,
+the stored file and actual skill invocation, not every management-page action.
 
 ## Personal skill deployment and management
 
 1. In Copilot in SharePoint ask it to create a **personal** skill named
    `sharepoint-personal-brief` using the reviewed instructions above.
 2. Review the generated draft and explicitly save it as personal, not site.
-   Use the host-supported personal skill management flow to review/edit it;
-   do not guess a OneDrive system-folder location.
+   Use **Open skill location** on the saved card, or the source link on the
+   **Used personal skill** indicator, to inspect its saved `SKILL.md` in
+   OneDrive; do not guess a system-folder location.
    The verified lab run used a fresh chat opened from the site home page.
    An earlier library-chat attempt refused saving; the later native
    **Skill created** card labeled **Your skill** was followed by an independent

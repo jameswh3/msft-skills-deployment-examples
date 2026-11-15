@@ -1,6 +1,13 @@
 # Declarative-agent skill
 
-This is agent-scoped packaging, not the standalone Chat/Cowork plugin.
+Here, the skill is bundled inside a dedicated Copilot assistant. The user
+opens that assistant; they do not install the skill separately.
+
+The author edits the skill in the agent project and republishes the agent
+when it changes. An administrator manages the published assistant under
+**Microsoft 365 admin center > Agents > All agents > select the agent**.
+This differs from a standalone Chat/Cowork plugin, which is listed under
+**Agents > Tools > Registry**.
 
 ## Create
 

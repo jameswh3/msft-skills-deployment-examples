@@ -6,6 +6,11 @@
 deployed it through each platform's native mechanism. I'll show what a user
 sees, then where an administrator or owner finds the deployed capability."
 
+Stops 1-7 use the shared meeting-notes example. Stops 8-12 cover separate
+SharePoint and Office workflows. Word is a documented deployment walkthrough,
+not an installed example in this lab; GitHub Copilot is not runtime-tested
+because the lab has no entitlement.
+
 This is a walkthrough of **existing deployments**, not an installation,
 approval, or provisioning tutorial. Do not upload, publish, update, block,
 uninstall, delete, change audiences, or promote versions during this demo.
@@ -28,7 +33,7 @@ model usage or Copilot Credits.
 | [API Center](#7-additional-approach-foundry--azure-api-center) | Discover the skill and follow its source | Azure portal > API Centers > open the demo resource > Inventory > Assets > select the meeting-notes Skill entry. For Git sync: same resource > Platforms > Integrations > open the Git integration |
 | [SharePoint site skills](#8-sharepoint-site-skills) | Review a selected project brief against team standards | Open the OGE Skills Lab SharePoint site > Settings > Site skills > sharepoint-site-review > Overview or Versions (documented management page; not exercised in this lab) |
 | [SharePoint personal skills](#9-sharepoint-personal-skills) | Use the owner's preferred reading brief | OneDrive > My files > Documents > Copilot > Agent Assets > Skills > sharepoint-personal-brief > SKILL.md (observed lab path; also linked from the personal skill's chat indicator) |
-| [Word](#10-word-project-brief-skill) | Source walkthrough only; native creation unsupported | No deployed word-project-brief to manage. For existing, unrelated plugins: Word > Copilot pane > Settings and more > Manage plugins |
+| [Word](#10-word-project-brief-skill) | Explain the documented agent-packaging route; this Word example is not yet deployed | Author: Agent Builder > Configure > Skills, or VS Code > Microsoft 365 Agents Toolkit > Add Skill. After deployment: Microsoft 365 admin center > Agents > All agents > select the containing agent |
 | [Excel](#11-excel-pipeline-review-skill) | Show verified saved worksheet findings and totals | Excel > Copilot pane > Settings and more > Manage plugins > Custom skills > excel-pipeline-review. Open Skills OneDrive folder there to see its source |
 | [PowerPoint](#12-powerpoint-executive-story-skill) | Show verified four-slide deck and concise summary | PowerPoint > Copilot pane > Settings and more > Manage plugins > Custom skills > powerpoint-executive-story |
 
@@ -37,6 +42,24 @@ Microsoft 365 admin center manages the containing plugin or agent and its
 audience. Studio and Foundry expose maker/project management; personal
 SharePoint and Office skills expose owner management. API Center manages
 the catalog entry, not copies installed in consuming platforms.
+
+### How to read the management paths
+
+- **A > B > C** means open A, select B, then select C.
+- The **Copilot pane** is the chat side panel inside Word, Excel or PowerPoint.
+  **Settings and more** is the menu inside that pane, not the Office app's
+  **File > Options** settings.
+- **Owner** means the person who owns the skill file or created the agent.
+  **Administrator** means a person authorized to assign tools to other users
+  in the Microsoft 365 admin center.
+- A skill's **toggle** turns its use on/off as described for that app.
+  **Refresh** makes the app check its source folder again. Neither means
+  "install this skill for everyone."
+- **Documented** means Microsoft describes the route. **Verified in this lab**
+  means we performed the stated check. These are not interchangeable.
+- A **harness** is the engine running an agent. **Pinned version** means a
+  specific saved version was selected. **MCP** (Model Context Protocol) is the
+  connection protocol used for the remote skill route in stop 7.
 
 Use the [lab evidence ledger](lab-status.md) for what was actually tested.
 UI labels can change. Preview status and client limitations are in the
@@ -203,6 +226,7 @@ we have not isolated which package supplied the runtime bytes."
 
 Do not claim that the managed package failed, that the disabled shared plugin
 definitely executed, or that a matching answer proves package provenance.
+Here, provenance means which installed package supplied the instructions.
 For an attribution-sensitive presentation, show this as a known limitation
 or use the clean-recipient setup described above.
 
@@ -476,9 +500,9 @@ It cannot open a site I lack permission to read."
 
 ### Show personal ownership and governance
 
-1. Show the saved personal skill in the host's personal skill controls.
-   The saved creation card identifies **Your skill** and exposes **Open skill
-   location**; the runtime indicator also links to the owner's source.
+1. In SharePoint's Copilot pane, open the conversation containing the saved
+   **Your skill** card and its **Open skill location** button, or use the
+   source link on **Used personal skill sharepoint-personal-brief**.
    Do not create another duplicate during the presentation.
 2. Follow that discovered source link to OneDrive. The lab's UI path is
    **Documents > Copilot > Agent Assets > Skills > sharepoint-personal-brief**.
@@ -497,35 +521,43 @@ the skill supplies the review workflow and preferred output.
 
 ## 10. Word project-brief skill
 
-**Lab status:** the new Word workflow is not installed or runtime-verified.
-Word web exposes existing shared/managed skills, but that does not establish
-deployment of this source. This section is a source walkthrough, not a live
-installed-skill demo; see the [ledger](lab-status.md).
-Creation within Word is not a supported demo path: current documentation
-does not establish it, and the native attempt returned only an unsaved draft.
-The native creation attempt closes Word exploration for this lab. Do not
-try a Copilot Chat upload-to-Word handoff or another speculative route.
+**Lab status:** the new Word example has not been deployed or run in Word.
+The documented route is to attach its skill to a **declarative agent** (a
+configured Copilot assistant) and distribute that agent. This is separate
+from creating a skill inside Word, which the native attempt did not do.
+The [Word guide](../platforms/word/README.md) now gives the authoring and
+deployment steps. This stop explains those steps, not a completed deployment.
 
 ### Explain the intended user experience
 
 1. Show the checked-in source and synthetic brief, explicitly identifying
    the source as not installed.
-2. Explain the intended request, without submitting it as a skill invocation:
+2. Explain that users would open the containing agent in Word's Copilot pane
+   and refer to the open document. Do not run this as an installed-skill demo
+   before the Word agent is deployed:
 
    ```text
    Polish this project brief for the support-group sponsor.
    ```
 
-3. Explain the acceptance criteria: five native headings, grounded scope/date,
-   both conflicting targets, and specific open decisions. These criteria have
-   not been runtime-verified for this source.
+3. Word's documented agent integration supplies document text and the
+   **Add selection** button for selected text. A response should preserve the
+   scope/date, both conflicting targets and open decisions. The example also
+   requests actual Word heading styles and saved edits; those capabilities
+   must be verified separately, not inferred from access to document text.
 
 ### Show management
 
-If showing **Settings and more > Manage plugins**, identify existing packages
-as separate examples, not `word-project-brief`. Do not demonstrate creation
-within Word, claim a Word-specific OneDrive catalog, or infer installation
-from an Excel or PowerPoint folder.
+For authoring, show the documented path **Agent Builder > Configure > Skills >
+Add**, which accepts a skill ZIP, or **VS Code > Microsoft 365 Agents Toolkit >
+Add Skill**, which creates/registers a skill directory in an agent project.
+For organization assignment after deployment, the location is **Microsoft 365
+admin center > Agents > All agents > select the containing agent**.
+
+There is no deployed Word-specific agent to select in this lab yet. Existing
+packages under Word's **Settings and more > Manage plugins** are different
+examples. Do not claim a Word OneDrive installation folder or a Chat-upload
+handoff.
 
 See the [Word guide](../platforms/word/README.md) and
 [rubric](../samples/word/expected-behavior.md).
@@ -566,7 +598,7 @@ saved cells: eight findings affect all seven source records."
 2. Show `excel-pipeline-review`, its toggle/details, **Refresh**, and the
    native **Skills OneDrive folder** link without changing them.
 3. Explain that the owner installs this personal workflow. The repository
-   provides reviewed source and provenance, not demonstrated tenant-wide
+   provides reviewed instructions and source/version records, not demonstrated tenant-wide
    automatic assignment.
 
 **Say:** "Excel's toggle controls automatic use; documented explicit mentions
