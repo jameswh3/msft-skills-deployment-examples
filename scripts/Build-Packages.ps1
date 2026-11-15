@@ -2,7 +2,9 @@
 [CmdletBinding()]
 param(
     [string]$OutputPath = (Join-Path $PSScriptRoot '..\out'),
-    [string]$SkillPath = (Join-Path $PSScriptRoot '..\skills\meeting-notes')
+    [string]$SkillPath = (Join-Path $PSScriptRoot '..\skills\meeting-notes'),
+    [ValidateSet('skill', 'onedrive-skill', 'github-repository', 'github-marketplace')]
+    [string[]]$Kinds = @('skill', 'github-repository', 'github-marketplace')
 )
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'Tooling.ps1')
@@ -10,6 +12,7 @@ $root = Split-Path $PSScriptRoot -Parent
 $skill = (& (Get-WorkspaceNode) (Join-Path $PSScriptRoot 'validate-skill.mjs') $SkillPath) | ConvertFrom-Json
 if ($LASTEXITCODE -ne 0) { throw 'Skill validation failed.' }
 if (-not $skill.name -or -not $skill.files.Count) { throw 'Skill validator returned no metadata or files.' }
+if (-not $Kinds.Count) { throw 'At least one package kind is required.' }
 $version = (Get-Content (Join-Path $root 'package.json') -Raw | ConvertFrom-Json).version
 $output = [IO.Path]::GetFullPath($OutputPath)
 New-Item $output -ItemType Directory -Force | Out-Null
@@ -18,11 +21,12 @@ New-Item $staging -ItemType Directory | Out-Null
 try {
     $trees = @{
         'skill' = ''
+        'onedrive-skill' = $skill.name
         'github-repository' = ".github\skills\$($skill.name)"
         'github-marketplace' = "skills\$($skill.name)"
     }
     $artifacts = @()
-    foreach ($kind in $trees.Keys | Sort-Object) {
+    foreach ($kind in $Kinds | Sort-Object -Unique) {
         $tree = Join-Path $staging $kind
         $destination = Join-Path $tree $trees[$kind]
         New-Item $destination -ItemType Directory -Force | Out-Null

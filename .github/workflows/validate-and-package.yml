@@ -22,10 +22,15 @@ jobs:
       - run: npm run validate
       - run: npm test
       - run: npm run build
+      - run: npm run build:hosts
+      - run: npm run build:fixtures
       - uses: actions/upload-artifact@v4
         with:
           name: skill-packages
           path: |
             out/*.zip
             out/artifacts.json
+            out/host-examples/**/*.zip
+            out/host-examples/**/artifacts.json
+            out/host-fixtures/*.xlsx
           if-no-files-found: error

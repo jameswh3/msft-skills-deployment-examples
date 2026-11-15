@@ -16,10 +16,40 @@ repository.
 | API Center | **Free** native registration and public Git integration verified; **Linked and syncing** discovered a separate `kind: skill` Testing asset with `apiSourceId` and explicit `**/SKILL.md` pattern; catalog-source retrieval and reviewed metadata/instruction-body parity with the deployed source/export verified | No universal remote loading or hosted execution adapter claimed; raw artifact hashes differ as documented in the platform guide |
 | GitHub repository | Source pushed to public main; Windows CI validation, tests and packaging passed; contributor Write invitation sent | Invitation acceptance |
 | GitHub Copilot runtime | **Unavailable: no Copilot entitlement in this lab** | Must be tested in another entitled environment |
+| SharePoint site skill | Dedicated synthetic-content site and native site skill created; revised canonical file replaced in the product-created Agent Assets library with exact saved-byte SHA-256 verified; fresh **Used site skill sharepoint-site-review** trace observed, with four output sections and all five checklist rows, missing owner and conflicting 20/30 target | Dedicated Site skills management page and additional edge cases not yet exercised |
+| SharePoint personal skill | Documented site-home Copilot creation, reviewed definition and explicit personal-save confirmation succeeded; native **Skill created / Your skill** card and actual OneDrive source verified. Fresh chat showed **Used personal skill sharepoint-personal-brief**, three takeaways, a four-row Fact/Evidence/Caveat table, and three grounded open questions | Generated source is not byte-identical to the canonical package; see source-review note below. Cross-site portability and lifecycle changes not exercised |
+| Word workflow | Source and packages validate; authenticated Word web exposes existing shared/managed skills and management; creation within Word classified as unsupported based on current documentation and the native attempt, which produced only an unsaved draft without a save capability | **New Word source not deployed; investigation closed.** Source walkthrough only, not a live skill demo. No speculative Chat-upload handoff or alternative deployment attempted |
+| Excel pipeline review | Native app-specific OneDrive folder created; 1576-byte canonical source uploaded with exact SHA-256 parity, listed/refreshed/enabled in Custom skills and selected through the native picker; changes accepted and saved workbook independently decoded: source records preserved, eight findings in A11:D18, total B21=35000 and included count B22=6 | Initial chat miscounted affected source rows as six; saved findings cover all seven. Read-back corrected the count in prose but retained six in its chat table. No separate source-mount trace exposed in the inspected UI |
+| PowerPoint workflow | Canonical 1204-byte source saved in the discovered native app-specific OneDrive folder with exact SHA-256 parity; listed and enabled in Custom skills, selected through the native picker, and invoked with a short task request. Saved deck independently decoded: Executive summary first, original three source slides intact, five summary bullets of 10/12/12/11/14 words, common native title-and-content layout, preserved date and 20/30 conflict | No separate source-load trace observed; native selection, saved source and deck output are verified. Suggested next step was explicitly identified as an inference in chat, not a source decision |
 
 No platform is labeled runtime-verified until its actual installed skill has
 been observed and the synthetic output checked. An initial deployment does
 not imply update, rollback, revocation, or all-user assignment tests passed.
+
+The new SharePoint examples leave access and available actions to the host,
+rather than imposing blanket search/edit/action bans. The site-skill evidence
+above is from a fresh run after that revision, not the earlier restricted
+draft. Personal-skill storage in OneDrive is not a separate content sandbox.
+
+The earlier SharePoint personal creation attempt in library chat returned
+only a draft and refused saving. A later fresh site-home chat succeeded
+through the documented creation and confirmation flow; the earlier refusal
+is not treated as a permanent product limitation. The generated source was
+downloaded and reviewed: 1600 bytes, SHA-256
+`da59893c34fb92b19730d79020f9d979f8f5b75c4197874ad0f4ff67e7a59485`.
+Its section formatting and expanded trigger description differ from the
+canonical source, but the reviewed workflow and output criteria are retained,
+without additional search/edit/action bans. The runtime skill indicator linked
+to the owner's actual OneDrive skill folder. Native creation, saved source,
+and fresh invocation are separate observed checks.
+
+The PowerPoint folder upload initially failed and left an empty folder.
+The canonical file was subsequently added to that same discovered folder
+using Microsoft's documented SharePoint file-upload REST API with overwrite
+disabled, then downloaded and hashed. This is the documented OneDrive-copy
+installation route, not a new cross-host skill mechanism. A fresh browser
+tab recovered the expired PowerPoint session. The unrelated existing custom
+skill remains off; only this example is enabled.
 
 For pilot publisher metadata and synthetic-data handling, see [demo use](demo-use.md).
 

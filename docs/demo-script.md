@@ -26,6 +26,11 @@ model usage or Copilot Credits.
 | [Foundry](#5-microsoft-foundry-preview) | Use the existing agent playground or a recorded REST run | Agent skill binding, versioned skill inventory, read-only inspection |
 | [GitHub Copilot](#6-github-copilot-walkthrough-not-runtime-tested-in-this-lab) | Static walkthrough here; live only with an entitled client | Enterprise governance repository and managed plugin settings |
 | [API Center](#7-additional-approach-foundry--azure-api-center) | Discover the skill and follow its source | Assets inventory and Git integration status |
+| [SharePoint site skills](#8-sharepoint-site-skills) | Review a selected project brief against team standards | Site Settings > Site skills; Overview and Versions |
+| [SharePoint personal skills](#9-sharepoint-personal-skills) | Use the owner's preferred reading brief | Personal skill listing and owner OneDrive governance |
+| [Word](#10-word-project-brief-skill) | Source walkthrough only; native creation unsupported | Existing plugin surface, not a deployment claim for this source |
+| [Excel](#11-excel-pipeline-review-skill) | Show verified saved worksheet findings and totals | Manage plugins > Custom skills and native OneDrive source |
+| [PowerPoint](#12-powerpoint-executive-story-skill) | Show verified four-slide deck and concise summary | Manage plugins > Custom skills and native OneDrive source |
 
 Use the [lab evidence ledger](lab-status.md) for what was actually tested.
 UI labels can change. Preview status and client limitations are in the
@@ -62,6 +67,10 @@ UI labels can change. Preview status and client limitations are in the
 8. Use a clean entitled recipient with only the managed demo installed if you
    need definitive Cowork managed-source attribution. Otherwise retain the
    explicit caveat in stop 3. Do not delete the working shared pilot.
+9. For the host-specific extension, open the dedicated SharePoint lab,
+   **OGE-Pipeline-Skill-Demo.xlsx**, and the retained four-slide PowerPoint
+   demo. Show the saved Office results or prepare fresh synthetic copies
+   before rerunning. Word is a labeled source walkthrough, not a live skill.
 
 Roles are not interchangeable: a normal user sees installed capabilities, a
 Studio maker sees agent/skill authoring, Microsoft 365 administrators see
@@ -370,6 +379,218 @@ Do not demonstrate remote toolbox loading or a hosted API adapter as if they
 were deployed: neither was runtime-verified here. Removing a catalog entry
 would not revoke embedded skill copies.
 See the [Foundry + API Center guide](../platforms/foundry-api-center/README.md).
+
+## 8. SharePoint site skills
+
+### Show the site user's experience
+
+1. Open the dedicated **OGE Skills Lab** site and its Documents library.
+   Select the synthetic [project brief](../samples/sharepoint/project-brief.md);
+   do not select unrelated lab/customer documents.
+2. Open Copilot in SharePoint and enter:
+
+   ```text
+   Run sharepoint-site-review on the selected project-brief.md.
+   Return recommendations in chat only; do not change the document.
+   ```
+
+3. Show the skill indicator for `sharepoint-site-review`, then its checklist.
+   The goal, support-group audience and 2030-04-12 target date are present.
+   The accountable owner is missing; success criteria conflict at 20 versus
+   30 articles. Company-wide rollout remains unapproved.
+
+**Say:** "The team has a reusable standard available on this site. The skill
+works on content the user can already access; it does not grant permissions
+or certify compliance."
+
+### Show the site owner's management experience
+
+1. Open **Settings > Site skills** on this site.
+2. Find `sharepoint-site-review` and show its status, source, creator and
+   modified information. Open the **Overview** and **Versions** tabs.
+3. Point out review/edit, Replace, Download, Copy to sites, Disable and
+   version-restore controls without activating them.
+4. If showing storage, use the product-created Agent Assets library and
+   the skill's file. Do not delete the library or change its inheritance.
+
+**Say:** "The site owner manages a native site skill here, not an agent app
+in the Microsoft 365 plugin registry. Copying to another site is distribution,
+not proof that later edits synchronize everywhere. Restoring a version
+creates a new current version and preserves history."
+
+See the [SharePoint guide](../platforms/sharepoint/README.md) and
+[behavior rubric](../samples/sharepoint/expected-behavior.md).
+
+## 9. SharePoint personal skills
+
+**Lab status:** native personal creation, actual OneDrive source and a fresh
+**Used personal skill sharepoint-personal-brief** invocation were verified.
+The successful run used a fresh site-home chat and explicit save confirmation;
+an earlier library-chat refusal did not establish product-wide unavailability.
+See the [evidence ledger](lab-status.md) for generated-source differences.
+
+### Show the owner's user experience
+
+1. Open a fresh chat on the authorized demo site. Use the selected synthetic
+   brief or supply its actual document link; do not paste the skill instructions.
+2. Enter `/skills` and point out **Your skills** versus **Site skills**.
+   Select or explicitly request `sharepoint-personal-brief`:
+
+   ```text
+   Run sharepoint-personal-brief on the selected project-brief.md.
+   Return my reading draft in chat only; do not change or share files.
+   ```
+
+3. Show its personal-skill indicator and the three-part reading format:
+   Three takeaways, Facts to remember, Questions for my next read.
+   The verified response had three takeaways, four evidence-table rows and
+   three open questions.
+4. Highlight the missing owner and unresolved 20-versus-30 target without
+   fabricated answers. Do not promise cross-site testing unless you actually
+   repeat the test on a second authorized synthetic-content site.
+
+**Say:** "This is my preferred way of reading, not a team-mandated standard.
+It belongs to me and can be available across SharePoint sites I can access.
+It cannot open a site I lack permission to read."
+
+### Show personal ownership and governance
+
+1. Show the saved personal skill in the host's personal skill controls.
+   The saved creation card identifies **Your skill** and exposes **Open skill
+   location**; the runtime indicator also links to the owner's source.
+   Do not create another duplicate during the presentation.
+2. Follow that discovered source link to OneDrive. The lab's UI path is
+   **Documents > Copilot > Agent Assets > Skills > sharepoint-personal-brief**.
+   Show the saved instructions and ordinary owner file-management controls.
+   Do not present this observed path as a guaranteed universal system path.
+3. Explain the applicable OneDrive retention, sensitivity and auditing
+   policies. There is no demonstrated all-users personal-skill assignment.
+
+**Say:** "Site and personal skills use the same underlying SharePoint
+capabilities but differ in ownership, storage and scope. Neither is an
+independent tenant-wide administration switch."
+
+The walkthrough's chat-output prompts are rehearsal choices, not blanket
+restrictions in the skill instructions. Native permissions govern access;
+the skill supplies the review workflow and preferred output.
+
+## 10. Word project-brief skill
+
+**Lab status:** the new Word workflow is not installed or runtime-verified.
+Word web exposes existing shared/managed skills, but that does not establish
+deployment of this source. This section is a source walkthrough, not a live
+installed-skill demo; see the [ledger](lab-status.md).
+Creation within Word is not a supported demo path: current documentation
+does not establish it, and the native attempt returned only an unsaved draft.
+The native creation attempt closes Word exploration for this lab. Do not
+try a Copilot Chat upload-to-Word handoff or another speculative route.
+
+### Explain the intended user experience
+
+1. Show the checked-in source and synthetic brief, explicitly identifying
+   the source as not installed.
+2. Explain the intended request, without submitting it as a skill invocation:
+
+   ```text
+   Polish this project brief for the support-group sponsor.
+   ```
+
+3. Explain the acceptance criteria: five native headings, grounded scope/date,
+   both conflicting targets, and specific open decisions. These criteria have
+   not been runtime-verified for this source.
+
+### Show management
+
+If showing **Settings and more > Manage plugins**, identify existing packages
+as separate examples, not `word-project-brief`. Do not demonstrate creation
+within Word, claim a Word-specific OneDrive catalog, or infer installation
+from an Excel or PowerPoint folder.
+
+See the [Word guide](../platforms/word/README.md) and
+[rubric](../samples/word/expected-behavior.md).
+
+## 11. Excel pipeline-review skill
+
+### Show the user's experience
+
+1. Open **OGE-Pipeline-Skill-Demo.xlsx** in Excel web Editing View.
+   Its `PipelineData` table contains the seven synthetic records.
+2. In Copilot's **Add sources, skills, and more > Choose plugins**, select
+   `excel-pipeline-review` and ask:
+
+   ```text
+   Review PipelineData in this workbook and apply the review worksheet.
+   ```
+
+3. Review the changes and select **Done** when appropriate. Open the saved
+   `PipelineReview` sheet. In the verified lab output, A11:D18 contains eight
+   findings, B21 is **35000**, and B22 is **6**.
+4. Show the two duplicate rows, missing owner, unexpected stage, negative
+   amount, invalid amount/date, and missing date. Zero remains numeric.
+5. Request read-back if the chat and worksheet counts disagree:
+
+   ```text
+   Verify the saved PipelineReview worksheet and report the raw total,
+   included record count, finding count and distinct affected source-row count.
+   ```
+
+**Say:** "The total includes duplicates and the negative amount; it is not
+a deduplicated forecast. The source remains available for reconciliation.
+The first chat summary miscounted affected rows, so we verify the actual
+saved cells: eight findings affect all seven source records."
+
+### Show the owner's management experience
+
+1. Open **Settings and more > Manage plugins > Custom skills**.
+2. Show `excel-pipeline-review`, its toggle/details, **Refresh**, and the
+   native **Skills OneDrive folder** link without changing them.
+3. Explain that the owner installs this personal workflow. The repository
+   provides reviewed source and provenance, not demonstrated tenant-wide
+   automatic assignment.
+
+**Say:** "Excel's toggle controls automatic use; documented explicit mentions
+can still invoke a disabled skill. It is not a permissions or revocation
+boundary."
+
+See the [Excel guide](../platforms/excel/README.md) and
+[rubric](../samples/excel/expected-behavior.md).
+
+## 12. PowerPoint executive-story skill
+
+**Lab status:** native skill selection and the saved four-slide output were
+verified; see the [ledger](lab-status.md). The retained lab deck already
+contains the summary. Show that result, or prepare a fresh three-slide copy
+from the outline before rerunning so the request does not add a duplicate.
+
+### Show the user's experience
+
+1. Open the isolated three-slide synthetic deck in PowerPoint web.
+2. In the verified web UI, use **Add sources, skills, and more > Choose
+   plugins** to select `powerpoint-executive-story` and request:
+
+   ```text
+   Add the executive summary to this presentation for a support-group sponsor.
+   ```
+
+3. Review/apply the change. Show the saved **Executive summary** first,
+   followed by the original three slides.
+4. Count three to five bullets and verify each is at most twenty words.
+   Both article targets and unresolved proposals must remain grounded.
+   The saved lab summary has five bullets of 10, 12, 12, 11 and 14 words.
+   The chat explicitly identifies its proposed next step as an inference,
+   not an approved source decision.
+
+### Show the owner's management experience
+
+Open **Settings and more > Manage plugins > Custom skills** (called
+**Manage skills** in the support article) and show the example's source,
+enablement and add/refresh controls without changing them.
+Its documented OneDrive storage is personal and app-specific, not all-users
+assignment. Do not infer Excel's disablement semantics.
+
+See the [PowerPoint guide](../platforms/powerpoint/README.md),
+[outline](../samples/powerpoint/slide-outline.md) and
+[rubric](../samples/powerpoint/expected-behavior.md).
 
 ## Optional challenge: grounded answers, not just formatting
 

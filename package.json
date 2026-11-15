@@ -6,6 +6,8 @@
   "scripts": {
     "validate": "node scripts/validate-skill.mjs",
     "build": "pwsh -NoProfile -File scripts/Build-Packages.ps1",
+    "build:hosts": "pwsh -NoProfile -File scripts/Build-HostExamples.ps1",
+    "build:fixtures": "pwsh -NoProfile -File scripts/Build-ExcelFixture.ps1",
     "test": "pwsh -NoProfile -File tests/Packaging.Tests.ps1"
   },
   "devDependencies": {

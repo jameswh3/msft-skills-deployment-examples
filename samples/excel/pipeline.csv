@@ -1,0 +1,8 @@
+LeadID,Owner,Stage,Amount,TargetDate
+L001,Jordan,Qualified,12000,2030-04-12
+L002,,Proposal,8000,2030-04-15
+L003,Casey,Unknown,5000,2030-04-18
+L001,Jordan,Qualified,12000,2030-04-12
+L004,Morgan,Won,-2000,2030-04-20
+L005,Alex,Prospect,not-a-number,not-a-date
+L006,Dana,Lost,0,

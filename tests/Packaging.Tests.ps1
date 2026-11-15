@@ -42,6 +42,63 @@ try {
     & (Join-Path $root 'scripts\Build-Packages.ps1') -SkillPath $mutated -OutputPath (Join-Path $temporary 'changed-output') | Out-Null
     $changed = Get-Content (Join-Path $temporary 'changed-output\artifacts.json') -Raw | ConvertFrom-Json
     if ($changed.canonicalSha256 -eq $metadata.canonicalSha256) { throw 'Content drift was not reflected in provenance.' }
+    $siteSkill = Join-Path $root 'platforms\sharepoint\skills\sharepoint-site-review'
+    $hostOutput = Join-Path $temporary 'host-packages'
+    & (Join-Path $root 'scripts\Build-Packages.ps1') -SkillPath $siteSkill -Kinds skill, onedrive-skill -OutputPath $hostOutput | Out-Null
+    $hostMetadata = Get-Content (Join-Path $hostOutput 'artifacts.json') -Raw | ConvertFrom-Json
+    if ($hostMetadata.skill -ne 'sharepoint-site-review' -or $hostMetadata.artifacts.Count -ne 2) {
+        throw 'Selected host packages have incorrect provenance or count.'
+    }
+    foreach ($kind in @('skill', 'onedrive-skill')) {
+        $archive = [IO.Compression.ZipFile]::OpenRead((Join-Path $hostOutput "$kind-$($hostMetadata.version).zip"))
+        try {
+            $entryPath = if ($kind -eq 'skill') { 'SKILL.md' } else { 'sharepoint-site-review/SKILL.md' }
+            $entry = $archive.GetEntry($entryPath)
+            if (-not $entry) { throw "Incorrect host archive root: $entryPath" }
+            $stream = $entry.Open()
+            $hasher = [Security.Cryptography.SHA256]::Create()
+            try {
+                $hash = [Convert]::ToHexString($hasher.ComputeHash($stream))
+                if ($hash -ne (Get-FileHash (Join-Path $siteSkill 'SKILL.md')).Hash) {
+                    throw "Host archive content drift: $entryPath"
+                }
+            } finally {
+                $hasher.Dispose()
+                $stream.Dispose()
+            }
+        } finally { $archive.Dispose() }
+    }
+    $excelFixture = Join-Path $temporary 'pipeline.xlsx'
+    & (Join-Path $root 'scripts\Build-ExcelFixture.ps1') -OutputPath $excelFixture | Out-Null
+    $archive = [IO.Compression.ZipFile]::OpenRead($excelFixture)
+    try {
+        $documents = @{}
+        foreach ($part in @('xl/worksheets/sheet1.xml', 'xl/tables/table1.xml')) {
+            $entry = $archive.GetEntry($part)
+            if (-not $entry) { throw "Excel fixture is missing $part." }
+            $reader = [IO.StreamReader]::new($entry.Open())
+            try { $documents[$part] = [xml]$reader.ReadToEnd() } finally { $reader.Dispose() }
+        }
+        $sheet = $documents['xl/worksheets/sheet1.xml']
+        $namespace = [Xml.XmlNamespaceManager]::new($sheet.NameTable)
+        $namespace.AddNamespace('m', 'http://schemas.openxmlformats.org/spreadsheetml/2006/main')
+        $amounts = @($sheet.SelectNodes('//m:c/m:v', $namespace))
+        $total = [decimal]0
+        foreach ($amount in $amounts) {
+            $total += [decimal]::Parse($amount.InnerText, [Globalization.CultureInfo]::InvariantCulture)
+        }
+        if ($amounts.Count -ne 6 -or $total -ne 35000) { throw 'Excel fixture numeric amounts were changed or lost.' }
+        if ($sheet.SelectSingleNode('//m:c[@r="D8"]/m:v', $namespace).InnerText -ne '0' -or
+            $sheet.SelectSingleNode('//m:c[@r="D7"]/m:is/m:t', $namespace).InnerText -ne 'not-a-number' -or
+            $sheet.SelectSingleNode('//m:c[@r="E7"]/m:is/m:t', $namespace).InnerText -ne 'not-a-date' -or
+            $sheet.SelectSingleNode('//m:c[@r="B3"]', $namespace)) {
+            throw 'Excel fixture did not preserve zero, invalid inputs and missing ownership.'
+        }
+        if ($sheet.worksheet.sheetData.row.Count -ne 8 -or
+            $documents['xl/tables/table1.xml'].table.ref -ne 'A1:E8') {
+            throw 'Excel fixture table does not cover every source record and header.'
+        }
+    } finally { $archive.Dispose() }
     $marketplace = Get-Content (Join-Path $root '.claude-plugin\marketplace.json') -Raw | ConvertFrom-Json
     $plugin = Get-Content (Join-Path $root 'plugin.json') -Raw | ConvertFrom-Json
     $package = Get-Content (Join-Path $root 'package.json') -Raw | ConvertFrom-Json
