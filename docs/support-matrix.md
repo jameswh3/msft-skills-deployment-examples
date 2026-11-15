@@ -16,6 +16,7 @@ actual tenant, harness, client, region, license and rollout.
 | PowerPoint | Native presentation-editing custom skills | Personal upload/form or app-specific OneDrive folder | Refresh changes; disabled skills disappear from the documented dropdown. |
 | Studio Microsoft Copilot harness | Markdown/ZIP native upload | Agent deployment; marketplace skill sharing in preview | Snapshot acceptance plus agent republishing. General plugin support unavailable. |
 | Foundry | Skills API preview | Project-scoped immutable skill versions | Default promotion and consumer-bound versions are distinct. |
+| Agent Framework / compatible remote-skill clients | Foundry toolbox skills preview | Authenticated toolbox MCP endpoint over HTTPS; MCP Resources plus skills discovery (`resources/list`, `resources/read`) | Pin toolbox/skill versions deliberately; documented consumption path, not runtime-tested in this lab. |
 | GitHub Copilot | Repository, personal and plugin skills | Repository delivery or enterprise-managed plugin marketplaces | Standalone pinning/provenance versus marketplace update policy; client coverage differs. |
 | API Center | Cataloged Skill assets/source links | Registry discovery and optional Git sync | Catalog metadata is not installation, execution, or revocation of copies. |
 

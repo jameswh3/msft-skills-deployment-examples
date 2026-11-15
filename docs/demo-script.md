@@ -362,8 +362,12 @@ validation. See the [GitHub guide](../platforms/github-copilot/README.md).
    asset, not the unrelated sample API or only the manually registered entry.
 3. Show its source link, lifecycle, description, and available compatibility
    metadata. Follow the source link to the public `SKILL.md`.
-4. Explain that a consumer reviews this content, then uses the relevant
-   platform's native packaging/assignment path.
+4. Explain the consumption connections: a Foundry Copilot-harness prompt
+   agent references a Foundry skill version; a Microsoft Agent Framework
+   agent or compatible remote-skill client connects to a Foundry toolbox's
+   MCP endpoint using MCP Resources and skills discovery. The toolbox route
+   is documented preview functionality, not a runtime-tested lab deployment.
+   Other hosts can use reviewed source through their native packaging paths.
 
 **Say:** "This is the discovery experience for a developer or administrator.
 API Center does not have a chat experience for this skill and does not
@@ -384,9 +388,13 @@ two different skill implementations or assume one converted into the other.
    links are managed here, while Foundry version bindings and consuming-host
    permissions are managed in their respective platforms.
 
-**Say:** "API Center is the additional catalog/distribution approach, not a
-replacement for the native deployments. Git synchronization updates catalog
-discovery; it does not push a new skill into every consuming agent."
+**Say:** "This approach centrally manages skill versions in Foundry and
+catalogs them in API Center. Foundry Copilot-harness agents consume native
+versioned skill references. Agent Framework agents and other compatible
+remote-skill clients consume skill content through a Foundry toolbox over
+MCP Resources and skills discovery. API Center helps users discover the
+skills; the runtime connection is to Foundry. Our lab verified native Foundry
+consumption and catalog synchronization, not the remote toolbox route."
 
 Do not demonstrate remote toolbox loading or a hosted API adapter as if they
 were deployed: neither was runtime-verified here. Removing a catalog entry

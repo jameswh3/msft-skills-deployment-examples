@@ -1,11 +1,32 @@
-# Additional approach: Foundry + Azure API Center
+# Central skill management: Foundry + Azure API Center
 
-**Yes for central catalog/distribution; not a universal remote skill runtime.**
+**Centrally manage skill versions in Foundry and catalog them in API Center.
+Foundry Copilot-harness prompt agents consume versioned skill references;
+Microsoft Agent Framework agents and compatible remote-skill clients consume
+skills through a Foundry toolbox's MCP endpoint (preview).**
 
 API Center supports registering **Skill** assets, source links, lifecycle and
 compatibility metadata, optional assessments, and Git synchronization.
 Foundry supports immutable skill versions, content export, and preview
 toolbox-based remote skill discovery for compatible clients.
+
+## Who consumes the skills, and through which connection?
+
+| Consumer | Connection to the centrally managed skill |
+| --- | --- |
+| Foundry prompt agents using the Microsoft Copilot harness | A native skill reference in the agent definition, configured through the Foundry Agent Service API/SDK or supported tooling. The reference resolves to an immutable skill version in the same project. |
+| Microsoft Agent Framework agents, including hosted agents | An authenticated connection to the Foundry toolbox's **MCP endpoint over HTTPS**. Python's `FoundryToolbox.as_skills_provider()` and .NET's `UseMcpSkills` load skill content through MCP Resources. |
+| Other MCP clients implementing remote skill discovery | The same Foundry toolbox MCP endpoint, with **MCP Resources and the skills discovery extension**: `resources/list` discovers skills and `resources/read` retrieves their content. Generic MCP tool support alone is insufficient. |
+
+API Center provides the discovery/catalog connection: its portal links to the
+reviewed skill source and compatibility information. The runtime connections
+above go to **Foundry**, not API Center. Git synchronization updates the
+catalog; it does not automatically create Foundry skill versions or attach
+them to agents/toolboxes.
+
+The lab verified Foundry native agent consumption and API Center catalog/Git
+synchronization. Toolbox-based remote skill consumption is documented but
+has not been deployed or runtime-tested in this lab.
 
 API Center is a design-time inventory, not an execution gateway. Registering
 a skill does not install it in Copilot or give recipients Foundry access.
@@ -22,7 +43,8 @@ flowchart LR
     P --> ST[Copilot Studio]
     P --> G[GitHub Copilot]
     F --> T[Foundry toolbox]
-    T --> R[Compatible remote-skill client]
+    T -->|MCP Resources and skills discovery| R[Agent Framework agents / compatible remote-skill clients]
+    F -->|Native versioned skill reference| A[Foundry Copilot-harness prompt agents]
 ```
 
 ## A. Register the skill and distribute reviewed packages
@@ -89,11 +111,12 @@ Use a pinned skill version and the versioned toolbox endpoint.
 
 The consumer must support **MCP Resources and the skills discovery extension**:
 it lists and reads skills rather than merely listing/calling tools. Microsoft
-Agent Framework documents `UseMcpSkills` and toolbox skill providers as examples.
+Agent Framework documents .NET's `UseMcpSkills` and Python's
+`FoundryToolbox.as_skills_provider()` as consumption paths.
 
 | Consumer | What this repository can claim |
 | --- | --- |
-| Foundry/Agent Framework compatible skill client | Documented preview remote-skill path; verify authentication, version and actual skill load. |
+| Microsoft Agent Framework agents and other clients implementing MCP Resources/skills discovery | Documented preview consumption through a Foundry toolbox's authenticated MCP endpoint; verify authentication, version and actual skill load. |
 | Microsoft 365 Chat/declarative agents/Cowork | Native packaging is documented; generic MCP tool connectivity is not proof of remote toolbox skill loading. |
 | Copilot Studio | Native upload/sharing is documented; do not assume MCP tool support loads remote skills. |
 | GitHub Copilot | Local/repository/plugin skills are documented; verify a specific client's remote discovery extension before claiming this path. Runtime lab testing is unavailable here. |

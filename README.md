@@ -22,7 +22,7 @@ no scripts, credentials, connectors, network calls, or external actions.
 | Copilot Studio | Native skill upload, preview marketplace sharing, and agent publication | [Studio](platforms/copilot-studio/README.md) |
 | Microsoft Foundry | Preview immutable versions, promotion, consumer binding, and export | [Foundry](platforms/foundry/README.md) |
 | GitHub Copilot | Repository installation and enterprise-managed plugin distribution | [GitHub](platforms/github-copilot/README.md) |
-| **Foundry + API Center** | **An additional central catalog/distribution approach, not a replacement for the individual paths** | [Central registry](platforms/foundry-api-center/README.md) |
+| **Foundry + API Center** | Centrally manage skill versions in Foundry and catalog them in API Center. Foundry Copilot-harness prompt agents consume versioned skill references; Microsoft Agent Framework agents and compatible remote-skill clients consume skills through a Foundry toolbox's MCP endpoint (preview) | [Central skill management](platforms/foundry-api-center/README.md) |
 
 `SKILL.md` content is portable. Installation packages, permissions, invocation,
 and update behavior are not universal. See the [support matrix](docs/support-matrix.md).
