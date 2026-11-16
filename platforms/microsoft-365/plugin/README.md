@@ -1,10 +1,14 @@
 # Microsoft 365 skill plugins: Chat, Cowork and Word
 
-A plugin is the installable package containing the skill. Users select the
-installed skill/plugin in Chat, Cowork or supported Word experiences;
-administrators assign the containing
-package to users or groups. It is not a separate skill file each employee
-must manually copy.
+A plugin is the installable package containing the skill. Authors can share
+the plugin, or administrators can centrally assign/install it for users or
+groups. Users select its skill in Chat, Cowork or supported Word experiences.
+It is not a separate skill file each employee must manually copy.
+
+Word desktop can expose both centrally deployed and owner-shared plugins.
+Word is a consumption surface for their skills, not a separate Word-specific
+skill deployment mechanism. Management and updates follow the containing
+plugin's delivery method.
 
 ## Where users and administrators find it
 

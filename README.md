@@ -63,7 +63,7 @@ agents run the skills and where their instructions are managed.
 | Cowork skills | Copilot Cowork conversations and tasks | An administrator installs a plugin containing the skill through Microsoft 365 admin center > Agents > Tools > Registry; users enable it in Cowork > Customize > Plugins | [Cowork](platforms/microsoft-365/plugin/README.md) |
 | SharePoint site skills | Copilot chat on the associated SharePoint site, for users with the required site/content permissions | A site owner creates the skill in Copilot in SharePoint and manages it from that site's Settings > Site skills | [SharePoint](platforms/sharepoint/README.md) |
 | SharePoint personal skills | Copilot in SharePoint, for an individual user across supported sites they can access | The user saves reusable instructions for their own use in Copilot in SharePoint; Open skill location on the saved card opens the source file in that user's OneDrive | [SharePoint](platforms/sharepoint/README.md) |
-| Plugin-provided skills in Word | Word desktop's Copilot pane > @ > Plugins > the skill beneath its plugin | An administrator assigns/installs a Microsoft 365 skill plugin through Agents > Tools > Registry; users select its skill in Word | [Word](platforms/word/README.md) |
+| Plugin-provided skills in Word | Word desktop's Copilot pane > @ > Plugins > the skill beneath its plugin | An administrator assigns/installs the plugin through Microsoft 365 admin center > Agents > Tools > Registry, or its author shares it through the plugin sharing workflow; users select its skill in Word | [Word](platforms/word/README.md) |
 | Excel custom skills | Copilot in Excel, with the workbook open | Put the skill folder in the user's Excel-specific OneDrive folder, then use Copilot pane > Settings and more > Manage plugins > Custom skills > Refresh and turn on the skill | [Excel](platforms/excel/README.md) |
 | PowerPoint custom skills | Copilot in PowerPoint, with the presentation open | The user adds a skill through the Copilot pane's Manage skills/Manage plugins menu, by upload, form or its PowerPoint-specific OneDrive folder | [PowerPoint](platforms/powerpoint/README.md) |
 | Copilot Studio skills | An agent published from Copilot Studio to Teams or Microsoft 365 Copilot | The agent's author opens Build > Skills to upload instructions, then publishes and grants access to the agent; sharing skills with other authors is separate | [Studio](platforms/copilot-studio/README.md) |
@@ -124,10 +124,13 @@ identify every installed copy or agent version that needs changing. Follow
 the [management lifecycle](docs/lifecycle-and-governance.md) and each product's
 update/removal instructions.
 
-Word can expose skills from installed/shared plugins through **Copilot pane >
-`@` > Plugins**. Customer-authored plugins are managed separately from
-Microsoft's supplied Legal plugin. Neither establishes a general-purpose
-Word skill installation folder. The [Word guide](platforms/word/README.md)
+Word can expose skills supplied by centrally deployed or owner-shared
+Microsoft 365 plugins through **Copilot pane > `@` > Plugins**. Word is a
+consumption surface, not a separate skill format; management follows the
+containing plugin. Do not assume that personal Copilot Chat skill uploads
+automatically become available in Word. Customer-authored plugins are managed
+separately from Microsoft's supplied Legal plugin, and no general-purpose
+Word skill installation folder is established. The [Word guide](platforms/word/README.md)
 explains selection, distribution and document-interaction limits.
 
 ## Developer quickstart: build packages locally

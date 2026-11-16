@@ -2,14 +2,19 @@
 
 ## How Word consumes skills
 
-**Word desktop can expose skills from installed or shared Microsoft 365
-plugins in its Copilot pane's `@` > Plugins picker.** The plugin is the distributed
-package; the skill listed beneath it supplies the reusable instructions.
+**Copilot in Word desktop can expose skills supplied by Microsoft 365 plugins,
+including centrally deployed and owner-shared plugins, through its `@` >
+Plugins picker.** The plugin is the distributed package; the skill listed
+beneath it supplies the reusable instructions. Word is a consumption surface,
+not a separate Word-specific skill format or deployment mechanism. A plugin
+can supply the same skill instructions to more than one Microsoft 365 experience.
 Availability depends on the account, assignment, app version and supported
 plugin capabilities.
 
-This plugin route does not establish a Word-specific OneDrive folder where
-copying `SKILL.md` installs a skill.
+Personal skills created or uploaded directly in Copilot Chat use a separate
+delivery path. Do not assume those uploads automatically become available in
+Word. The plugin route also does not establish a Word-specific OneDrive folder
+where copying `SKILL.md` installs a skill.
 
 ## Use a plugin-provided skill in Word
 
@@ -27,8 +32,10 @@ copying `SKILL.md` installs a skill.
 
 The same skill name can appear beneath several plugins. Select the intended
 containing plugin rather than identifying a deployment by the skill name
-alone. Seeing an entry in the picker confirms availability, not that every
-capability works or that a request actually invoked it.
+alone. The picker's **Shared skill** label does not distinguish an
+organization-managed package from an owner-shared one; check the containing
+plugin and its deployment records. Seeing an entry in the picker confirms
+availability, not that every capability works or that a request actually invoked it.
 
 The `meeting-notes` skill returns a draft in chat; it does not edit the Word
 document. The separate [word-project-brief skill](skills/word-project-brief/SKILL.md)
@@ -37,11 +44,20 @@ not install that other skill.
 
 ## Deploy and maintain a plugin for Word users
 
-Use the [Microsoft 365 plugin packaging and administration
-guide](../microsoft-365/plugin/README.md). Administrators upload the approved
-Microsoft 365 app ZIP through **Microsoft 365 admin center > Agents > Tools >
-Registry** and assign/install it for the intended users. Users then select its
-skill through Word's picker; they do not upload the app ZIP into the document.
+Management follows the containing plugin, not the Word document:
+
+- **Centrally deployed plugin:** administrators upload the approved Microsoft
+  365 app ZIP through **Microsoft 365 admin center > Agents > Tools > Registry**
+  and assign/install it for the intended users. They distribute approved
+  package updates through that management surface.
+- **Owner-shared plugin:** the author maintains the source, rebuilds the
+  package and re-shares updates through the plugin sharing workflow.
+  Owner sharing is not an organization-wide installation.
+
+Use the [Microsoft 365 plugin packaging, sharing and administration
+guide](../microsoft-365/plugin/README.md) for either delivery method. Users select
+the available skill through Word's picker; they do not upload the app ZIP into
+the document.
 
 Test Word as a separate target host. Availability in Chat or Cowork does not
 prove that all of a plugin's tools, scripts or editing operations work in Word.
