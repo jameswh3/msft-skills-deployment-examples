@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" type="device">
   <diagram id="skill-consumption" name="Platform skill consumption">
-    <mxGraphModel adaptiveColors="auto" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="980" pageHeight="1600" background="#ffffff">
+    <mxGraphModel adaptiveColors="auto" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="980" pageHeight="2260" background="#ffffff">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
@@ -10,39 +10,53 @@
         <mxCell id="source" value="&lt;b&gt;SKILL.md + supporting files&lt;/b&gt;&lt;br&gt;Reusable instructions, packaged or saved through each host's own delivery path." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="20" y="65" width="920" height="65" as="geometry"/>
         </mxCell>
-        <mxCell id="m365" value="MICROSOFT 365  |  Delivery / stored skill  --&gt;  Consuming experience" style="swimlane;html=1;startSize=30;horizontal=1;collapsible=0;fillColor=#F5F7FA;swimlaneFillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#24324B;fontSize=16;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="20" y="150" width="920" height="330" as="geometry"/>
+        <mxCell id="m365" value="SHARED MICROSOFT 365 PLUGINS  |  One distribution path, multiple experiences" style="swimlane;html=1;startSize=30;horizontal=1;collapsible=0;fillColor=#F5F7FA;swimlaneFillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#24324B;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="150" width="920" height="300" as="geometry"/>
         </mxCell>
-        <mxCell id="plugin" value="&lt;b&gt;Microsoft 365 skill plugin&lt;/b&gt;&lt;br&gt;Admin assignment or owner sharing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
-          <mxGeometry x="20" y="40" width="340" height="56" as="geometry"/>
+        <mxCell id="plugin" value="&lt;b&gt;Microsoft 365 plugin store &amp;amp; sharing&lt;/b&gt;&lt;br&gt;App Store / organization catalog&lt;br&gt;Admin-assigned or owner-shared plugins&lt;br&gt;Skills in Microsoft 365 app packages" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
+          <mxGeometry x="20" y="80" width="360" height="116" as="geometry"/>
         </mxCell>
-        <mxCell id="plugin-hosts" value="&lt;b&gt;Copilot Chat | Cowork | Word desktop&lt;/b&gt;&lt;br&gt;Word: Copilot pane &gt; @ &gt; Plugins" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
+        <mxCell id="plugin-chat" value="&lt;b&gt;Microsoft 365 Copilot Chat&lt;/b&gt;&lt;br&gt;Select an available plugin's skill" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
           <mxGeometry x="560" y="40" width="340" height="56" as="geometry"/>
         </mxCell>
-        <mxCell id="chat-personal" value="&lt;b&gt;Personal Copilot Chat skill&lt;/b&gt;&lt;br&gt;Upload skill; SharePoint Embedded storage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
-          <mxGeometry x="20" y="110" width="340" height="56" as="geometry"/>
-        </mxCell>
-        <mxCell id="chat" value="&lt;b&gt;Microsoft 365 Copilot Chat&lt;/b&gt;&lt;br&gt;Select skill or allow automatic use" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
+        <mxCell id="plugin-cowork" value="&lt;b&gt;Copilot Cowork&lt;/b&gt;&lt;br&gt;Use the plugin's skills in tasks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
           <mxGeometry x="560" y="110" width="340" height="56" as="geometry"/>
         </mxCell>
-        <mxCell id="cowork-personal" value="&lt;b&gt;Personal Cowork skill&lt;/b&gt;&lt;br&gt;Customize &gt; Skills: create or upload" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
-          <mxGeometry x="20" y="180" width="340" height="56" as="geometry"/>
-        </mxCell>
-        <mxCell id="cowork" value="&lt;b&gt;Copilot Cowork&lt;/b&gt;&lt;br&gt;Conversations and tasks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
+        <mxCell id="plugin-word" value="&lt;b&gt;Copilot in Word desktop&lt;/b&gt;&lt;br&gt;Copilot pane &gt; @ &gt; Plugins" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
           <mxGeometry x="560" y="180" width="340" height="56" as="geometry"/>
         </mxCell>
-        <mxCell id="agent-skill" value="&lt;b&gt;Declarative-agent skill&lt;/b&gt;&lt;br&gt;Skill bundled in the published agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
-          <mxGeometry x="20" y="250" width="340" height="56" as="geometry"/>
+        <mxCell id="plugin-note" value="Shared plugin distribution and management; each experience loads the skills it supports." style="text;html=1;whiteSpace=wrap;align=left;fontSize=14;fontColor=#475569;" vertex="1" parent="m365">
+          <mxGeometry x="20" y="250" width="880" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="dedicated-agent" value="&lt;b&gt;Dedicated Microsoft 365 Copilot agent&lt;/b&gt;&lt;br&gt;User opens the containing agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
-          <mxGeometry x="560" y="250" width="340" height="56" as="geometry"/>
+        <mxCell id="e-plugin-chat" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;exitX=1;exitY=0.2;entryX=0;entryY=0.5;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="m365" source="plugin" target="plugin-chat"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e-plugin-cowork" value="use skill" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;labelBackgroundColor=#FFFFFF;" edge="1" parent="m365" source="plugin" target="plugin-cowork"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e-plugin-word" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;exitX=1;exitY=0.8;entryX=0;entryY=0.5;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="m365" source="plugin" target="plugin-word"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="personal" value="MICROSOFT 365  |  Personal and agent-scoped skills" style="swimlane;html=1;startSize=30;horizontal=1;collapsible=0;fillColor=#F5F7FA;swimlaneFillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#24324B;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="470" width="920" height="260" as="geometry"/>
         </mxCell>
-        <mxCell id="e-plugin" value="select skill" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="m365" source="plugin" target="plugin-hosts"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e-chat" value="personal use" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="m365" source="chat-personal" target="chat"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e-cowork" value="personal use" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="m365" source="cowork-personal" target="cowork"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e-agent" value="bundled copy" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="m365" source="agent-skill" target="dedicated-agent"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="chat-personal" value="&lt;b&gt;Personal Copilot Chat skill&lt;/b&gt;&lt;br&gt;Upload skill; SharePoint Embedded storage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="personal">
+          <mxGeometry x="20" y="40" width="340" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="chat" value="&lt;b&gt;Microsoft 365 Copilot Chat&lt;/b&gt;&lt;br&gt;Select skill or allow automatic use" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="personal">
+          <mxGeometry x="560" y="40" width="340" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="cowork-personal" value="&lt;b&gt;Personal Cowork skill&lt;/b&gt;&lt;br&gt;Customize &gt; Skills: create or upload" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="personal">
+          <mxGeometry x="20" y="110" width="340" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="cowork" value="&lt;b&gt;Copilot Cowork&lt;/b&gt;&lt;br&gt;Conversations and tasks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="personal">
+          <mxGeometry x="560" y="110" width="340" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="agent-skill" value="&lt;b&gt;Declarative-agent skill&lt;/b&gt;&lt;br&gt;Skill bundled in the published agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="personal">
+          <mxGeometry x="20" y="180" width="340" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="dedicated-agent" value="&lt;b&gt;Dedicated Microsoft 365 Copilot agent&lt;/b&gt;&lt;br&gt;User opens the containing agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="personal">
+          <mxGeometry x="560" y="180" width="340" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-chat" value="personal use" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="personal" source="chat-personal" target="chat"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e-cowork" value="personal use" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="personal" source="cowork-personal" target="cowork"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e-agent" value="bundled copy" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="personal" source="agent-skill" target="dedicated-agent"><mxGeometry relative="1" as="geometry"/></mxCell>
         <mxCell id="native" value="SHAREPOINT AND OFFICE  |  Site- and app-managed skills" style="swimlane;html=1;startSize=30;horizontal=1;collapsible=0;fillColor=#F5F7FA;swimlaneFillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#24324B;fontSize=16;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="20" y="500" width="920" height="330" as="geometry"/>
+          <mxGeometry x="20" y="750" width="920" height="330" as="geometry"/>
         </mxCell>
         <mxCell id="sp-site" value="&lt;b&gt;SharePoint site skill&lt;/b&gt;&lt;br&gt;Associated site's Agent Assets library" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="native">
           <mxGeometry x="20" y="40" width="340" height="56" as="geometry"/>
@@ -72,8 +86,8 @@
         <mxCell id="e-sp-personal" value="personal scope" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="native" source="sp-personal" target="sp-personal-chat"><mxGeometry relative="1" as="geometry"/></mxCell>
         <mxCell id="e-excel" value="refresh / select" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="native" source="excel-skill" target="excel"><mxGeometry relative="1" as="geometry"/></mxCell>
         <mxCell id="e-ppt" value="refresh / select" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="native" source="ppt-skill" target="ppt"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="builders" value="COPILOT STUDIO AND FOUNDRY  |  Skills consumed through agents or applications" style="swimlane;html=1;startSize=30;horizontal=1;collapsible=0;fillColor=#F5F7FA;swimlaneFillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#24324B;fontSize=16;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="20" y="850" width="920" height="250" as="geometry"/>
+        <mxCell id="builders" value="COPILOT STUDIO  |  Skills consumed through a published agent" style="swimlane;html=1;startSize=30;horizontal=1;collapsible=0;fillColor=#F5F7FA;swimlaneFillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#24324B;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1100" width="920" height="120" as="geometry"/>
         </mxCell>
         <mxCell id="studio-skill" value="&lt;b&gt;Studio skill (Copilot engine)&lt;/b&gt;&lt;br&gt;Uploaded instructions or shared snapshot" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="builders">
           <mxGeometry x="20" y="40" width="340" height="56" as="geometry"/>
@@ -81,24 +95,9 @@
         <mxCell id="studio-agent" value="&lt;b&gt;Published Studio agent&lt;/b&gt;&lt;br&gt;Teams / Microsoft 365 Copilot" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="builders">
           <mxGeometry x="560" y="40" width="340" height="56" as="geometry"/>
         </mxCell>
-        <mxCell id="foundry-version" value="&lt;b&gt;Foundry skill version (preview)&lt;/b&gt;&lt;br&gt;Immutable content in a Foundry project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="builders">
-          <mxGeometry x="20" y="110" width="340" height="56" as="geometry"/>
-        </mxCell>
-        <mxCell id="foundry-agent" value="&lt;b&gt;Foundry agent (Copilot engine)&lt;/b&gt;&lt;br&gt;Loads the selected skill version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="builders">
-          <mxGeometry x="560" y="110" width="340" height="56" as="geometry"/>
-        </mxCell>
-        <mxCell id="toolbox" value="&lt;b&gt;Foundry toolbox (preview)&lt;/b&gt;&lt;br&gt;Pinned version; authenticated MCP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="builders">
-          <mxGeometry x="20" y="180" width="340" height="56" as="geometry"/>
-        </mxCell>
-        <mxCell id="remote-client" value="&lt;b&gt;Agent Framework / compatible clients&lt;/b&gt;&lt;br&gt;MCP Resources + skills discovery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="builders">
-          <mxGeometry x="560" y="180" width="340" height="56" as="geometry"/>
-        </mxCell>
         <mxCell id="e-studio" value="publish agent" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="builders" source="studio-skill" target="studio-agent"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e-foundry" value="version reference" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="builders" source="foundry-version" target="foundry-agent"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e-toolbox-version" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;" edge="1" parent="builders" source="foundry-version" target="toolbox"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e-remote" value="HTTPS: list / read" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="builders" source="toolbox" target="remote-client"><mxGeometry relative="1" as="geometry"/></mxCell>
         <mxCell id="github" value="GITHUB COPILOT  |  Repository and plugin delivery" style="swimlane;html=1;startSize=30;horizontal=1;collapsible=0;fillColor=#F5F7FA;swimlaneFillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#24324B;fontSize=16;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="20" y="1120" width="920" height="180" as="geometry"/>
+          <mxGeometry x="20" y="1240" width="920" height="180" as="geometry"/>
         </mxCell>
         <mxCell id="repo-skill" value="&lt;b&gt;Repository skill&lt;/b&gt;&lt;br&gt;.github/skills/&amp;lt;name&amp;gt;/SKILL.md" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="github">
           <mxGeometry x="20" y="40" width="340" height="56" as="geometry"/>
@@ -111,18 +110,53 @@
         </mxCell>
         <mxCell id="e-repo" value="repository files" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="github" source="repo-skill" target="github-client"><mxGeometry relative="1" as="geometry"/></mxCell>
         <mxCell id="e-github-plugin" value="install plugin" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="github" source="github-plugin" target="github-client"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="catalog-group" value="AZURE API CENTER  |  Discovery and compatibility information" style="swimlane;html=1;startSize=30;horizontal=1;collapsible=0;fillColor=#F5F7FA;swimlaneFillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#24324B;fontSize=16;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="20" y="1320" width="920" height="110" as="geometry"/>
+        <mxCell id="catalog-group" value="API CENTER DISCOVERY + FOUNDRY DELIVERY  |  Shared source, multiple consumption paths" style="swimlane;html=1;startSize=30;horizontal=1;collapsible=0;fillColor=#F5F7FA;swimlaneFillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#24324B;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1440" width="920" height="680" as="geometry"/>
         </mxCell>
-        <mxCell id="catalog" value="&lt;b&gt;API Center skill catalog&lt;/b&gt;&lt;br&gt;Source links / metadata / optional Git sync" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#94A3B8;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="catalog-group">
-          <mxGeometry x="20" y="40" width="340" height="56" as="geometry"/>
+        <mxCell id="catalog" value="&lt;b&gt;Azure API Center&lt;/b&gt;&lt;br&gt;Shared skill catalog&lt;br&gt;Source / compatibility / Git sync" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#94A3B8;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="catalog-group">
+          <mxGeometry x="20" y="60" width="240" height="100" as="geometry"/>
         </mxCell>
-        <mxCell id="catalog-reader" value="&lt;b&gt;Developer or administrator&lt;/b&gt;&lt;br&gt;Find source and choose a compatible route" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#94A3B8;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="catalog-group">
-          <mxGeometry x="560" y="40" width="340" height="56" as="geometry"/>
+        <mxCell id="catalog-reader" value="&lt;b&gt;Developer / administrator&lt;/b&gt;&lt;br&gt;Review the linked source&lt;br&gt;Configure a compatible delivery path" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#94A3B8;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="catalog-group">
+          <mxGeometry x="330" y="60" width="260" height="100" as="geometry"/>
         </mxCell>
-        <mxCell id="e-discover" value="discover" style="edgeStyle=orthogonalEdgeStyle;html=1;dashed=1;endArrow=open;strokeColor=#94A3B8;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="catalog-group" source="catalog" target="catalog-reader"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="legend" value="&lt;b&gt;Purple:&lt;/b&gt; packaged or stored instructions. &lt;b&gt;Blue:&lt;/b&gt; consuming experience.&lt;br&gt;&lt;b&gt;Solid arrows:&lt;/b&gt; skill delivery / loading / selection. &lt;b&gt;Dashed:&lt;/b&gt; discovery metadata.&lt;br&gt;Verify availability, invocation, document access and saved edits for each target host." style="text;html=1;whiteSpace=wrap;align=left;fontSize=16;fontColor=#475569;" vertex="1" parent="1">
-          <mxGeometry x="20" y="1450" width="920" height="90" as="geometry"/>
+        <mxCell id="catalog-m365" value="&lt;b&gt;Microsoft 365 plugin path&lt;/b&gt;&lt;br&gt;Package, then assign / share&lt;br&gt;Chat / Cowork / Word" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="catalog-group">
+          <mxGeometry x="660" y="40" width="240" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="catalog-studio" value="&lt;b&gt;Copilot Studio agent&lt;/b&gt;&lt;br&gt;Upload skill, then publish the agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="catalog-group">
+          <mxGeometry x="660" y="140" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="catalog-github" value="&lt;b&gt;GitHub Copilot&lt;/b&gt;&lt;br&gt;Repository files or installed plugin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="catalog-group">
+          <mxGeometry x="660" y="230" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="foundry-version" value="&lt;b&gt;Foundry skill version (preview)&lt;/b&gt;&lt;br&gt;Immutable content&lt;br&gt;in a Foundry project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="catalog-group">
+          <mxGeometry x="330" y="330" width="260" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="foundry-agent" value="&lt;b&gt;Foundry prompt agent&lt;/b&gt;&lt;br&gt;Microsoft Copilot engine&lt;br&gt;Loads the selected skill version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="catalog-group">
+          <mxGeometry x="660" y="330" width="240" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="toolbox" value="&lt;b&gt;Foundry toolbox (preview)&lt;/b&gt;&lt;br&gt;Pinned skill version&lt;br&gt;Authenticated HTTPS / MCP endpoint" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#8E72B5;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="catalog-group">
+          <mxGeometry x="330" y="480" width="260" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="framework-agent" value="&lt;b&gt;Agent Framework agents&lt;/b&gt;&lt;br&gt;MCP Resources + skills discovery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="catalog-group">
+          <mxGeometry x="660" y="450" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="remote-client" value="&lt;b&gt;Other compatible MCP clients&lt;/b&gt;&lt;br&gt;MCP Resources + skills discovery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="catalog-group">
+          <mxGeometry x="660" y="540" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="catalog-note" value="API Center supplies discovery links. Developers configure delivery; Foundry serves remote skill content.&lt;br&gt;Source can also be deployed directly through these product paths without catalog registration." style="text;html=1;whiteSpace=wrap;align=left;fontSize=14;fontColor=#475569;" vertex="1" parent="catalog-group">
+          <mxGeometry x="20" y="625" width="880" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-discover" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;dashed=1;endArrow=open;strokeColor=#94A3B8;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="catalog-group" source="catalog" target="catalog-reader"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e-catalog-m365" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;exitX=1;exitY=0.2;entryX=0;entryY=0.5;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="catalog-group" source="catalog-reader" target="catalog-m365"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e-catalog-studio" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="catalog-group" source="catalog-reader" target="catalog-studio"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e-catalog-github" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;exitX=1;exitY=0.8;entryX=0;entryY=0.5;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="catalog-group" source="catalog-reader" target="catalog-github"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e-create-foundry" value="upload reviewed source" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;labelBackgroundColor=#FFFFFF;" edge="1" parent="catalog-group" source="catalog-reader" target="foundry-version"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e-foundry" value="reference" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;labelBackgroundColor=#FFFFFF;" edge="1" parent="catalog-group" source="foundry-version" target="foundry-agent"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e-toolbox-version" value="pin version" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;labelBackgroundColor=#FFFFFF;" edge="1" parent="catalog-group" source="foundry-version" target="toolbox"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e-framework" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;exitX=1;exitY=0.25;entryX=0;entryY=0.5;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="catalog-group" source="toolbox" target="framework-agent"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e-remote" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;exitX=1;exitY=0.75;entryX=0;entryY=0.5;strokeColor=#6C8EBF;strokeWidth=2;fontColor=#24324B;fontSize=14;" edge="1" parent="catalog-group" source="toolbox" target="remote-client"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="legend" value="&lt;b&gt;Purple:&lt;/b&gt; packaged or stored instructions. &lt;b&gt;Blue:&lt;/b&gt; consuming experience / delivery target.&lt;br&gt;&lt;b&gt;Solid arrows:&lt;/b&gt; packaging / installation / skill loading. &lt;b&gt;Dashed:&lt;/b&gt; catalog discovery metadata.&lt;br&gt;Verify availability, invocation, document access and saved edits for each target host." style="text;html=1;whiteSpace=wrap;align=left;fontSize=16;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="20" y="2140" width="920" height="90" as="geometry"/>
         </mxCell>
       </root>
     </mxGraphModel>

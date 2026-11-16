@@ -60,7 +60,9 @@ Foundry are builder services: their users usually interact with a published
 agent or application, rather than with the builder's management screen.
 
 See the [editable platform consumption diagram](docs/diagrams/skill-consumption.drawio)
-for a visual overview of delivery, storage and consuming experiences.
+for a visual overview of delivery, storage and consuming experiences, including
+the shared Microsoft 365 plugin path and delivery options for skills discovered
+through Azure API Center.
 
 The table separates each product's skill capability from where users or
 agents run the skills and where their instructions are managed.
