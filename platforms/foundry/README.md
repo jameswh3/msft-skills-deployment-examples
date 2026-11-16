@@ -55,7 +55,7 @@ $project = 'https://<account>.services.ai.azure.com/api/projects/<project>'
 
 Record the returned immutable version. The first creation can establish the
 initial default. For updates, inspect the current default before and after
-creation; do not assume a CLI convenience update stages without promotion.
+creation; do not assume creating a version leaves the default unchanged.
 
 ```powershell
 .\scripts\Invoke-FoundrySkill.ps1 -ProjectEndpoint $project -Operation Inspect
@@ -64,7 +64,7 @@ creation; do not assume a CLI convenience update stages without promotion.
 
 The script submits the canonical description and Markdown instructions as
 inline content. This instruction-only sample does not need companion files.
-It does not create an agent, invoke a model, or grant RBAC.
+It does not create an agent, invoke a model, or grant project permissions.
 
 ## Attach the skill to an agent and test it
 
@@ -124,8 +124,9 @@ product.
 
 To roll back, set the previous default if appropriate **and configure the
 agent to use the previous skill version**. Test a new conversation.
-Before deleting versions or skills, inventory consumers; preserve rollback
-content. No destructive delete operation is included in the script.
+Before deleting versions or skills, identify every agent or application
+using them and keep the previous reviewed content for rollback.
+No destructive delete operation is included in the script.
 
 For the distinct catalog/distribution path and optional toolbox discovery,
 see [Foundry + API Center](../foundry-api-center/README.md).

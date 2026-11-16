@@ -1,7 +1,7 @@
 # Copilot Chat and Cowork plugin
 
 A plugin is the installable package containing the skill. Users select the
-installed capability in Chat or Cowork; administrators assign the containing
+installed skill/plugin in Chat or Cowork; administrators assign the containing
 package to users or groups. It is not a separate skill file each employee
 must manually copy.
 
@@ -142,8 +142,9 @@ and duplicate-source behavior observed in this repository's test environment.
   for their conversations. Admin deployment does not force invocation.
 - Cowork blocking affects new conversations; do not claim immediate
   interruption of sessions already using the plugin.
-- Review Copilot activity in Purview. No connector consent is needed by this
-  instruction-only sample.
+- Microsoft Purview is Microsoft's compliance and audit service; use it to
+  review Copilot activity where available. This sample has no external
+  connectors requiring user or administrator approval.
 
 ## Troubleshooting
 

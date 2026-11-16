@@ -1,7 +1,9 @@
 # Copilot in Excel: pipeline review
 
-The [excel-pipeline-review skill](skills/excel-pipeline-review/SKILL.md)
-creates a review worksheet with source-row evidence and reconciled totals.
+Skills provide reusable instructions for workbook tasks. This repository's
+[excel-pipeline-review example](skills/excel-pipeline-review/SKILL.md)
+checks workbook data, lists findings with the affected source rows in a
+review worksheet, and calculates totals you can check against the original data.
 It uses the workbook access already available to Copilot; it grants no
 additional permissions.
 

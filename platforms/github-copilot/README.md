@@ -1,8 +1,8 @@
 # GitHub Copilot
 
-The root [plugin manifest](../../plugin.json) discovers the canonical `skills`
-directory. The root [marketplace](../../.claude-plugin/marketplace.json) exposes
-that plugin. No second authored skill copy is needed.
+GitHub Copilot can use skill instructions from a code repository or an
+installed plugin in supported clients. This guide shows both installation
+methods using the `meeting-notes` example.
 
 ## Where to manage it
 
@@ -18,7 +18,8 @@ that plugin. No second authored skill copy is needed.
 
 ## Use an installed skill
 
-1. Open the intended code repository in a supported, entitled Copilot client.
+1. Open the intended code repository in a supported Copilot client, using
+   an account with Copilot access.
 2. Use its skills picker/slash menu where offered, or explicitly request the
    skill by name. For the sample, ask for `meeting-notes` and supply notes.
 3. Review the response and the client's skill-load activity, when available.
@@ -37,14 +38,20 @@ gh skill preview jameswh3/msft-skills-deployment-examples meeting-notes
 gh skill install jameswh3/msft-skills-deployment-examples meeting-notes
 ```
 
-Default scope is the current project. To distribute a reviewed release, use a
-specific tag/SHA with the documented `@VERSION` or `--pin` option, not both.
+By default, installation applies to the current project. To distribute a
+reviewed release, select a specific release tag or commit hash with the
+documented `@VERSION` or `--pin` option, not both.
 Alternatively, extract the generated repository ZIP into an explicitly chosen
 test repository; it contains `.github/skills/meeting-notes/SKILL.md`.
 
 Do not install into personal skill locations as a side effect of building.
 
 ## Plugin marketplace
+
+The root [plugin manifest](../../plugin.json) points to the shared `skills`
+directory. The [marketplace listing](../../.claude-plugin/marketplace.json)
+tells clients where to find that plugin; it does not contain a second
+authored copy of the skill.
 
 For an authorized user's Copilot CLI:
 
@@ -54,7 +61,7 @@ copilot plugin install meeting-notes@oge-skills
 ```
 
 This installs trusted agent instructions. Review the content first. VS Code
-also documents marketplace/source installation for supported harnesses.
+also documents marketplace/source installation for supported agent engines.
 `oge-skills` is the marketplace identifier inside the manifest; it is not the
 GitHub repository name and was not changed by the repository rename.
 
@@ -83,8 +90,10 @@ sandbox execution. Check current minimum client versions before rollout.
 
 ## Update and rollback
 
-- Standalone skills use provenance/pinning and `gh skill update`.
-- Marketplace refresh and plugin updates are a different lifecycle. Preserve
+- For standalone skills, record the source repository and selected release
+  tag or commit hash. Use `gh skill update` to update the installed skill.
+- Refreshing a marketplace listing and updating an installed plugin are
+  separate operations. Preserve
   reviewed previous content, publish corrected/previous content under a valid
   next version when necessary, and verify actual installed versions.
 - Block the plugin through enterprise policy, then test a fresh session.

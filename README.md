@@ -1,7 +1,8 @@
 # Skills across Microsoft and GitHub: user and administrator guide
 
-One portable skill, distinct deployment and management examples, plus
-host-specific workflows where the scope and user experience differ.
+Examples of creating, installing, using and updating skills in Microsoft
+and GitHub products. The repository includes a shared meeting-notes skill
+and additional examples for tasks in SharePoint, Word, Excel and PowerPoint.
 
 Learn how reusable skill instructions reach users, where they are stored,
 who can manage them, and how updates work in each product. The examples can
@@ -31,7 +32,8 @@ not required.
 - A **plugin** is an installable package that can contain skills and other
   capabilities. In Microsoft 365, administrators can assign that package to
   users or groups.
-- A **tenant** is your organization's Microsoft 365 service boundary.
+- A **tenant** is your organization's instance of Microsoft 365, with its own
+  users, data and administration settings.
   An **environment** in Copilot Studio or a **project** in Foundry identifies
   the workspace where its builders manage the example.
 - **Deploy** means put the skill/package into the service and make it
@@ -53,23 +55,29 @@ Choose the product where people will use the skill. Copilot Studio and
 Foundry are builder services: their users usually interact with a published
 agent or application, rather than with the builder's management screen.
 
-| Where the skill is used | How it gets there and who manages it | Guide |
-| --- | --- | --- |
-| Microsoft 365 Copilot Chat: the general chat experience | A user uploads a personal skill, or an administrator assigns a plugin containing it through Microsoft 365 admin center > Agents > Tools > Registry | [Microsoft 365](platforms/microsoft-365/README.md) |
-| Microsoft 365 declarative agent: a dedicated assistant | The author adds the skill through Agent Builder > Configure > Skills or Agents Toolkit > Add Skill; skill changes require republishing the containing agent | [Declarative agent](platforms/microsoft-365/declarative-agent/README.md) |
-| Copilot Cowork: the task-running experience | Deploy the plugin through Microsoft 365 admin center > Agents > Tools > Registry; users find it in Cowork > Customize > Plugins | [Cowork](platforms/microsoft-365/plugin/README.md) |
-| SharePoint site skills: shared instructions on one site | A site owner creates the skill in Copilot in SharePoint and manages it from that site's Settings > Site skills | [SharePoint](platforms/sharepoint/README.md) |
-| SharePoint personal skills: the owner's reading workflow | The owner creates/saves a personal skill in Copilot in SharePoint and follows its source link to the saved OneDrive file | [SharePoint](platforms/sharepoint/README.md) |
-| Word: a document-focused agent | Attach the skill to a declarative agent through Agent Builder or Agents Toolkit, then distribute the agent. Documented route; this Word example is not yet deployed | [Word](platforms/word/README.md) |
-| Excel: review the open workbook | Put the skill folder in the owner's Excel-specific OneDrive folder, then use Copilot pane > Settings and more > Manage plugins > Custom skills > Refresh and turn on the skill | [Excel](platforms/excel/README.md) |
-| PowerPoint: edit the open presentation | The owner adds a skill through the app's Manage skills/Manage plugins menu, by upload, form or its PowerPoint-specific OneDrive folder | [PowerPoint](platforms/powerpoint/README.md) |
-| Copilot Studio: build an agent for other people to use | The agent's author opens Build > Skills to upload instructions, then publishes and grants access to the agent; sharing skills with other authors is separate | [Studio](platforms/copilot-studio/README.md) |
-| Microsoft Foundry: build an AI-backed application | A project owner uploads numbered skill versions through the Skills API or Foundry Toolkit, then configures which version an agent uses | [Foundry](platforms/foundry/README.md) |
-| GitHub Copilot: assist developers in a coding client | Add skill files to the working repository, or distribute a plugin through enterprise policy stored in the designated governance repository | [GitHub](platforms/github-copilot/README.md) |
-| **Foundry + API Center** | Centrally manage skill versions in Foundry and catalog them in API Center. Foundry Copilot-harness prompt agents consume versioned skill references; Microsoft Agent Framework agents and compatible remote-skill clients consume skills through a Foundry toolbox's MCP endpoint (preview) | [Central skill management](platforms/foundry-api-center/README.md) |
+The skill names below identify this repository's examples. The next column
+names the application where a user or agent runs each skill, not where its
+source file is stored or managed.
 
-`SKILL.md` content is portable. Installation packages, permissions, invocation,
-and update behavior are not universal. See the [support matrix](docs/support-matrix.md).
+| Skill name (example) | Where the skill is used | How it gets there and who manages it | Guide |
+| --- | --- | --- | --- |
+| `meeting-notes` | Microsoft 365 Copilot Chat | A user uploads a personal skill, or an administrator assigns a plugin containing it through Microsoft 365 admin center > Agents > Tools > Registry | [Microsoft 365](platforms/microsoft-365/README.md) |
+| `meeting-notes` | A dedicated declarative agent opened in Microsoft 365 Copilot | The author adds the skill through Agent Builder > Configure > Skills or Agents Toolkit > Add Skill; skill changes require republishing the containing agent | [Declarative agent](platforms/microsoft-365/declarative-agent/README.md) |
+| `meeting-notes` | Copilot Cowork conversations and tasks | An administrator installs a plugin containing the skill through Microsoft 365 admin center > Agents > Tools > Registry; users enable it in Cowork > Customize > Plugins | [Cowork](platforms/microsoft-365/plugin/README.md) |
+| `sharepoint-site-review` (site skill) | Copilot chat on the associated SharePoint site, for users with the required site/content permissions | A site owner creates the skill in Copilot in SharePoint and manages it from that site's Settings > Site skills | [SharePoint](platforms/sharepoint/README.md) |
+| `sharepoint-personal-brief` (personal skill) | Copilot in SharePoint, for an individual user across supported sites they can access | The user saves reusable instructions for their own use in Copilot in SharePoint; Open skill location on the saved card opens the source file in that user's OneDrive | [SharePoint](platforms/sharepoint/README.md) |
+| `word-project-brief` | A declarative agent opened in Word's Copilot pane | Attach the skill to a declarative agent through Agent Builder or Agents Toolkit, then distribute the agent. Documented route; this Word example is not yet deployed | [Word](platforms/word/README.md) |
+| `excel-pipeline-review` | Copilot in Excel, with the workbook open | Put the skill folder in the user's Excel-specific OneDrive folder, then use Copilot pane > Settings and more > Manage plugins > Custom skills > Refresh and turn on the skill | [Excel](platforms/excel/README.md) |
+| `powerpoint-executive-story` | Copilot in PowerPoint, with the presentation open | The user adds a skill through the Copilot pane's Manage skills/Manage plugins menu, by upload, form or its PowerPoint-specific OneDrive folder | [PowerPoint](platforms/powerpoint/README.md) |
+| `meeting-notes` | An agent published from Copilot Studio to Teams or Microsoft 365 Copilot | The agent's author opens Build > Skills to upload instructions, then publishes and grants access to the agent; sharing skills with other authors is separate | [Studio](platforms/copilot-studio/README.md) |
+| `meeting-notes` | A Foundry agent, used through an application or API | A project owner uploads numbered skill versions through the Skills API or Foundry Toolkit, then configures which version an agent uses | [Foundry](platforms/foundry/README.md) |
+| `meeting-notes` | GitHub Copilot in supported editors and coding tools | Add skill files to the code repository, or distribute a plugin through enterprise policy stored in the administrator-designated .github-private repository | [GitHub](platforms/github-copilot/README.md) |
+| `meeting-notes` (Foundry + API Center route) | Foundry prompt agents using the Microsoft Copilot engine; Microsoft Agent Framework agents and other clients supporting MCP Resources and skills discovery | Store skill versions in Foundry and list them in API Center. Foundry prompt agents load a selected version directly; remote clients retrieve skills through a Foundry toolbox's MCP endpoint (preview). API Center provides discovery, not execution | [Central skill management](platforms/foundry-api-center/README.md) |
+
+The same `SKILL.md` instructions can be reused across products, but the
+installation steps, permissions, ways to select a skill and update behavior
+differ. The tasks described in these examples are not the only tasks skills
+can perform. See the [support matrix](docs/support-matrix.md).
 
 ## Using skills
 
@@ -103,12 +111,15 @@ First determine what you are managing:
   in an Agents Toolkit project, then republishes the containing agent.
 - **A site skill:** the SharePoint site owner manages the skill on that site.
   Copying it to another site does not keep the copies synchronized.
-- **A personal skill:** the owner manages the saved skill and app settings.
+- **A personal skill:** the individual user manages their saved instructions
+  and the skill's settings in the app.
   Distributing a file is not the same as installing it for all employees.
-- **A builder-managed skill:** the Studio agent author or Foundry project
-  owner chooses the content/version their agent uses and publishes updates.
-- **A catalog entry:** API Center manages discovery information. Its entries
-  do not install or revoke skills in another product.
+- **A skill in Copilot Studio or Foundry:** the Studio agent author or Foundry
+  project owner chooses the instructions or version their agent uses and
+  publishes updates.
+- **A catalog entry:** API Center lists a skill's description, source link
+  and supported products. Adding or removing that entry does not install or
+  remove the skill in another product.
 
 For rollout, review the instructions, select a small initial audience, verify
 access as a recipient, then expand access if appropriate. For updates,

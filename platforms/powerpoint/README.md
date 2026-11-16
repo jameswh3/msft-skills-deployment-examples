@@ -1,7 +1,8 @@
 # Copilot in PowerPoint: executive story
 
-The [powerpoint-executive-story skill](skills/powerpoint-executive-story/SKILL.md)
-adds a concise executive summary first while retaining the detailed slides.
+Skills provide reusable instructions for presentation tasks. This repository's
+[powerpoint-executive-story example](skills/powerpoint-executive-story/SKILL.md)
+adds an executive-summary slide at the beginning and keeps the existing slides.
 It uses the presentation access already available to Copilot; it grants no
 additional permissions.
 
@@ -34,8 +35,8 @@ PowerPoint documents three personal custom-skill routes:
 2. The **Add skill** form: supply the reviewed name, description and
    instructions, then save. Inspect the resulting source; generated or
    reformatted content is not automatically byte-identical.
-3. **Manage skills > Custom skills**: create/open the native OneDrive skills
-   folder and upload a matching-name folder containing `SKILL.md`.
+3. **Manage skills > Custom skills**: create/open the OneDrive skills folder
+   provided by PowerPoint and upload a matching-name folder containing `SKILL.md`.
 
 Select **Refresh**, turn on the skill's toggle, and check its saved instructions
 before selecting it for a request.
@@ -71,7 +72,7 @@ Review/apply the proposed change and inspect the saved deck using the
 - Both 20 and 30 article targets remain an unresolved choice.
 - Expansion remains proposed; missing ownership and translation scope are
   not given invented answers.
-- Existing theme and readable native layout.
+- Keep the presentation's existing theme and use a readable PowerPoint slide layout.
 
 Draft text in chat is not an inserted slide. An uploaded file is not proof
 of discovery or invocation; see [lab evidence](../../docs/lab-status.md).
@@ -89,7 +90,8 @@ of discovery or invocation; see [lab evidence](../../docs/lab-status.md).
 
 ## What an administrator can manage
 
-These are owner-specific OneDrive skills. Centrally maintaining a reviewed
+Each user's personal skills are stored in that user's OneDrive.
+Centrally maintaining a reviewed
 source file does not install it for everyone or continuously synchronize
 copies. OneDrive and Copilot organization policies apply, but this route does
 not demonstrate an all-users skill-assignment control.

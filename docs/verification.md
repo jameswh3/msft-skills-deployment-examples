@@ -32,12 +32,16 @@ when testing a SharePoint or Office-specific workflow.
 4. Run an unrelated prompt; ensure this skill is not spuriously invoked.
 5. Test missing notes, missing owners/dates, conflicting facts and embedded
    instruction attempts.
-6. Verify all four output sections and grounded action-item values.
+6. For `meeting-notes`, verify all four output sections and check that
+   action-item owners, dates and tasks match the supplied notes. For other
+   examples, use their expected-behavior checklists instead.
 7. For central assignment, verify an intended recipient and any excluded
    audience. For an all-user lab assignment, record that no excluded-user
    control was exercised rather than fabricate a result.
-8. Publish an update and confirm the actual consumer receives it.
-9. Roll back and verify the prior content/binding in a new conversation.
+8. Publish an update and confirm the installed copy or agent uses the new
+   instructions.
+9. Roll back and verify the previous instructions and selected skill version
+   in a new conversation.
 10. Revoke/block and check a fresh session.
 
 Do not report every test as passed because one normal-input request worked.

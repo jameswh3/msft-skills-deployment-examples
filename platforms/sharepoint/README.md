@@ -1,6 +1,6 @@
 # Copilot in SharePoint: site and personal skills
 
-These skills add reusable review instructions to **Copilot in SharePoint**,
+Skills add reusable task instructions to **Copilot in SharePoint**,
 the chat experience on a SharePoint site. They use the content permissions
 the user already has. The examples use fictional documents and request
 responses in chat so the source documents remain unchanged.
@@ -14,12 +14,14 @@ responses in chat so the source documents remain unchanged.
 These are not separately published SharePoint agents or Microsoft 365 plugin
 packages. They do not create an organization-wide skill assignment.
 
-| Example | Intended use | Ownership and scope |
-| --- | --- | --- |
-| [sharepoint-site-review](skills/sharepoint-site-review/SKILL.md) | A consistent team project-brief readiness checklist | Site-admin managed; available on the associated site |
-| [sharepoint-personal-brief](skills/sharepoint-personal-brief/SKILL.md) | An individual's preferred concise reading format | User-owned in OneDrive; usable by its owner across supported SharePoint sites |
+| Skill name (example) | Where the skill is used | What this example does | Where its instructions are stored |
+| --- | --- | --- | --- |
+| [sharepoint-site-review](skills/sharepoint-site-review/SKILL.md) (site skill) | Copilot chat on the associated SharePoint site, for users with the required site/content permissions | Check project briefs for a goal, owner, audience, date and success criteria; report missing or conflicting details | The site's Agent Assets library |
+| [sharepoint-personal-brief](skills/sharepoint-personal-brief/SKILL.md) (personal skill) | Copilot in SharePoint, for the individual user across supported sites they can access | Summarize selected documents as three takeaways, a facts table and questions about missing or conflicting details | The individual user's OneDrive |
 
-Personal portability does not grant access to other sites. Both kinds use
+These are example tasks, not limits on what site or personal skills can do.
+Being able to use a personal skill across sites does not grant access to
+those sites. Both kinds use
 only the capabilities and content permissions already available to the user.
 They cannot connect to external systems or execute custom code.
 
@@ -29,13 +31,14 @@ They cannot connect to external systems or execute custom code.
    chat pane. You do not need to be a site administrator to run an available
    skill.
 2. Enter `/skills`. **Site skills** are associated with the current site;
-   **Your skills** are your personal workflows.
+   **Your skills** are the reusable instructions saved for your own use.
 3. Select or name the intended skill and identify the document to review.
    For the sample, select the [project brief](../../samples/sharepoint/project-brief.md)
    and ask `Run sharepoint-site-review on the selected document`.
-4. Review the response and its skill-use indicator. A site review checks team
-   readiness standards; the personal example returns takeaways, a facts table
-   and open questions for your next reading.
+4. Review the response and its skill-use indicator. The site example reports
+   missing or conflicting project-brief requirements; the personal example
+   returns takeaways, a facts table and questions about missing or
+   conflicting information in the documents.
 
 The sample requests chat output to preserve its test document. That is a
 choice for the example, not a general restriction added to either skill.
@@ -66,8 +69,8 @@ can require Copilot Credits and explicit confirmation.
 5. Test it using the **Use an existing site or personal skill** steps above
    and the sample's [expected behavior](../../samples/sharepoint/expected-behavior.md).
 
-An alternative native authoring path is to ask Copilot to create a **site**
-skill using the reviewed workflow, review the draft, then confirm saving.
+Alternatively, ask Copilot in SharePoint to create a **site** skill using
+the reviewed instructions, review the draft, then confirm saving.
 Generated instructions need content review; do not assume they are
 byte-identical to this source. Download/inspect the saved skill if needed.
 
@@ -83,7 +86,8 @@ are not automatically kept synchronized.
 ## Personal skill deployment and management
 
 1. In Copilot in SharePoint ask it to create a **personal** skill named
-   `sharepoint-personal-brief` using the reviewed instructions above.
+   `sharepoint-personal-brief` using the reviewed
+   [skill instructions](skills/sharepoint-personal-brief/SKILL.md).
 2. Review the generated draft and explicitly save it as personal, not site.
    Use **Open skill location** on the saved card, or the source link on the
    **Used personal skill** indicator, to inspect its saved `SKILL.md` in
@@ -91,7 +95,7 @@ are not automatically kept synchronized.
 3. Use `/skills` to inspect **Your skills** separately from **Site skills**
    and Microsoft's built-in skills.
 4. On selected synthetic content, run:
-   `Run sharepoint-personal-brief on the selected document. Return a reading draft in chat only.`
+   `Run sharepoint-personal-brief on the selected document. Return takeaways, a facts table and open questions in chat only.`
 5. Verify the **Used personal skill** indicator and expected result.
    To check availability across sites, repeat on a second site you can access.
 
@@ -101,29 +105,29 @@ Agent Assets > Skills > sharepoint-personal-brief**. This was discovered and
 verified, not assumed as a universal system path. It is separate from the
 Excel/PowerPoint folders and Chat's SharePoint Embedded upload storage.
 
-Review the actual saved instructions: a generated definition may reformat or
-expand the supplied workflow. For an update, revise the owner-managed source
+Review the actual saved instructions: Copilot may reformat or add to the
+instructions you supplied. For an update, revise the saved skill
 through its supported creation/editing flow and test the saved result in a
 new chat. A chat draft without a saved skill is not an installation.
 
-Personal skills belong to the owner and are subject to the applicable
-OneDrive retention, sensitivity, auditing and lifecycle policies. A personal
+Personal skills belong to the individual user. Organization policies for
+OneDrive file retention, sensitive information and activity logging apply. A personal
 skill is not centrally assigned to all site users or all Microsoft 365 users.
 
 ## What site and organization administrators can manage
 
-- Site skills inherit the site's content governance. By default, site Edit
-  users can create and site View users can run; more restrictive library
-  permissions are possible but require a deliberate governance decision.
+- Site permissions control who can create and run site skills. By default,
+  users with Edit permission can create them and users with View permission
+  can run them. Administrators can set more restrictive library permissions.
 - There is no separate tenant-wide skill on/off control for this feature.
   Site AI settings and Restricted Content Discovery affect Copilot
   availability; do not use retired preview opt-in cmdlets.
 - Update/review a site skill through its details; test a fresh request after
   replacement or restoration. Copying to sites is distribution, not proof
   of continuous synchronization.
-- Site-skill disablement and personal skill lifecycle are not the same as
-  blocking a Microsoft 365 plugin. Verify actual host behavior before
-  claiming revocation or permissions enforcement.
+- Disabling a site skill does not manage personal skills or block a
+  Microsoft 365 plugin. Check the relevant product's controls and test
+  whether the intended user can still run the skill.
 
 ## Troubleshooting
 

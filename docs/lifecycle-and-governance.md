@@ -18,13 +18,15 @@ The deployment steps differ by product; use its [platform guide](../README.md#ap
 for the actual menus and commands. The common decisions are:
 
 1. Assign an owner and review the source instructions and fictional test input.
-2. Build the package required by that product and check the actual ZIP.
+2. If the product requires a package, build it and check the actual ZIP.
    Record its version and file hash (a fingerprint for identifying the bytes).
 3. Check permissions and confirm you are signed in to the intended organization
    and project, not production by mistake.
-4. Upload/register the package only after authorization.
-5. Assign a small test group and verify using a recipient's account, not only
-   the author's.
+4. Install or register the skill using the product's instructions, after
+   confirming you have permission to do so.
+5. If the product supports central assignment, start with a small test group
+   and verify using a recipient's account, not only the author's.
+   Personal skills require each user to complete their own setup instead.
 6. Confirm the installed skill was used and compare the result with the
    expected-behavior checklist, called the rubric.
 7. Expand access to the authorized audience.
@@ -65,8 +67,9 @@ status and limitations.
 - Declarative-agent skills: remove the skill from each consuming agent's
   registered skill set and republish the affected packages. Each bundled
   copy must be updated separately.
-- Studio: open the agent's **Share** panel to change who can use it. Other
-  authors may already have saved copies of a shared skill in published agents.
+- Studio: open **Build > Skills > select the skill > Share** to change which
+  authors can reuse it. This does not remove copies already saved in other
+  agents; remove the skill from affected agents and republish them as needed.
 - Foundry: update the version selected in each agent's definition; changing
   only the skill's default does not alter existing prompt-agent versions.
 - GitHub: enterprise block policy and repository file removal are separate.

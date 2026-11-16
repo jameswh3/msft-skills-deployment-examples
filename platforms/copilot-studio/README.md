@@ -18,7 +18,7 @@ who can use it; sharing the skill itself with other authors is separate.
 2. Give the task and input. For this example, ask it to use `meeting-notes`
    and supply the meeting notes.
 3. Review its summary, decisions, action items and open questions. If shown,
-   **Used skill: meeting-notes** identifies the workflow it used.
+   **Used skill: meeting-notes** identifies which skill supplied instructions.
 
 Ask the agent owner for access if it is missing. Access to the published
 agent is separate from permission to edit it or reuse its skill as an author.
@@ -62,9 +62,9 @@ automatic live synchronization.
   verified this workflow with revision 0.1.1.
 - Keep the previous source/package for rollback; replace with that reviewed
   content, republish, and test.
-- Revoke sharing and remove the skill from consumers as appropriate; verify
-  actual published agents. Removing a registry listing is not proof that
-  every embedded snapshot disappeared.
+- Stop sharing the skill with other authors when appropriate. Remove it
+  from each agent that should no longer use it, republish those agents and
+  test them. Removing the shared listing does not remove their saved copies.
 - Delete a skill only after saving a recoverable copy.
 
 ## Manage access as an owner or administrator
@@ -81,9 +81,9 @@ automatic live synchronization.
 
 | Problem | What to check |
 | --- | --- |
-| Works in Preview, not for users | Publish the current agent, check its channel and use-sharing audience, and test with a recipient account. |
+| Works in Preview, not for users | Publish the current agent, check the channel where users open it and who has permission to use it, and test with a recipient account. |
 | A shared skill changed but the agent did not | Accept the skill update in the consuming agent and republish it. Each agent has its own saved copy. |
-| A user cannot edit the skill | Use access is not author access; ask the owner to review the intended role. |
+| A user cannot edit the skill | Permission to use the published agent does not grant permission to edit its skills; ask the owner to review the user's authoring permissions. |
 | Markdown skill upload is unavailable | Check that the agent uses the Microsoft Copilot harness; other agent types have different skill features. |
 
 **Automation boundary:** general plugin support in Copilot Studio is not yet

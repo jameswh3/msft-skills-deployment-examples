@@ -17,7 +17,8 @@ agent. For a selected passage, the user selects text and chooses **Add
 selection** in the Copilot pane. See [document
 interaction](https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-document-interaction).
 
-**This is agent-packaged consumption, not a documented Word watch-folder.**
+**Word uses the skill through the agent, not through a documented folder
+that Word monitors for skill files.**
 The reviewed Microsoft documentation does not establish a Word-specific
 OneDrive directory where dropping `SKILL.md` installs a skill. Excel and
 PowerPoint folder instructions do not establish that behavior for Word.
@@ -29,7 +30,7 @@ PowerPoint folder instructions do not establish that behavior for Word.
    bundled inside that agent; selecting an unrelated plugin does not add it.
 3. Refer to the open document in your request. For selected text, highlight
    the passage and choose **Add selection**.
-4. Ask for the intended workflow, then review the response and any file
+4. Ask for the task described by the skill, then review the response and any file
    changes independently. Access to document text does not by itself prove
    that a skill can replace text or apply heading styles in the saved file.
 
@@ -137,7 +138,7 @@ Word web in the lab displayed existing shared/managed packages under
 are separate from the documented agent route above. The generic
 [Chat plugin guide](../microsoft-365/plugin/README.md) documents packaging and
 central assignment, but does not independently establish a Word-specific
-standalone skill deployment contract.
+method for installing a standalone skill in Word.
 
 Creating a skill by asking Word itself was not successful: the request
 returned an unsaved chat draft. That result does not rule out externally

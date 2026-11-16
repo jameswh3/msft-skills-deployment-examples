@@ -1,12 +1,14 @@
 # Central skill management: Foundry + Azure API Center
 
 **Centrally manage skill versions in Foundry and catalog them in API Center.
-Foundry Copilot-harness prompt agents consume versioned skill references;
-Microsoft Agent Framework agents and compatible remote-skill clients consume
-skills through a Foundry toolbox's MCP endpoint (preview).**
+Foundry prompt agents using the Microsoft Copilot engine load selected skill
+versions directly. Microsoft Agent Framework agents and other clients
+supporting MCP Resources and skills discovery retrieve skills through a
+Foundry toolbox's MCP endpoint (preview).**
 
-API Center supports registering **Skill** assets, source links, lifecycle and
-compatibility metadata, optional assessments, and Git synchronization.
+API Center lists **Skill** entries with source links, release stages such as
+Testing, and information about supported products and clients. It also
+supports optional assessments and synchronization with a Git repository.
 Foundry supports immutable skill versions, content export, and preview
 toolbox-based remote skill discovery for compatible clients.
 The **Microsoft Copilot harness** is the agent engine selected in Foundry;
@@ -51,7 +53,7 @@ they are distinct from tools that execute actions.
 
 | Consumer | Connection to the centrally managed skill |
 | --- | --- |
-| Foundry prompt agents using the Microsoft Copilot harness | A native skill reference in the agent definition, configured through the Foundry Agent Service API/SDK or supported tooling. The reference resolves to an immutable skill version in the same project. |
+| Foundry prompt agents using the Microsoft Copilot harness | The agent's saved configuration selects a skill version from the same Foundry project. Configure it through the Foundry Agent Service API/SDK or supported tooling; the selected version's content cannot be edited after creation. |
 | Microsoft Agent Framework agents, including hosted agents | An authenticated connection to the Foundry toolbox's **MCP endpoint over HTTPS**. Python's `FoundryToolbox.as_skills_provider()` and .NET's `UseMcpSkills` load skill content through MCP Resources. |
 | Other MCP clients implementing remote skill discovery | The same Foundry toolbox MCP endpoint, with **MCP Resources and the skills discovery extension**: `resources/list` discovers skills and `resources/read` retrieves their content. Generic MCP tool support alone is insufficient. |
 
@@ -65,8 +67,9 @@ The lab verified Foundry native agent consumption and API Center catalog/Git
 synchronization. Toolbox-based remote skill consumption is documented but
 has not been deployed or runtime-tested in this lab.
 
-API Center is a design-time inventory, not an execution gateway. Registering
-a skill does not install it in Copilot or give recipients Foundry access.
+API Center is a searchable catalog; it does not run skills or serve their
+instructions to an agent at runtime. Registering a skill does not install it
+in Copilot or give recipients Foundry access.
 
 ```mermaid
 flowchart LR
@@ -92,13 +95,14 @@ flowchart LR
    Record the version and archive hash. Review the content; do not overwrite
    the canonical source automatically.
 4. API Center > Inventory > Assets > Register an asset > **Skill**.
-5. Use title Meeting Notes, identifier meeting-notes, the appropriate lifecycle,
+5. Use title Meeting Notes, identifier meeting-notes, a release stage such as Testing,
    and this source:
    `https://github.com/jameswh3/msft-skills-deployment-examples/tree/main/skills/meeting-notes`.
    For an approved release, use a commit-specific source URL.
-6. Describe compatibility as instruction-only Agent Skills; no allowed external
-   tools are required. Link the approved release/provenance through supported
-   documentation/metadata fields. Do not put credentials in the catalog.
+6. Describe the skill as instructions only, with no external tools required.
+   Use the catalog's documentation/metadata fields to link the approved
+   release and record its source commit and exported archive hash.
+   Do not put credentials in the catalog.
 7. Optionally configure Platforms > Integrations > From Git repository for
    this repository's `skills` folder. Verify the pattern matches uppercase
    **SKILL.md**: the documented default displays `**/skill.md`, so do not
@@ -110,8 +114,9 @@ The documented Git integration is not a direct automatic Foundry-to-API-Center
 skill synchronization connector. In a Foundry-first workflow, export and review
 the approved content into Git before synchronizing the catalog.
 
-For this public sample, Git synchronization does not require a repository PAT.
-For private repositories, the documented integration uses a PAT in Key Vault
+For this public sample, Git synchronization does not require a repository
+personal access token (PAT).
+For private repositories, the documented integration uses a PAT stored in Azure Key Vault
 and API Center managed-identity access to that secret. Never put the PAT into
 source or an example JSON file.
 
@@ -149,11 +154,14 @@ cataloging alone supplies none of those runtime capabilities.
 
 ## Update, rollback and revoke
 
-Promote a reviewed Foundry version; update the catalog's approved reference;
-rebuild/assign consumer packages or change pinned remote bindings; verify.
-Rollback must also restore the versions selected by each agent/application.
-Catalog unpublication does
-not revoke embedded skill copies; use each host's block/uninstall controls.
+Choose the reviewed Foundry version and update the catalog to identify it.
+For installed copies, rebuild and distribute each product's package. For
+remote connections, update the skill/toolbox versions selected by each
+application, then test that it loads the intended content.
+To roll back, restore the previous versions in each affected agent or
+application as well as in the catalog. Removing the catalog entry does not
+remove installed copies or stop applications from using them; use the
+relevant product's removal or access controls.
 
 To update catalog information, open **Azure portal > API Centers > select the
 resource > Inventory > Assets > select the skill > Edit**, change the reviewed
