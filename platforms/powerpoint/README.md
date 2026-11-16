@@ -1,7 +1,7 @@
 # Copilot in PowerPoint: executive story
 
 Skills provide reusable instructions for presentation tasks. This repository's
-[powerpoint-executive-story example](skills/powerpoint-executive-story/SKILL.md)
+[powerpoint-executive-story example](../../samples/powerpoint/skills/powerpoint-executive-story/SKILL.md)
 adds an executive-summary slide at the beginning and keeps the existing slides.
 It uses the presentation access already available to Copilot; it grants no
 additional permissions.

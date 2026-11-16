@@ -16,8 +16,8 @@ packages. They do not create an organization-wide skill assignment.
 
 | Skill name (example) | Where the skill is used | What this example does | Where its instructions are stored |
 | --- | --- | --- | --- |
-| [sharepoint-site-review](skills/sharepoint-site-review/SKILL.md) (site skill) | Copilot chat on the associated SharePoint site, for users with the required site/content permissions | Check project briefs for a goal, owner, audience, date and success criteria; report missing or conflicting details | The site's Agent Assets library |
-| [sharepoint-personal-brief](skills/sharepoint-personal-brief/SKILL.md) (personal skill) | Copilot in SharePoint, for the individual user across supported sites they can access | Summarize selected documents as three takeaways, a facts table and questions about missing or conflicting details | The individual user's OneDrive |
+| [sharepoint-site-review](../../samples/sharepoint/skills/sharepoint-site-review/SKILL.md) (site skill) | Copilot chat on the associated SharePoint site, for users with the required site/content permissions | Check project briefs for a goal, owner, audience, date and success criteria; report missing or conflicting details | The site's Agent Assets library |
+| [sharepoint-personal-brief](../../samples/sharepoint/skills/sharepoint-personal-brief/SKILL.md) (personal skill) | Copilot in SharePoint, for the individual user across supported sites they can access | Summarize selected documents as three takeaways, a facts table and questions about missing or conflicting details | The individual user's OneDrive |
 
 These are example tasks, not limits on what site or personal skills can do.
 Being able to use a personal skill across sites does not grant access to
@@ -88,7 +88,7 @@ are not automatically kept synchronized.
 
 1. In Copilot in SharePoint ask it to create a **personal** skill named
    `sharepoint-personal-brief` using the reviewed
-   [skill instructions](skills/sharepoint-personal-brief/SKILL.md).
+   [skill instructions](../../samples/sharepoint/skills/sharepoint-personal-brief/SKILL.md).
 2. Review the generated draft and explicitly save it as personal, not site.
    Use **Open skill location** on the saved card, or the source link on the
    **Used personal skill** indicator, to inspect its saved `SKILL.md` in
@@ -150,10 +150,10 @@ the repository root in PowerShell 7:
 
 ```powershell
 .\scripts\Build-Packages.ps1 `
-    -SkillPath .\platforms\sharepoint\skills\sharepoint-site-review `
+    -SkillPath .\samples\sharepoint\skills\sharepoint-site-review `
     -Kinds skill,onedrive-skill -OutputPath .\out\sharepoint\site
 .\scripts\Build-Packages.ps1 `
-    -SkillPath .\platforms\sharepoint\skills\sharepoint-personal-brief `
+    -SkillPath .\samples\sharepoint\skills\sharepoint-personal-brief `
     -Kinds skill,onedrive-skill -OutputPath .\out\sharepoint\personal
 ```
 

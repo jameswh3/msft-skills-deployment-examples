@@ -19,7 +19,7 @@ $method = 'GET'
 $body = $null
 switch ($Operation) {
     'CreateVersion' {
-        $skill = (& (Get-WorkspaceNode) (Join-Path $PSScriptRoot 'validate-skill.mjs') (Join-Path $PSScriptRoot "..\skills\$SkillName")) | ConvertFrom-Json
+        $skill = (& (Get-WorkspaceNode) (Join-Path $PSScriptRoot 'validate-skill.mjs') (Join-Path $PSScriptRoot "..\samples\$SkillName\skills\$SkillName")) | ConvertFrom-Json
         if ($LASTEXITCODE -ne 0 -or -not $skill.instructions) { throw 'Canonical skill validation failed.' }
         $url = "$endpoint/skills/$SkillName/versions?api-version=v1"
         $method = 'POST'

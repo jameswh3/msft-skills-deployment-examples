@@ -78,7 +78,7 @@ export function readSkill(directory) {
 }
 
 if (process.argv[1] && realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url))) {
-  const directory = process.argv[2] ?? resolve(dirname(fileURLToPath(import.meta.url)), '..', 'skills', 'meeting-notes');
+  const directory = process.argv[2] ?? resolve(dirname(fileURLToPath(import.meta.url)), '..', 'samples', 'meeting-notes', 'skills', 'meeting-notes');
   try {
     console.log(JSON.stringify(readSkill(directory)));
   } catch (error) {

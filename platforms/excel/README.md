@@ -1,7 +1,7 @@
 # Copilot in Excel: pipeline review
 
 Skills provide reusable instructions for workbook tasks. This repository's
-[excel-pipeline-review example](skills/excel-pipeline-review/SKILL.md)
+[excel-pipeline-review example](../../samples/excel/skills/excel-pipeline-review/SKILL.md)
 checks workbook data, lists findings with the affected source rows in a
 review worksheet, and calculates totals you can check against the original data.
 It uses the workbook access already available to Copilot; it grants no
@@ -32,7 +32,7 @@ repository's build commands after the skill is installed.
 
 Use a licensed account with Copilot in Excel available in the browser.
 Have a folder named `excel-pipeline-review` containing the reviewed
-[SKILL.md](skills/excel-pipeline-review/SKILL.md). You can create that folder
+[SKILL.md](../../samples/excel/skills/excel-pipeline-review/SKILL.md). You can create that folder
 and copy the file yourself. To generate the package and optional sample
 workbook from this repository instead, run:
 

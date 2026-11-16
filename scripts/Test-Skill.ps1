@@ -1,6 +1,6 @@
 #requires -Version 7.0
 [CmdletBinding()]
-param([string]$SkillPath = (Join-Path $PSScriptRoot '..\skills\meeting-notes'))
+param([string]$SkillPath = (Join-Path $PSScriptRoot '..\samples\meeting-notes\skills\meeting-notes'))
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'Tooling.ps1')
 & (Get-WorkspaceNode) (Join-Path $PSScriptRoot 'validate-skill.mjs') $SkillPath

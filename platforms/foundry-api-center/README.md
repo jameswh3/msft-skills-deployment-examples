@@ -93,14 +93,14 @@ flowchart LR
 4. API Center > Inventory > Assets > Register an asset > **Skill**.
 5. Use title Meeting Notes, identifier meeting-notes, a release stage such as Testing,
    and this source:
-   `https://github.com/jameswh3/msft-skills-deployment-examples/tree/main/skills/meeting-notes`.
+   `https://github.com/jameswh3/msft-skills-deployment-examples/tree/main/samples/meeting-notes/skills/meeting-notes`.
    For an approved release, use a commit-specific source URL.
 6. Describe the skill as instructions only, with no external tools required.
    Use the catalog's documentation/metadata fields to link the approved
    release and record its source commit and exported archive hash.
    Do not put credentials in the catalog.
 7. Optionally configure Platforms > Integrations > From Git repository for
-   this repository's `skills` folder. Verify the pattern matches uppercase
+   the `samples/meeting-notes/skills` folder. Verify the pattern matches uppercase
    **SKILL.md**: the documented default displays `**/skill.md`, so do not
    assume case-insensitive matching.
 8. Use the API Center portal to discover the skill, inspect the source and

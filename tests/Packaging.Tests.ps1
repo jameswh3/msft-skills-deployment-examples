@@ -27,6 +27,9 @@ try {
         try {
             $entry = $archive.GetEntry($expected[$kind])
             if (-not $entry -or $entry.Length -eq 0) { throw "Incorrect archive root for $kind." }
+            if (@($archive.Entries | Where-Object { $_.FullName -match '(^|/)(input|expected-behavior|edge-cases)\.md$' }).Count) {
+                throw "Test fixtures were included in the $kind skill package."
+            }
             if ($kind -eq 'github-marketplace') {
                 foreach ($path in @('.claude-plugin/marketplace.json', 'plugin.json')) {
                     if (-not $archive.GetEntry($path)) { throw "Missing $path" }
@@ -34,17 +37,44 @@ try {
             }
         } finally { $archive.Dispose() }
     }
+    $extracted = Join-Path $temporary 'marketplace'
+    [IO.Compression.ZipFile]::ExtractToDirectory((Join-Path $temporary "packages\github-marketplace-$($metadata.version).zip"), $extracted)
+    $bundledMarketplace = Get-Content (Join-Path $extracted '.claude-plugin\marketplace.json') -Raw | ConvertFrom-Json
+    $bundledPluginPath = Join-Path $extracted $bundledMarketplace.plugins[0].source
+    if (-not (Test-Path (Join-Path $bundledPluginPath 'plugin.json')) -or
+        -not (Test-Path (Join-Path $bundledPluginPath 'skills\meeting-notes\SKILL.md'))) {
+        throw 'Packaged marketplace source does not resolve to its plugin and skill.'
+    }
     $mutated = Join-Path $temporary 'changed\meeting-notes'
     New-Item $mutated -ItemType Directory -Force | Out-Null
-    $canonical = Join-Path $root 'skills\meeting-notes\SKILL.md'
+    $canonical = Join-Path $root 'samples\meeting-notes\skills\meeting-notes\SKILL.md'
     Copy-Item $canonical (Join-Path $mutated 'SKILL.md')
     Add-Content (Join-Path $mutated 'SKILL.md') "`nA changed instruction."
     & (Join-Path $root 'scripts\Build-Packages.ps1') -SkillPath $mutated -OutputPath (Join-Path $temporary 'changed-output') | Out-Null
     $changed = Get-Content (Join-Path $temporary 'changed-output\artifacts.json') -Raw | ConvertFrom-Json
     if ($changed.canonicalSha256 -eq $metadata.canonicalSha256) { throw 'Content drift was not reflected in provenance.' }
-    $siteSkill = Join-Path $root 'platforms\sharepoint\skills\sharepoint-site-review'
-    $hostOutput = Join-Path $temporary 'host-packages'
-    & (Join-Path $root 'scripts\Build-Packages.ps1') -SkillPath $siteSkill -Kinds skill, onedrive-skill -OutputPath $hostOutput | Out-Null
+    $siteSkill = Join-Path $root 'samples\sharepoint\skills\sharepoint-site-review'
+    $hostRoot = Join-Path $temporary 'host-packages'
+    & (Join-Path $root 'scripts\Build-HostExamples.ps1') -OutputPath $hostRoot | Out-Null
+    $hostSamples = @(
+        @('excel', 'excel-pipeline-review'),
+        @('powerpoint', 'powerpoint-executive-story'),
+        @('sharepoint', 'sharepoint-site-review'),
+        @('sharepoint', 'sharepoint-personal-brief'),
+        @('word', 'word-project-brief')
+    )
+    foreach ($sample in $hostSamples) {
+        $record = Get-Content (Join-Path $hostRoot "$($sample[0])\$($sample[1])\artifacts.json") -Raw | ConvertFrom-Json
+        $source = Join-Path $root "samples\$($sample[0])\skills\$($sample[1])\SKILL.md"
+        if ($record.skill -ne $sample[1] -or $record.artifacts.Count -ne 2 -or
+            $record.canonicalSha256 -ne (Get-FileHash $source).Hash.ToLowerInvariant()) {
+            throw "Host sample was not packaged from its canonical source: $($sample[1])"
+        }
+    }
+    if (@(Get-ChildItem $hostRoot -Filter artifacts.json -Recurse).Count -ne $hostSamples.Count) {
+        throw 'Host build produced an unexpected set of sample packages.'
+    }
+    $hostOutput = Join-Path $hostRoot 'sharepoint\sharepoint-site-review'
     $hostMetadata = Get-Content (Join-Path $hostOutput 'artifacts.json') -Raw | ConvertFrom-Json
     if ($hostMetadata.skill -ne 'sharepoint-site-review' -or $hostMetadata.artifacts.Count -ne 2) {
         throw 'Selected host packages have incorrect provenance or count.'
@@ -100,11 +130,11 @@ try {
         }
     } finally { $archive.Dispose() }
     $marketplace = Get-Content (Join-Path $root '.claude-plugin\marketplace.json') -Raw | ConvertFrom-Json
-    $plugin = Get-Content (Join-Path $root 'plugin.json') -Raw | ConvertFrom-Json
+    $pluginPath = Join-Path $root $marketplace.plugins[0].source
+    $plugin = Get-Content (Join-Path $pluginPath 'plugin.json') -Raw | ConvertFrom-Json
     $package = Get-Content (Join-Path $root 'package.json') -Raw | ConvertFrom-Json
     if ($plugin.version -ne $package.version) { throw 'Plugin and package release versions disagree.' }
     $policy = Get-Content (Join-Path $root 'platforms\github-copilot\enterprise-policy\managed-settings.json') -Raw | ConvertFrom-Json
-    $pluginPath = Join-Path $root $marketplace.plugins[0].source
     if (-not (Test-Path (Join-Path $pluginPath 'skills\meeting-notes\SKILL.md'))) { throw 'Marketplace source has no canonical skill.' }
     if ($marketplace.plugins[0].name -ne $plugin.name -or
         $policy.enabledPlugins."$($plugin.name)@$($marketplace.name)" -ne $true) {

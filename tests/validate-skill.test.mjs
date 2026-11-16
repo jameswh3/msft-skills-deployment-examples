@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { readSkill } from '../scripts/validate-skill.mjs';
 
-const source = readFileSync(new URL('../skills/meeting-notes/SKILL.md', import.meta.url), 'utf8');
+const source = readFileSync(new URL('../samples/meeting-notes/skills/meeting-notes/SKILL.md', import.meta.url), 'utf8');
 
 function fixture(content, callback) {
   const temporary = mkdtempSync(join(tmpdir(), 'meeting-skill-test-'));

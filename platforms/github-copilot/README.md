@@ -48,10 +48,11 @@ Do not install into personal skill locations as a side effect of building.
 
 ## Plugin marketplace
 
-The root [plugin manifest](../../plugin.json) points to the shared `skills`
-directory. The [marketplace listing](../../.claude-plugin/marketplace.json)
-tells clients where to find that plugin; it does not contain a second
-authored copy of the skill.
+The [marketplace listing](../../.claude-plugin/marketplace.json) points to
+the [meeting-notes plugin manifest](../../samples/meeting-notes/plugin.json).
+Within that sample, `skills/meeting-notes/` holds the deployable instructions;
+test inputs and expected results are adjacent files. Generated marketplace ZIPs
+place the plugin and its `skills` directory at the archive root.
 
 For an authorized user's Copilot CLI:
 

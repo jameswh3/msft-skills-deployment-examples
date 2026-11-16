@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [string]$OutputPath = (Join-Path $PSScriptRoot '..\out'),
-    [string]$SkillPath = (Join-Path $PSScriptRoot '..\skills\meeting-notes'),
+    [string]$SkillPath = (Join-Path $PSScriptRoot '..\samples\meeting-notes\skills\meeting-notes'),
     [ValidateSet('skill', 'onedrive-skill', 'github-repository', 'github-marketplace')]
     [string[]]$Kinds = @('skill', 'github-repository', 'github-marketplace')
 )
@@ -38,9 +38,11 @@ try {
             if ((Get-FileHash $file).Hash -ne (Get-FileHash $target).Hash) { throw "Copy drift: $relative" }
         }
         if ($kind -eq 'github-marketplace') {
-            Copy-Item (Join-Path $root 'plugin.json') (Join-Path $tree 'plugin.json')
+            Copy-Item (Join-Path $root 'samples\meeting-notes\plugin.json') (Join-Path $tree 'plugin.json')
             New-Item (Join-Path $tree '.claude-plugin') -ItemType Directory | Out-Null
-            Copy-Item (Join-Path $root '.claude-plugin\marketplace.json') (Join-Path $tree '.claude-plugin\marketplace.json')
+            $marketplace = Get-Content (Join-Path $root '.claude-plugin\marketplace.json') -Raw | ConvertFrom-Json
+            $marketplace.plugins[0].source = './'
+            $marketplace | ConvertTo-Json -Depth 20 | Set-Content (Join-Path $tree '.claude-plugin\marketplace.json') -Encoding utf8NoBOM
         }
         $zip = Join-Path $output "$kind-$version.zip"
         $temporaryZip = Join-Path $staging "$kind.zip"

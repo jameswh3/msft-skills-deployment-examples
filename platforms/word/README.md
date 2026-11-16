@@ -38,7 +38,7 @@ plugin and its deployment records. Seeing an entry in the picker confirms
 availability, not that every capability works or that a request actually invoked it.
 
 The `meeting-notes` skill returns a draft in chat; it does not edit the Word
-document. The separate [word-project-brief skill](skills/word-project-brief/SKILL.md)
+document. The separate [word-project-brief skill](../../samples/word/skills/word-project-brief/SKILL.md)
 requests document edits and heading styles. Installing `meeting-notes` does
 not install that other skill.
 

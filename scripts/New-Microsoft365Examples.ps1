@@ -7,6 +7,7 @@ param(
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'Tooling.ps1')
 $root = Split-Path $PSScriptRoot -Parent
+$canonical = Join-Path $root 'samples\meeting-notes\skills\meeting-notes\SKILL.md'
 & (Join-Path $PSScriptRoot 'Test-Skill.ps1') | Out-Null
 $node = Get-WorkspaceNode
 $name = if ($Kind -eq 'Plugin') { 'meeting-notes-plugin' } else { 'meeting-notes-agent' }
@@ -30,7 +31,7 @@ if ($Kind -eq 'Plugin') {
         if ($LASTEXITCODE -ne 0) { throw 'Agents Toolkit scaffold failed.' }
         $destination = Join-Path $project 'appPackage\skills\meeting-notes'
         New-Item $destination -ItemType Directory -Force | Out-Null
-        Copy-Item (Join-Path $root 'skills\meeting-notes\SKILL.md') (Join-Path $destination 'SKILL.md')
+        Copy-Item $canonical (Join-Path $destination 'SKILL.md')
         & $atk.Source add skill --from $destination --folder $project --interactive false --telemetry false
         if ($LASTEXITCODE -ne 0) { throw 'Agents Toolkit skill import failed.' }
         $agentPath = Join-Path $project 'appPackage\declarativeAgent.json'
@@ -43,8 +44,8 @@ if ($Kind -eq 'Plugin') {
     } finally { $env:TEAMSFX_AGENT_SKILLS = $previousFlag }
 }
 $target = Join-Path $project 'appPackage\skills\meeting-notes\SKILL.md'
-Copy-Item (Join-Path $root 'skills\meeting-notes\SKILL.md') $target -Force
-if ((Get-FileHash $target).Hash -ne (Get-FileHash (Join-Path $root 'skills\meeting-notes\SKILL.md')).Hash) {
+Copy-Item $canonical $target -Force
+if ((Get-FileHash $target).Hash -ne (Get-FileHash $canonical).Hash) {
     throw 'Scaffold skill content differs from the canonical source.'
 }
 Write-Host "Local scaffold ready: $project"

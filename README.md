@@ -41,9 +41,17 @@ who can manage them, and how updates work in each product.
   use to discover and retrieve capabilities from a server. Skill retrieval
   requires the specific support described in the central management guide.
 
-The [meeting-notes skill](skills/meeting-notes/SKILL.md) turns supplied synthetic
+The [meeting-notes skill](samples/meeting-notes/skills/meeting-notes/SKILL.md) turns supplied synthetic
 notes into a summary, decisions, action items, and unresolved questions. It has
 no scripts, credentials, connectors, network calls, or external actions.
+
+## Repository layout
+
+- [samples/](samples/): examples grouped by task or product. Each group contains
+  its deployable instructions under `skills/<skill-name>/`, test inputs and
+  expected results. The meeting-notes group also contains its GitHub plugin manifest.
+- [platforms/](platforms/): product-specific installation and management guides.
+- [scripts/](scripts/): validation, packaging and deployment helpers.
 
 ## Approaches
 
@@ -153,8 +161,7 @@ Build output in `out`:
   table built from the checked-in CSV, preserving its deliberate data issues.
 
 The default build packages the meeting-notes skill.
-Host-specific examples are separate from the root GitHub plugin's skill
-directory; adding one does not silently update previously deployed plugins.
+Host-specific examples are packaged separately with `npm run build:hosts`.
 
 These build outputs provide reusable skill archives, GitHub deployment
 bundles, synthetic test fixtures and package hashes. To create Microsoft 365

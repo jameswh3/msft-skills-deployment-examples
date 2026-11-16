@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "meeting-notes",
-      "source": "./",
+      "source": "./samples/meeting-notes",
       "description": "Summarize supplied meeting notes without external actions."
     }
   ]
