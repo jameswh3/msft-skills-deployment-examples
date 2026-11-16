@@ -3,11 +3,10 @@
 Here, the skill is bundled inside a dedicated Copilot assistant. The user
 opens that assistant; they do not install the skill separately.
 
-The author edits the skill in the agent project and republishes the agent
-when it changes. An administrator manages the published assistant under
-**Microsoft 365 admin center > Agents > All agents > select the agent**.
-This differs from a standalone Chat/Cowork plugin, which is listed under
-**Agents > Tools > Registry**.
+The author maintains the skill through **Agent Builder > Configure > Skills**
+or the registered skill directory in an Agents Toolkit project, and republishes
+the containing agent when it changes. These are skill authoring locations;
+agent administration is not a skill-management interface.
 
 ## Use the agent
 
@@ -45,7 +44,7 @@ The generated agent references `skills/meeting-notes` using `agent_skills`;
 the canonical skill is copied byte-for-byte. Inspect the generated publisher,
 URLs, app identity, icons, and environment before provisioning.
 
-## Deploy and manage as an administrator or owner
+## Deploy and update the bundled skill
 
 1. Confirm `atk account list` identifies the intended Microsoft 365 tenant.
 2. From the generated project, provision with `atk provision --env dev`.
@@ -57,11 +56,6 @@ URLs, app identity, icons, and environment before provisioning.
 6. To update, refresh the bundled canonical skill, package/publish the agent
    again, and verify a new conversation.
 7. Roll back with a reviewed previous-content package and verify its version.
-   Block/uninstall the agent package to revoke distribution.
-
-Use **Microsoft 365 admin center > Agents > All agents > select the agent**
-to review its status and assigned audience. Verify access as an intended
-recipient rather than only as the author.
 
 ## Troubleshooting
 

@@ -62,8 +62,9 @@ status and limitations.
   Registry > select the plugin**, then use its block/uninstall controls and
   review **Users**. Test a fresh conversation; in-progress sessions can
   have different behavior.
-- Declarative agents: open **Microsoft 365 admin center > Agents > All
-  agents > select the agent**; manage its access as well as separate skill copies.
+- Declarative-agent skills: remove the skill from each consuming agent's
+  registered skill set and republish the affected packages. Each bundled
+  copy must be updated separately.
 - Studio: open the agent's **Share** panel to change who can use it. Other
   authors may already have saved copies of a shared skill in published agents.
 - Foundry: update the version selected in each agent's definition; changing

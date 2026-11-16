@@ -30,7 +30,7 @@ model usage or Copilot Credits.
 | Stop | User or consumer view | Where to go to manage it |
 | --- | --- | --- |
 | [Copilot Chat](#1-microsoft-365-copilot-chat) | Select the existing standalone skill plugin and summarize notes | Microsoft 365 admin center: Agents > Tools > Registry |
-| [Declarative agent](#2-microsoft-365-declarative-agent) | Open the dedicated agent and summarize notes | Microsoft 365 admin center: Agents > All agents |
+| [Declarative agent](#2-microsoft-365-declarative-agent) | Open the dedicated agent and summarize notes | Agent Builder > Configure > Skills, or the registered skill directory in an Agents Toolkit project |
 | [Cowork](#3-copilot-cowork) | Show the managed plugin, run a task, inspect activity | Microsoft 365 admin center > Agents > Tools > Registry > OGE Meeting Notes Managed > Users |
 | [Copilot Studio](#4-copilot-studio) | Use the published agent, not just maker Preview | Copilot Studio > select the demo environment > Agents > OGE Meeting Notes > Build > Skills > meeting-notes |
 | [Foundry](#5-microsoft-foundry-preview) | Use the existing agent playground or a recorded REST run | VS Code > Microsoft Foundry Toolkit (configured for the demo project) > Tools > Skills > meeting-notes. Documented UI; this lab managed it through REST instead (see stop 5) |
@@ -38,7 +38,7 @@ model usage or Copilot Credits.
 | [API Center](#7-additional-approach-foundry--azure-api-center) | Discover the skill and follow its source | Azure portal > API Centers > open the demo resource > Inventory > Assets > select the meeting-notes Skill entry. For Git sync: same resource > Platforms > Integrations > open the Git integration |
 | [SharePoint site skills](#8-sharepoint-site-skills) | Review a selected project brief against team standards | Open the OGE Skills Lab SharePoint site > Settings > Site skills > sharepoint-site-review > Overview or Versions (documented management page; not exercised in this lab) |
 | [SharePoint personal skills](#9-sharepoint-personal-skills) | Use the owner's preferred reading brief | OneDrive > My files > Documents > Copilot > Agent Assets > Skills > sharepoint-personal-brief > SKILL.md (observed lab path; also linked from the personal skill's chat indicator) |
-| [Word](#10-word-project-brief-skill) | Explain the documented agent-packaging route; this Word example is not yet deployed | Author: Agent Builder > Configure > Skills, or VS Code > Microsoft 365 Agents Toolkit > Add Skill. After deployment: Microsoft 365 admin center > Agents > All agents > select the containing agent |
+| [Word](#10-word-project-brief-skill) | Explain the documented agent-packaging route; this Word example is not yet deployed | Agent Builder > Configure > Skills, or VS Code > Microsoft 365 Agents Toolkit > Add Skill |
 | [Excel](#11-excel-pipeline-review-skill) | Show verified saved worksheet findings and totals | Excel > Copilot pane > Settings and more > Manage plugins > Custom skills > excel-pipeline-review. Open Skills OneDrive folder there to see its source |
 | [PowerPoint](#12-powerpoint-executive-story-skill) | Show verified four-slide deck and concise summary | PowerPoint > Copilot pane > Settings and more > Manage plugins > Custom skills > powerpoint-executive-story |
 
@@ -189,19 +189,13 @@ for that shared copy. See the [plugin guide](../platforms/microsoft-365/plugin/R
 **Say:** "This time the skill is bundled with a dedicated agent. The user
 chooses the agent rather than attaching a standalone plugin to general Chat."
 
-### Show the admin experience
+### Show skill maintenance
 
-1. Open **Agents > All agents** in Microsoft 365 admin center.
-2. Search for the declarative-agent entry and open the tenant-published
-   managed copy, not merely the original shared pilot.
-3. Show its Available status and audience/preinstallation details. The lab
-   published and preinstalled this entry for All users.
-4. Point out the agent-level access and lifecycle controls without changing
-   them. Explain that the packaged skill is managed through its agent.
-
-**Say:** "Central administration governs the agent package. Changing a
-canonical file in Git does not immediately replace the skill inside an
-already-published agent."
+1. Show **Agent Builder > Configure > Skills**, or the registered
+   `skills/meeting-notes` directory in the Agents Toolkit project.
+2. Explain that changes to this skill require republishing the containing
+   agent. Changing the canonical file in Git does not immediately replace
+   the bundled copy.
 
 The pilot runtime and tenant publication are separate evidence points;
 do not describe them as an independent all-users runtime test.
@@ -272,8 +266,6 @@ They do not need to upload a Markdown file or visit the maker portal."
    is **Only you**; it is not an organization-wide skill-library rollout.
 4. Separately show the agent's **Share** panel and organization-wide **use**
    access, then its published **Teams + Microsoft 365** channel.
-5. If useful, switch to Microsoft 365 admin center > **Agents > All agents**
-   and show the published Studio agent's Available / All users entry.
 
 **Say:** "There are three different decisions: publishing the agent,
 granting users access to that agent, and sharing the reusable skill with
@@ -556,8 +548,6 @@ deployment steps. This stop explains those steps, not a completed deployment.
 For authoring, show the documented path **Agent Builder > Configure > Skills >
 Add**, which accepts a skill ZIP, or **VS Code > Microsoft 365 Agents Toolkit >
 Add Skill**, which creates/registers a skill directory in an agent project.
-For organization assignment after deployment, the location is **Microsoft 365
-admin center > Agents > All agents > select the containing agent**.
 
 There is no deployed Word-specific agent to select in this lab yet. Existing
 packages under Word's **Settings and more > Manage plugins** are different

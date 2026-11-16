@@ -56,7 +56,7 @@ agent or application, rather than with the builder's management screen.
 | Where the skill is used | How it gets there and who manages it | Guide |
 | --- | --- | --- |
 | Microsoft 365 Copilot Chat: the general chat experience | A user uploads a personal skill, or an administrator assigns a plugin containing it through Microsoft 365 admin center > Agents > Tools > Registry | [Microsoft 365](platforms/microsoft-365/README.md) |
-| Microsoft 365 declarative agent: a dedicated assistant | The author includes the skill in the agent package; an administrator manages the agent under Microsoft 365 admin center > Agents > All agents | [Declarative agent](platforms/microsoft-365/declarative-agent/README.md) |
+| Microsoft 365 declarative agent: a dedicated assistant | The author adds the skill through Agent Builder > Configure > Skills or Agents Toolkit > Add Skill; skill changes require republishing the containing agent | [Declarative agent](platforms/microsoft-365/declarative-agent/README.md) |
 | Copilot Cowork: the task-running experience | Deploy the plugin through Microsoft 365 admin center > Agents > Tools > Registry; users find it in Cowork > Customize > Plugins | [Cowork](platforms/microsoft-365/plugin/README.md) |
 | SharePoint site skills: shared instructions on one site | A site owner creates the skill in Copilot in SharePoint and manages it from that site's Settings > Site skills | [SharePoint](platforms/sharepoint/README.md) |
 | SharePoint personal skills: the owner's reading workflow | The owner creates/saves a personal skill in Copilot in SharePoint and follows its source link to the saved OneDrive file | [SharePoint](platforms/sharepoint/README.md) |
@@ -95,11 +95,12 @@ for example, documents that explicit mentions can still invoke the skill.
 
 First determine what you are managing:
 
-- **A Microsoft 365 plugin or agent package:** an administrator can manage
-  its intended users through Microsoft 365 admin center. Plugin packages
-  appear under **Agents > Tools > Registry**; agents under **Agents > All
-  agents**. Making something available and installing it for users are
-  separate actions.
+- **A Microsoft 365 skill plugin:** an administrator manages the plugin
+  package under **Microsoft 365 admin center > Agents > Tools > Registry**.
+  Making it available and installing it for users are separate actions.
+- **A skill bundled in a declarative agent:** the author maintains it in
+  **Agent Builder > Configure > Skills** or the registered skill directory
+  in an Agents Toolkit project, then republishes the containing agent.
 - **A site skill:** the SharePoint site owner manages the skill on that site.
   Copying it to another site does not keep the copies synchronized.
 - **A personal skill:** the owner manages the saved skill and app settings.

@@ -74,8 +74,6 @@ Builder](https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-b
    containing agent is not deployment.
 5. Use **Provision** for the intended test environment, then validate/package
    and submit the containing agent through the organization's agent catalog.
-   Manage its assignment in **Microsoft 365 admin center > Agents > All
-   agents > select the agent**.
 6. Publish updates to the containing agent when the skill changes; changing
    the source file alone does not update an installed package.
 
@@ -86,17 +84,13 @@ registration](https://learn.microsoft.com/microsoft-365/copilot/extensibility/bu
 The repository's existing Microsoft 365 scaffold script targets
 `meeting-notes`; it does not generate this Word agent.
 
-## Manage access and updates as an administrator
+## Maintain and update the skill
 
-- Open **Microsoft 365 admin center > Agents > All agents > select the
-  containing agent** to review availability, installation and the intended
-  users/groups.
-- The author maintains the registered skill inside the agent. Review and
+- The author maintains the skill through **Agent Builder > Configure >
+  Skills** or its registered directory in an Agents Toolkit project. Review and
   publish a new agent package when the skill changes; editing a Markdown file
   in an unrelated OneDrive folder does not update the installed agent.
-- Keep the previous reviewed package for rollback. Use the containing
-  agent's access/block/uninstall controls to withdraw access, rather than
-  treating a different application's personal-skill toggle as revocation.
+- Keep the previous reviewed skill source and package for rollback.
 
 ## What Word can read and what you must verify
 

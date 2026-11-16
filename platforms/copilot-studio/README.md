@@ -76,9 +76,6 @@ automatic live synchronization.
 - **Reuse the skill in another agent:** open **Build > Skills > select the
   skill > Share** and choose the intended author audience. **Only you**
   does not publish an organization-wide skill library.
-- **Review the published Microsoft 365 entry:** in Microsoft 365 admin
-  center, open **Agents > All agents > select the agent** to review its
-  tenant availability. This does not replace Studio's authoring controls.
 
 ## Troubleshooting
 

@@ -4,10 +4,10 @@ Choose whether the user should stay in general chat or open a dedicated
 assistant. Both can use the same reviewed skill instructions, but they are
 packaged and managed differently:
 
-| User experience | How to deploy it | Where an administrator finds it |
+| User experience | How to deploy it | Where the skill is maintained |
 | --- | --- | --- |
 | Select a skill/plugin in Copilot Chat or Cowork | Build a plugin package containing the skill | Microsoft 365 admin center > Agents > Tools > Registry > select the plugin |
-| Open a dedicated Copilot assistant | Bundle the skill inside a declarative agent and publish the agent | Microsoft 365 admin center > Agents > All agents > select the agent |
+| Open a dedicated Copilot assistant | Bundle the skill inside a declarative agent and publish the agent | Agent Builder > Configure > Skills, or the registered skill directory in an Agents Toolkit project |
 
 ## Use an existing skill or agent
 
