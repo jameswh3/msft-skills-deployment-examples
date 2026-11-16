@@ -23,41 +23,38 @@ Personal portability does not grant access to other sites. Both kinds use
 only the capabilities and content permissions already available to the user.
 They cannot connect to external systems or execute custom code.
 
-## Prerequisites and isolated content
+## Use an existing site or personal skill
 
-Use a site where Copilot in SharePoint is available and a licensed demo user.
+1. Open a SharePoint site and content you can access, then open its Copilot
+   chat pane. You do not need to be a site administrator to run an available
+   skill.
+2. Enter `/skills`. **Site skills** are associated with the current site;
+   **Your skills** are your personal workflows.
+3. Select or name the intended skill and identify the document to review.
+   For the sample, select the [project brief](../../samples/sharepoint/project-brief.md)
+   and ask `Run sharepoint-site-review on the selected document`.
+4. Review the response and its skill-use indicator. A site review checks team
+   readiness standards; the personal example returns takeaways, a facts table
+   and open questions for your next reading.
+
+The sample requests chat output to preserve its test document. That is a
+choice for the example, not a general restriction added to either skill.
+
+## Requirements
+
+Use a site where Copilot in SharePoint is available and a licensed account.
 Edit permission is required to create a skill; View permission is required
-to run one. Do not change tenant policy, Restricted Content Discovery,
-inheritance or spending policies merely to make a demonstration work.
+to run one. More restrictive library permissions may affect access.
 
-Create a dedicated demo site or use an explicitly approved synthetic-content
-library. Upload the [project brief](../../samples/sharepoint/project-brief.md)
-and use the [rubric](../../samples/sharepoint/expected-behavior.md).
+For first-time evaluation, use a test site or approved library with the
+fictional [project brief](../../samples/sharepoint/project-brief.md).
+Do not change organization permissions or spending policies just to run it.
 Creating/managing skills is an everyday Copilot capability; advanced work
 can require Copilot Credits and explicit confirmation.
 
-## Build reviewed packages
+## Create and manage a site skill
 
-From the repository root in PowerShell 7:
-
-```powershell
-.\scripts\Build-Packages.ps1 `
-    -SkillPath .\platforms\sharepoint\skills\sharepoint-site-review `
-    -Kinds skill,onedrive-skill -OutputPath .\out\sharepoint\site
-.\scripts\Build-Packages.ps1 `
-    -SkillPath .\platforms\sharepoint\skills\sharepoint-personal-brief `
-    -Kinds skill,onedrive-skill -OutputPath .\out\sharepoint\personal
-```
-
-`skill-<version>.zip` has root `SKILL.md` for a host upload.
-`onedrive-skill-<version>.zip` has `<skill-name>/SKILL.md` for a matching-name
-folder installation. Neither is a Microsoft 365 app package. A folder ZIP
-must be extracted before a OneDrive folder upload; uploading the ZIP as a
-plain document does not install a skill.
-
-## Site skill deployment and management
-
-1. On the demo site, open **Settings > Site skills**.
+1. On the site where people will use it, open **Settings > Site skills**.
 2. Select **Create or upload > Upload** and supply the reviewed standalone
    source/package accepted by that UI. Review its name and instructions.
 3. New/uploads are enabled by default. Confirm the skill appears on that
@@ -66,15 +63,8 @@ plain document does not install a skill.
    site-skill creation. Skills live at
    `/Agent Assets/Skills/<skill-name>/SKILL.md`; do not create an unrelated
    library with that display name or delete the product-managed library.
-5. Select only the synthetic brief in the document library. In Copilot ask:
-   `Run sharepoint-site-review on the selected document. Return recommendations in chat only.`
-6. Record the actual skill indicator card and check the checklist and gaps
-   against the rubric. A stored file alone is not runtime verification.
-
-The instructions do not artificially prohibit search, document editing or
-other native capabilities. A review request identifies the documents to
-review; an unclear target calls for clarification rather than a blanket
-restriction to selected files.
+5. Test it using the **Use an existing site or personal skill** steps above
+   and the sample's [expected behavior](../../samples/sharepoint/expected-behavior.md).
 
 An alternative native authoring path is to ask Copilot to create a **site**
 skill using the reviewed workflow, review the draft, then confirm saving.
@@ -84,10 +74,11 @@ byte-identical to this source. Download/inspect the saved skill if needed.
 On **Settings > Site skills**, select the skill to find enable/disable,
 **Copy to sites**, and deletion actions. Open its details for editing,
 **Replace**, **Download**, and **Versions**.
-Restoring an earlier version creates a new current version, preserving history.
-For a demo, show these controls without changing them.
-These management steps are documented; the lab verified chat-based creation,
-the stored file and actual skill invocation, not every management-page action.
+Use **Disable** to stop use on the site, **Copy to sites** to distribute
+a copy, **Replace** to upload reviewed instructions, and **Versions** to
+inspect or restore earlier content. Restoring creates a new current version
+and preserves history. Test after replacement or restoration; copied sites
+are not automatically kept synchronized.
 
 ## Personal skill deployment and management
 
@@ -97,17 +88,12 @@ the stored file and actual skill invocation, not every management-page action.
    Use **Open skill location** on the saved card, or the source link on the
    **Used personal skill** indicator, to inspect its saved `SKILL.md` in
    OneDrive; do not guess a system-folder location.
-   The verified lab run used a fresh chat opened from the site home page.
-   An earlier library-chat attempt refused saving; the later native
-   **Skill created** card labeled **Your skill** was followed by an independent
-   saved-file check.
 3. Use `/skills` to inspect **Your skills** separately from **Site skills**
    and Microsoft's built-in skills.
 4. On selected synthetic content, run:
    `Run sharepoint-personal-brief on the selected document. Return a reading draft in chat only.`
-5. Verify a personal-skill indicator and the rubric. If testing cross-site
-   availability, use a second authorized demo site with synthetic content.
-   Do not infer this scope test merely from one-site invocation.
+5. Verify the **Used personal skill** indicator and expected result.
+   To check availability across sites, repeat on a second site you can access.
 
 In the lab, the creation card and runtime indicator exposed the saved skill's
 location. Its owner-specific OneDrive UI path was **Documents > Copilot >
@@ -115,18 +101,16 @@ Agent Assets > Skills > sharepoint-personal-brief**. This was discovered and
 verified, not assumed as a universal system path. It is separate from the
 Excel/PowerPoint folders and Chat's SharePoint Embedded upload storage.
 
-The generated source retains the reviewed workflow but reformats sections and
-expands the trigger description. It is not byte-identical to this repository's
-package. Review the actual saved source rather than treating a natural-language
-creation request as a byte-preserving import. A new chat with only the skill
-name, synthetic document reference and task request showed **Used personal
-skill sharepoint-personal-brief** and passed the baseline rubric.
+Review the actual saved instructions: a generated definition may reformat or
+expand the supplied workflow. For an update, revise the owner-managed source
+through its supported creation/editing flow and test the saved result in a
+new chat. A chat draft without a saved skill is not an installation.
 
 Personal skills belong to the owner and are subject to the applicable
 OneDrive retention, sensitivity, auditing and lifecycle policies. A personal
 skill is not centrally assigned to all site users or all Microsoft 365 users.
 
-## Governance and lifecycle
+## What site and organization administrators can manage
 
 - Site skills inherit the site's content governance. By default, site Edit
   users can create and site View users can run; more restrictive library
@@ -141,8 +125,40 @@ skill is not centrally assigned to all site users or all Microsoft 365 users.
   blocking a Microsoft 365 plugin. Verify actual host behavior before
   claiming revocation or permissions enforcement.
 
-See [lab evidence](../../docs/lab-status.md) for observed results and
-[the presenter walkthrough](../../docs/demo-script.md) for user/owner views.
+## Troubleshooting
+
+- **A site skill is missing:** confirm you are on the associated site, have
+  content permissions, and the skill is enabled under **Settings > Site
+  skills**. A skill on another site is not automatically a local site skill.
+- **Personal creation returned only text:** check for a saved **Your skill**
+  card and its actual source file. Review the draft and explicitly confirm
+  personal saving; do not assume conversational instructions were saved.
+- **A copied site uses old instructions:** update that site's copy; copying
+  is distribution, not ongoing synchronization.
+- **Copilot itself is unavailable:** check site availability, licensing and
+  organization/site policies before troubleshooting the skill file.
+
+## Optional: build the sample packages
+
+Users running an existing skill do not need this step. Authors can run from
+the repository root in PowerShell 7:
+
+```powershell
+.\scripts\Build-Packages.ps1 `
+    -SkillPath .\platforms\sharepoint\skills\sharepoint-site-review `
+    -Kinds skill,onedrive-skill -OutputPath .\out\sharepoint\site
+.\scripts\Build-Packages.ps1 `
+    -SkillPath .\platforms\sharepoint\skills\sharepoint-personal-brief `
+    -Kinds skill,onedrive-skill -OutputPath .\out\sharepoint\personal
+```
+
+`skill-<version>.zip` has `SKILL.md` at its top level for a supported upload.
+`onedrive-skill-<version>.zip` contains a matching-name folder; extract it
+before a OneDrive folder upload where that installation method is supported.
+Neither is a Microsoft 365 app package, and storing a ZIP as a document does
+not install it.
+
+See [lab evidence](../../docs/lab-status.md) for completed tests and limitations.
 
 Sources: [Native skills](https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills),
 [availability and licensing](https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started).

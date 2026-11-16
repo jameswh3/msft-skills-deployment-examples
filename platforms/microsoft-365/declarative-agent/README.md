@@ -9,7 +9,23 @@ when it changes. An administrator manages the published assistant under
 This differs from a standalone Chat/Cowork plugin, which is listed under
 **Agents > Tools > Registry**.
 
-## Create
+## Use the agent
+
+1. Sign in to Microsoft 365 Copilot with the assigned account and open the
+   dedicated agent from the agent list. Use the name supplied by your
+   organization; the `meeting-notes` skill is inside that assistant.
+2. Supply meeting notes and ask the agent to summarize them using its skill.
+3. Review the summary, decisions, action items and open questions. Missing
+   owners/dates should remain unspecified rather than being invented.
+
+## Requirements and ownership
+
+Users need access to the published agent and the required Copilot features.
+Authors need permission to create/upload custom apps. Administrators control
+organization assignment. A user of an existing agent does not need to
+install Agents Toolkit or build a ZIP.
+
+## Create the agent as an author
 
 Install Microsoft 365 Agents Toolkit CLI **1.1.17** using its
 [official installation instructions](https://learn.microsoft.com/microsoftteams/platform/toolkit/microsoft-365-agents-toolkit-cli).
@@ -29,7 +45,7 @@ The generated agent references `skills/meeting-notes` using `agent_skills`;
 the canonical skill is copied byte-for-byte. Inspect the generated publisher,
 URLs, app identity, icons, and environment before provisioning.
 
-## Deploy and manage
+## Deploy and manage as an administrator or owner
 
 1. Confirm `atk account list` identifies the intended Microsoft 365 tenant.
 2. From the generated project, provision with `atk provision --env dev`.
@@ -42,6 +58,19 @@ URLs, app identity, icons, and environment before provisioning.
    again, and verify a new conversation.
 7. Roll back with a reviewed previous-content package and verify its version.
    Block/uninstall the agent package to revoke distribution.
+
+Use **Microsoft 365 admin center > Agents > All agents > select the agent**
+to review its status and assigned audience. Verify access as an intended
+recipient rather than only as the author.
+
+## Troubleshooting
+
+- **Agent not visible:** confirm the signed-in account, organization
+  publication, assigned audience and installation.
+- **Skill unavailable:** confirm it is registered inside this agent's
+  package. Installing the standalone Chat plugin does not add it to an agent.
+- **Old behavior after an edit:** publish the updated agent package and test
+  a new conversation; the installed package does not read your local file.
 
 An agent-scoped skill is a bundled component, not a live cross-agent registry
 reference. Limits include eight skills, depth three, 350 files across skills,

@@ -12,19 +12,36 @@ changes, and turns the skill's toggle on or off. Centrally reviewing and
 distributing the source is different from assigning a Microsoft 365 plugin
 to an organization.
 
-## Prepare and deploy
+## Use an installed skill
+
+1. Open a workbook you are authorized to edit and open its Copilot pane.
+2. Select **Add sources, skills, and more > Choose plugins >
+   excel-pipeline-review**.
+3. Ask it to review the intended table. For this repository's sample, use
+   `Review PipelineData in this workbook and apply the review worksheet.`
+4. Review the proposed changes, then select **Done** when appropriate.
+   Inspect the saved review sheet before relying on its findings or totals.
+
+If the skill is missing, install it using the next section or ask its owner
+for the reviewed source. An ordinary workbook user does not need to run the
+repository's build commands after the skill is installed.
+
+## Install a personal skill
 
 Use a licensed account with Copilot in Excel available in the browser.
-From the repository root:
+Have a folder named `excel-pipeline-review` containing the reviewed
+[SKILL.md](skills/excel-pipeline-review/SKILL.md). You can create that folder
+and copy the file yourself. To generate the package and optional sample
+workbook from this repository instead, run:
 
 ```powershell
 npm run build:hosts
 npm run build:fixtures
 ```
 
-1. Upload `out/host-fixtures/OGE-Pipeline-Skill-Demo.xlsx` and open it in
-   Excel's Editing View. The workbook has a `PipelineData` table.
-   Direct CSV upload opened in Reading View in the lab.
+1. Open an editable XLSX workbook. To try the optional sample, upload
+   `out/host-fixtures/OGE-Pipeline-Skill-Demo.xlsx` and open it in Excel's
+   Editing View. Its table is named `PipelineData`.
 2. In Copilot, open **Settings and more > Manage plugins > Custom skills**.
    Other releases label this **Manage plugins & skills**.
 3. If necessary, select **Create skills folder**, then open the product's
@@ -41,7 +58,7 @@ Microsoft Excel > skills**. Its PowerPoint folder was separate. Use the
 product-created folder for the intended app; do not assume this layout is a
 universal path or that one app's upload installs the skill in another app.
 
-## Run and verify
+## Try the sample and check the result
 
 In the Copilot prompt's **Add sources, skills, and more > Choose plugins**,
 select `excel-pipeline-review`. Request:
@@ -67,17 +84,34 @@ included record count, finding count and distinct affected source-row count.
 All seven source rows have findings. Check actual cells rather than trusting
 a chat-only count or a claim that a worksheet was created.
 
-## Owner and administrator experience
+## Update and manage as the owner
 
-- Show **Manage plugins > Custom skills**, the example's toggle and details,
-  **Refresh**, and its OneDrive source without changing them during a demo.
-- Updates require replacing/editing the owner's source and refreshing the
-  client. Verify a fresh request after an update.
-- Excel documents that disabling automatic use does not prevent an explicit
-  `@mention`. Do not present that toggle as an access-control boundary.
-- OneDrive ownership, permissions and lifecycle policies govern the stored
-  files. A personal skill is not an all-users tenant assignment.
+1. Open **Copilot pane > Settings and more > Manage plugins > Custom skills**.
+2. Follow **Skills OneDrive folder** to the skill's saved instructions.
+   Edit the reviewed Markdown in a text editor and replace the saved file
+   in the same skill folder when updating it.
+3. Return to **Custom skills > Refresh**. Check the skill's name, saved
+   instructions and toggle, then test a new request.
+4. Turn off its toggle to stop automatic use. Excel documents that an explicit
+   `@mention` can still invoke it, so this is not an access-revocation control.
 
-See [lab evidence](../../docs/lab-status.md) and
-[the presenter walkthrough](../../docs/demo-script.md).
+## What an administrator can manage
+
+OneDrive ownership, permissions, retention and organization policy govern
+the stored files and Copilot availability. This route installs a personal
+skill for its owner; it does not provide an all-users installation switch.
+If distributing reviewed source, each recipient must complete installation
+in their own Excel skills folder and refresh Excel.
+
+## Troubleshooting
+
+- **Skill does not appear:** use Excel's **Skills OneDrive folder** link,
+  check the matching folder/name and `SKILL.md`, then select **Refresh**.
+  An unextracted ZIP stored as a document is not installed.
+- **Workbook opens read-only:** use an editable workbook and an account with
+  edit permission. The optional generator creates an XLSX rather than a CSV.
+- **Chat and worksheet disagree:** read the saved worksheet cells and request
+  reconciliation. Do not rely on the chat's summary count alone.
+
+For completed test results and limitations, see [lab evidence](../../docs/lab-status.md).
 Source: [Copilot in Excel skills](https://support.microsoft.com/en-us/excel/copilot/copilot-in-excel-skills).

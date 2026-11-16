@@ -1,5 +1,17 @@
 # Creation, deployment and management lifecycle
 
+## Identify who owns the change
+
+- **End user:** selects installed skills, reviews results and manages the
+  app's personal-use settings.
+- **Skill/agent author:** maintains instructions and builds/publishes updates.
+- **Site or personal owner:** maintains the SharePoint/OneDrive copy they own.
+- **Organization or project administrator:** controls permitted users,
+  installation, project roles and relevant service policies.
+
+One person can hold several roles, but using a skill does not require the
+ability to edit it or install it for everyone.
+
 ## Common rollout
 
 The deployment steps differ by product; use its [platform guide](../README.md#approaches)
@@ -46,8 +58,10 @@ status and limitations.
 
 ## Withdrawing access, by product
 
-- Microsoft 365/Cowork: block/uninstall and test a fresh conversation;
-  in-progress sessions can have different revocation semantics.
+- Microsoft 365/Cowork: open **Microsoft 365 admin center > Agents > Tools >
+  Registry > select the plugin**, then use its block/uninstall controls and
+  review **Users**. Test a fresh conversation; in-progress sessions can
+  have different behavior.
 - Declarative agents: open **Microsoft 365 admin center > Agents > All
   agents > select the agent**; manage its access as well as separate skill copies.
 - Studio: open the agent's **Share** panel to change who can use it. Other
@@ -55,8 +69,15 @@ status and limitations.
 - Foundry: update the version selected in each agent's definition; changing
   only the skill's default does not alter existing prompt-agent versions.
 - GitHub: enterprise block policy and repository file removal are separate.
+- SharePoint site skills: open the site's **Settings > Site skills > select
+  the skill** and disable it. Review copies on other sites separately.
+- Excel/PowerPoint personal skills: the owner's **Copilot pane > Settings
+  and more > Manage plugins > Custom skills** contains the per-skill toggle.
+  Excel's automatic-use setting is not a revocation control for explicit
+  mentions. Do not equate personal settings with organization assignment.
 - API Center: hiding/removing a catalog entry does not revoke runtime access
   or delete instructions installed elsewhere.
 
-Registry metadata such as allowed tools is not a substitute for runtime
-identity, authorization, tool policy, or tenant governance.
+Describing allowed tools in a catalog does not grant or enforce access.
+Actual accounts, permissions, tool settings and organization policies still
+control what can run.

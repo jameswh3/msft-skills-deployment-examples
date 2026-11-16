@@ -16,8 +16,16 @@ that plugin. No second authored skill copy is needed.
 - A **marketplace** here is a listing that tells a supported coding client
   where to find installable plugins; it is not the skill's runtime.
 
-This lab has no GitHub Copilot entitlement, so these are documented deployment
-instructions, not a claim that the policy or skill ran in a coding client.
+## Use an installed skill
+
+1. Open the intended code repository in a supported, entitled Copilot client.
+2. Use its skills picker/slash menu where offered, or explicitly request the
+   skill by name. For the sample, ask for `meeting-notes` and supply notes.
+3. Review the response and the client's skill-load activity, when available.
+   The workflow should preserve missing owners/dates rather than invent them.
+
+If it is missing, choose a repository or plugin installation route below.
+Having access to a GitHub repository does not itself provide Copilot licensing.
 
 ## Repository-scoped skill
 
@@ -25,8 +33,8 @@ Inspect the source before installation. With GitHub CLI 2.90.0+ (`gh skill`
 is public preview):
 
 ```powershell
-gh skill preview jameswh3/oge-msft-skills-deployment-examples meeting-notes
-gh skill install jameswh3/oge-msft-skills-deployment-examples meeting-notes
+gh skill preview jameswh3/msft-skills-deployment-examples meeting-notes
+gh skill install jameswh3/msft-skills-deployment-examples meeting-notes
 ```
 
 Default scope is the current project. To distribute a reviewed release, use a
@@ -41,12 +49,14 @@ Do not install into personal skill locations as a side effect of building.
 For an authorized user's Copilot CLI:
 
 ```powershell
-copilot plugin marketplace add jameswh3/oge-msft-skills-deployment-examples
+copilot plugin marketplace add jameswh3/msft-skills-deployment-examples
 copilot plugin install meeting-notes@oge-skills
 ```
 
 This installs trusted agent instructions. Review the content first. VS Code
 also documents marketplace/source installation for supported harnesses.
+`oge-skills` is the marketplace identifier inside the manifest; it is not the
+GitHub repository name and was not changed by the repository rename.
 
 ## Enterprise central deployment
 
@@ -82,7 +92,18 @@ sandbox execution. Check current minimum client versions before rollout.
   that an independently copied skill was removed.
 - Plugin invocation metrics are not installation or exact adoption counts.
 
-**Lab gap:** this lab has no GitHub Copilot entitlement. Static/package checks
+## Troubleshooting
+
+- **Repository is accessible but Copilot is unavailable:** check the account's
+  Copilot entitlement and the client's supported version.
+- **Skill does not appear:** confirm the installation scope, actual skill
+  folder/package and the repository opened in the client.
+- **Enterprise policy seems ignored:** check the designated governance
+  repository, policy validation and client refresh/minimum-version support.
+- **Old instructions still run:** distinguish a repository copy from an
+  installed plugin and update the copy the client is actually using.
+
+**Validation status:** this lab has no GitHub Copilot entitlement. Static/package checks
 and GitHub repository publication can be verified; Copilot installation,
 policy enforcement, and invocation must remain explicitly untested.
 

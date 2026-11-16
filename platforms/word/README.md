@@ -22,6 +22,21 @@ The reviewed Microsoft documentation does not establish a Word-specific
 OneDrive directory where dropping `SKILL.md` installs a skill. Excel and
 PowerPoint folder instructions do not establish that behavior for Word.
 
+## Use a skill that your organization has deployed
+
+1. Open a document you can access and its Copilot pane.
+2. Open the declarative agent supplied by your organization. The skill is
+   bundled inside that agent; selecting an unrelated plugin does not add it.
+3. Refer to the open document in your request. For selected text, highlight
+   the passage and choose **Add selection**.
+4. Ask for the intended workflow, then review the response and any file
+   changes independently. Access to document text does not by itself prove
+   that a skill can replace text or apply heading styles in the saved file.
+
+These are instructions for a deployed agent, not a claim that this
+repository's Word-specific example is already installed. Its validation
+status and document-editing limits are described below.
+
 ## Author and deploy: two documented agent-authoring options
 
 ### Option A: upload the skill through Agent Builder
@@ -71,7 +86,19 @@ registration](https://learn.microsoft.com/microsoft-365/copilot/extensibility/bu
 The repository's existing Microsoft 365 scaffold script targets
 `meeting-notes`; it does not generate this Word agent.
 
-## What this establishes, and what still needs testing
+## Manage access and updates as an administrator
+
+- Open **Microsoft 365 admin center > Agents > All agents > select the
+  containing agent** to review availability, installation and the intended
+  users/groups.
+- The author maintains the registered skill inside the agent. Review and
+  publish a new agent package when the skill changes; editing a Markdown file
+  in an unrelated OneDrive folder does not update the installed agent.
+- Keep the previous reviewed package for rollback. Use the containing
+  agent's access/block/uninstall controls to withdraw access, rather than
+  treating a different application's personal-skill toggle as revocation.
+
+## What Word can read and what you must verify
 
 The agent route establishes documented skill packaging and access to Word
 document text. It does **not** by itself establish the full in-place editing
@@ -95,7 +122,20 @@ the five intended headings, support-group scope, 2030-04-12 date, conflicting
 If the agent returns only a draft in chat, report that result; do not claim
 the document or its heading styles were updated.
 
-## Other surfaces and lab evidence
+## Troubleshooting
+
+- **Agent not visible in Word:** confirm the signed-in account, organization
+  distribution/installation and recipient access to the agent.
+- **Skill unavailable inside the agent:** confirm it was added/registered
+  in that agent's package and the updated agent was published.
+- **Only a chat draft is returned:** document text access does not establish
+  saved-file editing support. Review the actual result before applying it
+  manually or claiming automatic document updates.
+- **Copying into an Office folder does nothing:** no Word-specific
+  OneDrive installation folder is established by the reviewed documentation.
+  Use the documented agent-authoring route rather than guessing a path.
+
+## Compatibility and validation status
 
 Word web in the lab displayed existing shared/managed packages under
 **Copilot pane > Add sources, skills, and more > Choose plugins** and
@@ -114,5 +154,4 @@ SharePoint Embedded storage do not establish a Chat-upload-to-Word handoff.
 not been packaged, deployed or invoked in the lab.** The documented route is
 now identified; Word deployment and saved-document verification remain
 separate work, not a completed installation. See the [lab
-ledger](../../docs/lab-status.md) and [presenter
-walkthrough](../../docs/demo-script.md).
+results](../../docs/lab-status.md) for supporting evidence.

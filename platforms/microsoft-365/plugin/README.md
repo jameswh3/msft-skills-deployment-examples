@@ -1,8 +1,9 @@
 # Copilot Chat and Cowork plugin
 
-Chat standalone skills are GA. WIQD 0.26.0 is preview and its plugin CLI is
-alpha. The repository generates the app from the official WIQD scaffold;
-it does not hand-author cloud lifecycle files.
+A plugin is the installable package containing the skill. Users select the
+installed capability in Chat or Cowork; administrators assign the containing
+package to users or groups. It is not a separate skill file each employee
+must manually copy.
 
 ## Where users and administrators find it
 
@@ -13,11 +14,51 @@ it does not hand-author cloud lifecycle files.
   Registry > select the plugin > Users** to review who can use it and who
   has it installed. The plugin details contain block/uninstall controls.
 
-The steps below are for the developer packaging the skill, not tasks every
-end user must perform. A scaffold is a generated starter project; WIQD
-(Work IQ Dev Tools) creates that project's package and deployment files.
+Users and administrators can follow the next sections without building a
+package. The later author sections use WIQD (Work IQ Dev Tools) to generate
+a starter project and its deployment files.
 
-## Create locally
+## Use the installed skill
+
+1. In Chat, select the installed skill/plugin. In Cowork, open **Customize >
+   Plugins > Added**, select the plugin and turn it on for your conversations.
+   An organization-installed plugin can be present but turned off.
+2. Start a conversation or Cowork task. For the sample, ask
+   `Use meeting-notes to summarize these notes` and supply the meeting notes.
+3. Review the result and the skill-use activity, when available. Installation
+   does not force every request to invoke the skill.
+
+For a personal Chat skill rather than a plugin, follow the
+[Chat upload instructions](../README.md#install-a-personal-skill-in-copilot-chat).
+Cowork also supports personal skills through **Customize > Skills > Add >
+Create new**, or **Upload skill** from the Add menu. Those are owner-managed
+skills, not an organization plugin assignment; see [Cowork
+customization](https://learn.microsoft.com/copilot/cowork/cowork-customize).
+
+## Install for users as an administrator
+
+Have the approved Microsoft 365 app ZIP from its author; a standalone
+`SKILL.md` or skill ZIP is not that app package.
+
+1. Open **Microsoft 365 admin center > Agents > Tools > Registry > Upload**.
+2. Upload the built app ZIP, review its components, and select the intended
+   users/groups. Start with a small test audience.
+3. Complete **Install**, then open the package's **Users** panel and verify
+   both availability and installation scope. If it is already registered but
+   not installed, find it under **Agents > Tools > Plugins** and select
+   **Install** for the intended audience.
+4. If blocked, check **Agents > Settings > Agent and plugin access** for the
+   relevant publisher category.
+5. Ask a recipient to find and run the installed skill. If supporting both
+   Chat and Cowork, verify both before expanding assignment.
+
+Updates and removal are covered below. If you need to build the package
+first, use the author instructions in the next two sections.
+
+## Build the package as an author
+
+Chat standalone skills are generally available. WIQD 0.26.0 is preview and
+its plugin CLI is alpha. This repository uses the official generated project.
 
 From the repository root:
 
@@ -71,37 +112,22 @@ Validate the actual returned ZIP path. This operation uploads the package:
 Do not substitute older `--mode deep` examples for the pinned CLI's supported
 modes. Sharing is not catalog publication, even for tenant-wide sharing.
 
-## Central administration
-
-1. Microsoft 365 admin center > Agents > Tools > Registry > Upload.
-2. Upload the built app ZIP, review its skill component, and choose a pilot
-   audience.
-3. Install for the selected users/groups. Check publisher policy under
-   Agents > Settings > Agent and plugin access.
-4. Verify the installed skill in **Chat**, then separately in **Cowork**.
-5. After pilot verification, expand to all users if authorized.
+## Shared packages and organization uploads
 
 For catalog publication through WIQD, review the generated `publish` lifecycle
 and use `plugin publish` with the same explicit project/environment. Organization
 approval may be required. Do not equate provision, share, publish, and install.
 
-**Keep shared pilots and managed deployments distinct.** The lab's approved
-owner-shared plugin remained owner-controlled: administrators could block it,
-but could not assign or automatically install it. Uploading that same app ID
-was rejected as already deployed. For a separate managed deployment, copy the
-reviewed package source to an ignored working directory, give its manifest a
-new app ID (`New-Guid`) and a clearly distinct name, rebuild, and validate the
-actual ZIP before admin upload. Keep that managed ID stable for later updates;
-do not replace or delete the working shared pilot to bypass the collision.
+An owner-shared plugin and a separately uploaded organization-managed plugin
+can have different assignment controls, even if they contain the same skill.
+Check the app identity and delivery method, not just its display name.
 
-In Cowork, the uploaded managed package appeared automatically with **Managed
-by your organization**, but was initially turned off for the pilot user.
-Enable it explicitly for the test; administrative installation does not
-guarantee invocation. With duplicate skill names present, the lab's skill
-details and runtime trace identified the shared pilot despite a prompt naming
-the managed package. Matching output is not proof of package origin. Use a
-clean entitled recipient to isolate managed-source invocation; see the
-[evidence ledger](../../../docs/lab-status.md).
+If a test package is already shared and you need a separate managed package,
+use a deliberately separate app identity and name for that new package;
+validate it before upload. Keep its identity stable for later updates. Do not
+repeatedly create new IDs to work around an update or access problem.
+The [lab results](../../../docs/lab-status.md) describe the specific collision
+and duplicate-source behavior observed in this repository's test environment.
 
 ## Update, rollback, and removal
 
@@ -118,6 +144,15 @@ clean entitled recipient to isolate managed-source invocation; see the
   interruption of sessions already using the plugin.
 - Review Copilot activity in Purview. No connector consent is needed by this
   instruction-only sample.
+
+## Troubleshooting
+
+| Problem | What to check |
+| --- | --- |
+| A user cannot find the package | Confirm the account, package identity, Users availability/installation scope, and publisher policy. |
+| Cowork lists it but does not use it | Open Customize > Plugins > Added and turn it on, then explicitly request the skill in a new task. |
+| A changed file has no effect | Rebuild and distribute the containing package; re-share if required. Editing the author's source alone does not update an installed package. |
+| Activity identifies the wrong copy | Check for shared and managed packages containing the same skill name; use a test recipient with only the intended package when identifying its source. |
 
 Sources: [Chat skills](https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-copilot-chat-skills),
 [Cowork administration](https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins),

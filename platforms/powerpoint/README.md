@@ -5,12 +5,17 @@ adds a concise executive summary first while retaining the detailed slides.
 It uses the presentation access already available to Copilot; it grants no
 additional permissions.
 
-## Prepare the example
+## Use an installed skill
 
-Run `npm run build:hosts` from the repository root. Create a new synthetic
-presentation using the three-slide [outline](../../samples/powerpoint/slide-outline.md).
-Use a licensed account with the relevant Copilot features available; browser
-availability must be checked in the actual client and tenant.
+1. Open the presentation you want to edit and its Copilot pane.
+2. Select **Add sources, skills, and more > Choose plugins >
+   powerpoint-executive-story**.
+3. Ask for an executive summary for the intended audience.
+4. Review and apply the proposed changes, then inspect the saved slides.
+   Keep the original detail and check unresolved facts before sharing.
+
+If the skill is missing, use the installation steps below. You need Copilot
+available in your account and permission to edit the presentation.
 
 ## Add the skill in PowerPoint
 
@@ -22,7 +27,8 @@ Manage plugins > Custom skills**. Microsoft's support article calls this
 PowerPoint documents three personal custom-skill routes:
 
 1. **Choose skills > Manage skills > Add skill**: upload the reviewed
-   standalone skill ZIP from
+   standalone skill ZIP. Generate this repository's example with
+   `npm run build:hosts`; the output is under
    `out/host-examples/powerpoint/powerpoint-executive-story`.
    This is not a Microsoft 365 app ZIP.
 2. The **Add skill** form: supply the reviewed name, description and
@@ -43,13 +49,11 @@ Manage plugins > Custom skills** and **Add sources, skills, and more >
 Choose plugins**. Use the actual client labels rather than assuming they
 match the support article's screenshots.
 
-The lab used the documented OneDrive-copy route. After an initial folder
-upload error, the canonical file was added to the already-discovered empty
-folder through the documented [SharePoint files REST API](https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/working-with-folders-and-files-with-rest),
-without overwriting an existing file. Downloaded bytes matched the canonical
-SHA-256. The native custom list and picker then recognized the skill.
+## Try the sample and check the result
 
-## Run and verify
+Create a separate three-slide presentation from the
+[outline](../../samples/powerpoint/slide-outline.md) to try the workflow
+without changing a work presentation.
 
 In the Copilot prompt, open **Add sources, skills, and more > Choose plugins**,
 select `powerpoint-executive-story`, and ask:
@@ -69,28 +73,37 @@ Review/apply the proposed change and inspect the saved deck using the
   not given invented answers.
 - Existing theme and readable native layout.
 
-The saved lab deck was independently decoded, not accepted from chat claims:
-four slides, all three original source slides intact, and five summary bullets
-containing 10, 12, 12, 11 and 14 whitespace-delimited words. Each slide uses
-the same native title-and-content layout. The response explicitly labeled
-the recommended next step as an inference from the open issues.
-
 Draft text in chat is not an inserted slide. An uploaded file is not proof
 of discovery or invocation; see [lab evidence](../../docs/lab-status.md).
 
-## Owner and administrator experience
+## Update and manage as the owner
 
-Open **Copilot pane > Settings and more > Manage plugins > Custom skills >
-powerpoint-executive-story**. Show its toggle and saved instructions.
-Use **Add** to show the available addition methods, or **Refresh** to reload
-the list, without uploading or changing anything during the presentation.
-Some releases label the menu **Manage skills**. PowerPoint documents that
-disabled skills stop automatic use and disappear from the dropdown; do not
-copy Excel's explicit-mention semantics onto PowerPoint.
+1. Open **Copilot pane > Settings and more > Manage plugins > Custom skills >
+   powerpoint-executive-story**. Some releases label this **Manage skills**.
+2. Use the skill's edit option or update its source through the app-specific
+   OneDrive folder, depending on how you added it.
+3. Select **Refresh**, check the saved instructions and test a new request.
+4. Turn off its toggle when you do not want it available. PowerPoint documents
+   that disabled skills stop automatic use and disappear from the dropdown;
+   do not assume Excel's explicit-mention behavior applies.
+
+## What an administrator can manage
 
 These are owner-specific OneDrive skills. Centrally maintaining a reviewed
-source and distributing it does not establish tenant-wide installation,
-continuous synchronization or revocation of copies.
+source file does not install it for everyone or continuously synchronize
+copies. OneDrive and Copilot organization policies apply, but this route does
+not demonstrate an all-users skill-assignment control.
 
-See [the presenter walkthrough](../../docs/demo-script.md).
+## Troubleshooting
+
+- **Skill missing from the picker:** confirm it is enabled in **Custom
+  skills**, refresh, and check you used PowerPoint's folder rather than Excel's.
+- **ZIP uploaded but not installed:** use the skill upload form, or extract
+  the matching-name folder before a OneDrive folder upload.
+- **Summary only appears in chat:** review/apply the proposed change and check
+  the saved deck. Chat text alone is not a changed presentation.
+- **Duplicate summary slide:** try the sample against a fresh three-slide
+  copy; the previously saved result already contains its summary.
+
+For completed tests and limitations, see [lab evidence](../../docs/lab-status.md).
 Source: [Copilot in PowerPoint skills](https://support.microsoft.com/en-us/powerpoint/copilot/copilot-in-powerpoint-skills).

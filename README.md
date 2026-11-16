@@ -1,21 +1,25 @@
-# Microsoft ecosystem skill deployment examples
+# Skills across Microsoft and GitHub: user and administrator guide
 
 One portable skill, distinct deployment and management examples, plus
 host-specific workflows where the scope and user experience differ.
 
-This repository is for people evaluating how to give users reusable Copilot
-instructions, whether or not they administer Microsoft services every day.
+Learn how reusable skill instructions reach users, where they are stored,
+who can manage them, and how updates work in each product. The examples can
+be used in your own organization; access to the repository author's lab is
+not required.
 
 ## Start here
 
-- **Present the examples:** follow the [user and administrator demo
-  walkthrough](docs/demo-script.md), which gives the menus to open.
-- **Choose a deployment route:** use the table below, then follow that
-  product's guide. You do not need to deploy every example.
-- **Check what actually worked:** read the [lab results](docs/lab-status.md).
-  A documented option is not necessarily a completed lab deployment.
-- **Build the files yourself:** use the developer quickstart below. Reading
-  the guides or presenting existing deployments does not require these tools.
+- **I want to use a skill:** start with [using skills](#using-skills), then
+  choose your product below. You do not need developer tools just to use an
+  installed skill.
+- **I manage skills for other people:** start with [administration and
+  ownership](#administration-and-ownership) and the [deployment
+  comparison](docs/support-matrix.md).
+- **I want to create or install the example:** follow the relevant product
+  guide. Use the developer quickstart only when that guide requires a package.
+- **I need supporting evidence:** the [lab results](docs/lab-status.md)
+  distinguish completed tests from documented but untested options.
 
 ### The terms used here
 
@@ -45,6 +49,10 @@ no scripts, credentials, connectors, network calls, or external actions.
 
 ## Approaches
 
+Choose the product where people will use the skill. Copilot Studio and
+Foundry are builder services: their users usually interact with a published
+agent or application, rather than with the builder's management screen.
+
 | Where the skill is used | How it gets there and who manages it | Guide |
 | --- | --- | --- |
 | Microsoft 365 Copilot Chat: the general chat experience | A user uploads a personal skill, or an administrator assigns a plugin containing it through Microsoft 365 admin center > Agents > Tools > Registry | [Microsoft 365](platforms/microsoft-365/README.md) |
@@ -63,11 +71,54 @@ no scripts, credentials, connectors, network calls, or external actions.
 `SKILL.md` content is portable. Installation packages, permissions, invocation,
 and update behavior are not universal. See the [support matrix](docs/support-matrix.md).
 
-The host-specific lab extension verifies SharePoint site and personal skills,
-Excel's saved review worksheet, and PowerPoint's saved executive-summary deck.
-Word has a documented agent-packaging route, but this Word example has not
-yet been deployed or tested in Word. See the [evidence ledger](docs/lab-status.md) for exact checks
-and limitations; local packaging alone is not runtime verification.
+## Using skills
+
+1. Sign in to the product with the account that has access to the skill.
+   Skills do not grant access to documents you cannot already open.
+2. Select the skill/plugin, or open the agent containing it, using that
+   product's guide above. For example, an Excel skill is selected inside
+   Excel's Copilot pane; a Studio skill is used through its published agent.
+3. Give the task and relevant input. For `meeting-notes`, supply meeting notes
+   and ask for the summary, decisions, action items and open questions.
+   You do not need to paste the skill's full instructions on every request.
+4. Review the response and any proposed file changes. Confirm owners, dates
+   and decisions against the source before applying or sharing the result.
+5. If the skill is missing, check the signed-in account, whether its package
+   was installed/shared with you, and whether it is enabled in that app.
+   Product-specific troubleshooting is included in each guide.
+
+Automatic selection is different from explicitly selecting a skill. Turning
+automatic use off is not necessarily a permission or security control; Excel,
+for example, documents that explicit mentions can still invoke the skill.
+
+## Administration and ownership
+
+First determine what you are managing:
+
+- **A Microsoft 365 plugin or agent package:** an administrator can manage
+  its intended users through Microsoft 365 admin center. Plugin packages
+  appear under **Agents > Tools > Registry**; agents under **Agents > All
+  agents**. Making something available and installing it for users are
+  separate actions.
+- **A site skill:** the SharePoint site owner manages the skill on that site.
+  Copying it to another site does not keep the copies synchronized.
+- **A personal skill:** the owner manages the saved skill and app settings.
+  Distributing a file is not the same as installing it for all employees.
+- **A builder-managed skill:** the Studio agent author or Foundry project
+  owner chooses the content/version their agent uses and publishes updates.
+- **A catalog entry:** API Center manages discovery information. Its entries
+  do not install or revoke skills in another product.
+
+For rollout, review the instructions, select a small initial audience, verify
+access as a recipient, then expand access if appropriate. For updates,
+identify every installed copy or agent version that needs changing. Follow
+the [management lifecycle](docs/lifecycle-and-governance.md) and each product's
+update/removal instructions.
+
+**Word status:** documentation supports packaging a skill in a declarative
+agent used in Word. This repository's Word-specific agent has not yet been
+deployed or tested, and its requested in-place editing behavior is not
+verified. The [Word guide](platforms/word/README.md) explains the route and limits.
 
 ## Developer quickstart: build packages locally
 
@@ -108,10 +159,7 @@ projects with the [scaffold script](scripts/New-Microsoft365Examples.ps1).
 Provisioning, tenant-side package validation, publication, and sharing are
 separate authenticated actions.
 
-## Validate in a host
-
-For a presentation using existing deployments, follow the
-[demo script: user and admin experiences](docs/demo-script.md).
+## Check that an installation works
 
 Use the [synthetic notes](samples/meeting-notes/input.md),
 [rubric](samples/meeting-notes/expected-behavior.md), and
@@ -129,6 +177,13 @@ successful deployment or an invocation test.
 No CI job provisions resources, changes enterprise policy, or deploys to a
 tenant. Keep real tenant/subscription IDs, environment files, authentication
 state, and detailed lab records outside this public repository.
+
+## Optional supporting material
+
+- [Lab results and limitations](docs/lab-status.md): evidence from this
+  repository's test environment, not prerequisites for using the guides.
+- [Presenter script](docs/demo-script.md): an optional tour of the retained
+  lab examples. It is not the installation or administration guide.
 
 ## Contributing
 

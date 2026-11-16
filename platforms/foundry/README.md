@@ -6,7 +6,19 @@ content update. An **immutable** version cannot be edited after creation.
 `default_version` identifies which version a new, unpinned reference selects;
 it does not change the version already used by an existing agent.
 
-## Where to manage the skill
+## Use a skill through an application
+
+An application developer attaches the skill to a Foundry agent. Users then
+send tasks to that application or agent; they do not install the skill into
+their personal Copilot account. Ask the application owner for the application
+link or supported API access and the required sign-in.
+
+For the meeting-notes example, the application sends the notes to the agent
+and returns the structured summary. Developers can also test the agent in a
+supported playground or through its agent endpoint. An ordinary application
+user does not need VS Code or Azure CLI.
+
+## Manage as a project owner or administrator
 
 - **Documented graphical interface:** in VS Code, open **Microsoft Foundry
   Toolkit** for the intended project, then **Tools > Skills > meeting-notes**.
@@ -31,7 +43,7 @@ application do not run them.
 - An existing reasoning/tool-calling model deployment for runtime testing.
 - An Azure CLI session for the intended tenant/subscription.
 
-## Deploy a version
+## Create a skill version as an author
 
 From the repository root, set your own endpoint (never commit lab values):
 
@@ -54,7 +66,7 @@ The script submits the canonical description and Markdown instructions as
 inline content. This instruction-only sample does not need companion files.
 It does not create an agent, invoke a model, or grant RBAC.
 
-## Consume and evaluate
+## Attach the skill to an agent and test it
 
 In Foundry, create a **new prompt agent with the Microsoft Copilot harness**,
 select the existing model, add the skill with an explicit immutable version,
@@ -106,16 +118,33 @@ already-created agent versions.
 .\scripts\Invoke-FoundrySkill.ps1 -ProjectEndpoint $project -Operation Export -SkillVersion '<approved version>' -OutputPath .\out\foundry-export.zip
 ```
 
-Export creates an archive and provenance file without extracting or executing
-its content. Review both before promotion to another host.
+Export creates an archive and a record of its source/version/hash without
+extracting or executing its content. Review both before using it in another
+product.
 
-To roll back, set the previous default if appropriate **and create/update the
-consumer binding to the previous immutable version**. Test a new conversation.
+To roll back, set the previous default if appropriate **and configure the
+agent to use the previous skill version**. Test a new conversation.
 Before deleting versions or skills, inventory consumers; preserve rollback
 content. No destructive delete operation is included in the script.
 
 For the distinct catalog/distribution path and optional toolbox discovery,
 see [Foundry + API Center](../foundry-api-center/README.md).
+
+## Troubleshooting
+
+- **Cannot list or upload skills:** confirm the selected project, project
+  permissions, authentication scope and required preview header.
+- **New skill version has no effect:** inspect the agent's saved skill
+  reference. Changing `default_version` does not update an existing agent.
+- **REST invocation fails:** use the agent-scoped endpoint described above,
+  not the project-level Responses route.
+- **A response looks right but skill use is unclear:** inspect the completed
+  skill invocation as well as output. Matching prose alone is not proof.
+- **Feature unavailable:** check region, engine and preview support before
+  changing organization permissions or provisioning replacement resources.
+
+The [lab results](../../docs/lab-status.md) describe the tests completed by
+this repository; they are not a requirement to use your own project.
 
 Sources: [Skills API](https://learn.microsoft.com/azure/foundry/agents/how-to/tools/skills),
 [Copilot harness](https://learn.microsoft.com/azure/foundry/agents/how-to/use-tools-skills-copilot-harness).

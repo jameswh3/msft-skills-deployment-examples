@@ -1,5 +1,10 @@
 # Presenter script: one skill across Microsoft and GitHub
 
+> Optional facilitator material. For learning how to use, install and manage
+> skills in your own organization, start with the [user and administrator
+> guide](../README.md) and its product guides. The read-only presentation rules
+> below apply only to this lab tour, not to normal administration.
+
 ## What this demo shows
 
 **Opening line:** "We authored one instruction-only meeting-notes skill and
@@ -673,7 +678,7 @@ agent, a versioned project asset, enterprise policy, or a catalog entry
 depending on the platform. There is no single catalog toggle that installs,
 updates, or revokes every copy everywhere."
 
-Share the [repository](https://github.com/jameswh3/oge-msft-skills-deployment-examples)
+Share the [repository](https://github.com/jameswh3/msft-skills-deployment-examples)
 and [evidence ledger](lab-status.md). Keep the Cowork source-attribution
 limitation and the GitHub entitlement gap visible rather than describing
 all paths as equally verified.

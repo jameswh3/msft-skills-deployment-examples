@@ -1,5 +1,10 @@
 # Support and deployment boundaries
 
+Use this comparison to choose how users will receive a skill and who will
+maintain it. For task-based instructions, start with the
+[user and administrator guide](../README.md). Presenter scripts are not
+required to install or manage any of these examples.
+
 SharePoint and Office documentation checked November 15, 2026; original
 platform research checked November 13, 2026. Runtime availability depends on the
 organization's settings, agent engine, app version, region, license and rollout.

@@ -12,6 +12,22 @@ toolbox-based remote skill discovery for compatible clients.
 The **Microsoft Copilot harness** is the agent engine selected in Foundry;
 an **immutable version** is saved content that cannot later be edited.
 
+## Find and consume a centrally managed skill
+
+1. Open your organization's API Center portal, if one has been published, or
+   the API Center resource's **Inventory > Assets** page if you have Azure
+   access. Search for the intended **Skill** entry.
+2. Review its description, source link, approved version and compatibility.
+   The catalog helps you choose instructions; it is not itself a chat agent.
+3. Follow the connection appropriate to your application in the table below:
+   a Foundry skill reference, or a supported toolbox MCP connection.
+4. If your target is Chat, Cowork, Studio or a coding client without verified
+   remote skill discovery, follow that product's packaging/installation guide
+   instead of assuming a generic MCP connection loads instructions.
+
+Application users usually use the resulting agent or application. Developers
+and administrators configure its skill reference or server connection.
+
 ## Where to manage each part
 
 - **Catalog entry:** Azure portal > **API Centers > select your API Center >
@@ -78,7 +94,7 @@ flowchart LR
 4. API Center > Inventory > Assets > Register an asset > **Skill**.
 5. Use title Meeting Notes, identifier meeting-notes, the appropriate lifecycle,
    and this source:
-   `https://github.com/jameswh3/oge-msft-skills-deployment-examples/tree/main/skills/meeting-notes`.
+   `https://github.com/jameswh3/msft-skills-deployment-examples/tree/main/skills/meeting-notes`.
    For an approved release, use a commit-specific source URL.
 6. Describe compatibility as instruction-only Agent Skills; no allowed external
    tools are required. Link the approved release/provenance through supported
@@ -103,28 +119,6 @@ Prefer the Free API Center plan for evaluation. Check current feature limits
 before enabling assessments, portal features, or Git integrations; do not
 silently upgrade to Standard or provision API Management/hosting.
 
-### Observed lab behavior
-
-The Free-plan Git integration reached **Linked and syncing** and discovered
-the uppercase skill file with the explicit `**/SKILL.md` pattern. The
-synchronized asset has `kind: skill`, Testing lifecycle, and an `apiSourceId`
-pointing to the integration. Manual registration and synchronization produced
-separate catalog entries; retain or consolidate them deliberately rather than
-assuming the manual entry was converted into a synchronized one.
-
-The native source/compatibility fields are visible through raw ARM reads
-(`az resource show`). The installed API Center CLI's typed `api show` output
-omitted some newer fields; an omitted CLI field was not evidence that the
-portal had failed to save it.
-
-The catalog source was fetched at a pinned Git commit and compared with the
-deployed source and Foundry export. Metadata and instruction bodies matched
-after separately reviewing line-ending and export-frontmatter formatting.
-Their raw hashes differed: Git used LF, the Windows checkout used CRLF, and
-the export reconstructed the frontmatter with another separator blank line.
-Keep hashes for each actual artifact; do not claim these files are
-byte-identical or silently normalize away an unexplained difference.
-
 ## B. Optional direct remote discovery
 
 Attach the versioned Foundry skill to a toolbox in the **same Foundry project**.
@@ -135,7 +129,7 @@ it lists and reads skills rather than merely listing/calling tools. Microsoft
 Agent Framework documents .NET's `UseMcpSkills` and Python's
 `FoundryToolbox.as_skills_provider()` as consumption paths.
 
-| Consumer | What this repository can claim |
+| Consumer | Support and required checks |
 | --- | --- |
 | Microsoft Agent Framework agents and other clients implementing MCP Resources/skills discovery | Documented preview consumption through a Foundry toolbox's authenticated MCP endpoint; verify authentication, version and actual skill load. |
 | Microsoft 365 Chat/declarative agents/Cowork | Native packaging is documented; generic MCP tool connectivity is not proof of remote toolbox skill loading. |
@@ -150,9 +144,8 @@ it does not install or load the skill into the consumer.
 
 That adapter requires hosting, an API contract, per-caller authentication,
 authorization, data-boundary decisions, billing, error handling, and runtime
-tests. It is not implemented or falsely described as native interoperability
-in this instruction-only example. API Center cataloging alone supplies none
-of those runtime capabilities.
+tests. This instruction-only example does not include that adapter. API Center
+cataloging alone supplies none of those runtime capabilities.
 
 ## Update, rollback and revoke
 
@@ -161,6 +154,26 @@ rebuild/assign consumer packages or change pinned remote bindings; verify.
 Rollback must also restore the versions selected by each agent/application.
 Catalog unpublication does
 not revoke embedded skill copies; use each host's block/uninstall controls.
+
+To update catalog information, open **Azure portal > API Centers > select the
+resource > Inventory > Assets > select the skill > Edit**, change the reviewed
+properties and save. For a Git-synchronized entry, maintain its source and
+check the integration status rather than assuming edits propagate to Foundry.
+
+## Troubleshooting
+
+- **Entry exists but the application cannot load the skill:** catalog access
+  is separate from authentication/permission to the Foundry project or toolbox.
+- **MCP tools work but skills do not appear:** confirm the client supports
+  MCP Resources and skills discovery, not just tool calls.
+- **Git updates are absent:** inspect **Platforms > Integrations** and the
+  configured source/pattern; check the case of `SKILL.md`.
+- **New default has no effect:** check the agent or toolbox's selected
+  version. Updating a catalog entry does not change those references.
+
+For the completed catalog tests, CLI differences and source/export comparisons,
+see the optional [technical lab
+record](../../docs/lab-status.md#api-center-catalog-verification-details).
 
 Sources: [Register skills](https://learn.microsoft.com/azure/api-center/register-discover-skills),
 [Git synchronization](https://learn.microsoft.com/azure/api-center/synchronize-assets-git),

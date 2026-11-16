@@ -13,7 +13,7 @@ repository.
 | Declarative agent | Agent schema v1.9; app passed 61 host rules; revision 0.1.1 package content verified; pilot baseline passed with **Using skills from** trace; tenant request approved and publication/preinstallation to All users completed; separate Available tenant-registry entry verified | Edge cases and excluded-user control not exercised |
 | Copilot Studio | Revision 0.1.1 replaced/saved; Preview baseline and ambiguity/conflict/injection checks passed with explicit **Used skill: meeting-notes** trace; authenticated Teams + Microsoft 365 channel published and installed; published-channel baseline passed with the same trace; organization-wide use access confirmed in sharing and admin registry | Other-recipient shared-skill snapshot/update acceptance and destructive revocation not exercised |
 | Foundry | Immutable versions 1-3 created; skill load observed in synthetic runs; default promotion/rollback and explicit consumer rebinding tested; refined revision 0.1.1 passed baseline and ambiguity/conflict/injection checks and was promoted/exported | Destructive revocation/removal deliberately not exercised on retained demo resources |
-| API Center | **Free** native registration and public Git integration verified; **Linked and syncing** discovered a separate `kind: skill` Testing asset with `apiSourceId` and explicit `**/SKILL.md` pattern; catalog-source retrieval and reviewed metadata/instruction-body parity with the deployed source/export verified | No universal remote loading or hosted execution adapter claimed; raw artifact hashes differ as documented in the platform guide |
+| API Center | **Free** native registration and public Git integration verified; **Linked and syncing** discovered a separate `kind: skill` Testing asset with `apiSourceId` and explicit `**/SKILL.md` pattern; catalog-source retrieval and reviewed metadata/instruction-body parity with the deployed source/export verified | No universal remote loading or hosted execution adapter claimed; raw artifact hashes differ as documented in the [technical record](#api-center-catalog-verification-details) |
 | GitHub repository | Source pushed to public main; Windows CI validation, tests and packaging passed; contributor Write invitation sent | Invitation acceptance |
 | GitHub Copilot runtime | **Unavailable: no Copilot entitlement in this lab** | Must be tested in another entitled environment |
 | SharePoint site skill | Dedicated synthetic-content site and native site skill created; revised canonical file replaced in the product-created Agent Assets library with exact saved-byte SHA-256 verified; fresh **Used site skill sharepoint-site-review** trace observed, with four output sections and all five checklist rows, missing owner and conflicting 20/30 target | Dedicated Site skills management page and additional edge cases not yet exercised |
@@ -78,3 +78,24 @@ output alone.
 Revision 0.1.1 strengthens missing-reference-date reporting after a live edge
 case exposed insufficient ambiguity handling. These are observed samples, not
 proof that model behavior or prompt-injection resistance is deterministic.
+
+## API Center catalog verification details
+
+The Free-plan Git integration reached **Linked and syncing** and discovered
+the uppercase skill file with the explicit `**/SKILL.md` pattern. The
+synchronized asset has `kind: skill`, Testing lifecycle, and an `apiSourceId`
+pointing to the integration. Manual registration and synchronization produced
+separate catalog entries; the manual entry was not converted into the
+synchronized one.
+
+The source/compatibility fields were visible through raw Azure Resource
+Manager reads (`az resource show`). The installed API Center CLI's typed
+`api show` output omitted some newer fields; that omission was not evidence
+that the portal had failed to save them.
+
+The catalog source was fetched at a pinned Git commit and compared with the
+deployed source and Foundry export. Metadata and instruction bodies matched
+after separately reviewing line-ending and export-frontmatter formatting.
+Their raw hashes differed: Git used LF, the Windows checkout used CRLF, and
+the export reconstructed the frontmatter with another separator blank line.
+Keep hashes for each actual artifact; these files were not byte-identical.

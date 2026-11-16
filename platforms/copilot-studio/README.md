@@ -10,10 +10,28 @@ Agents > select the agent > Build > Skills > meeting-notes**. An environment
 is the workspace containing the agent. Use **Share** on the agent to manage
 who can use it; sharing the skill itself with other authors is separate.
 
-## Create and deploy
+## Use a skill through the published agent
 
-1. Choose the intended lab environment, not the default or production
-   environment accidentally.
+1. Open the published agent in the channel your organization provides, such
+   as Teams or Microsoft 365 Copilot. Users do not upload its skill file or
+   visit Copilot Studio just to use it.
+2. Give the task and input. For this example, ask it to use `meeting-notes`
+   and supply the meeting notes.
+3. Review its summary, decisions, action items and open questions. If shown,
+   **Used skill: meeting-notes** identifies the workflow it used.
+
+Ask the agent owner for access if it is missing. Access to the published
+agent is separate from permission to edit it or reuse its skill as an author.
+
+## Requirements
+
+Authors need access to the intended Copilot Studio environment and permission
+to create/publish the agent. Users need access to its published channel.
+Channel/data policies, authentication, licensing, and Copilot Credits apply.
+
+## Create and deploy as an author
+
+1. Select the intended development/test environment.
 2. Create a dedicated agent using the Microsoft Copilot harness.
 3. **Build > Skills > Upload a skill**: upload the reviewed `SKILL.md` or the
    standalone ZIP produced by `npm run build`. In that ZIP, `SKILL.md` must
@@ -24,8 +42,6 @@ who can use it; sharing the skill itself with other authors is separate.
 6. Publish the agent to an allowed channel. Share it with the pilot audience
    or submit to the organization catalog.
 7. Test the published experience as an intended recipient, not just as maker.
-
-Channel/data policies, authentication, licensing, and Copilot Credits apply.
 
 ## Central skill sharing (preview)
 
@@ -51,18 +67,35 @@ automatic live synchronization.
   every embedded snapshot disappeared.
 - Delete a skill only after saving a recoverable copy.
 
-Agent publication, agent use access, and skill-library access are separate
-operations. The lab published an authenticated Teams + Microsoft 365 channel,
-enabled organization-wide agent **use** access through Share, and separately
-published the skill to the maker's **Only you** library. The published channel
-showed **Used skill: meeting-notes** and passed the shared baseline fixture.
-Do not treat maker-library publication as organization-wide skill assignment.
+## Manage access as an owner or administrator
+
+- **Use the agent:** open the agent's **Share** panel and grant the intended
+  users use access; publish it to the allowed channel.
+- **Edit the agent:** grant author/coauthor access only to people who should
+  change its configuration, not everyone who needs to use it.
+- **Reuse the skill in another agent:** open **Build > Skills > select the
+  skill > Share** and choose the intended author audience. **Only you**
+  does not publish an organization-wide skill library.
+- **Review the published Microsoft 365 entry:** in Microsoft 365 admin
+  center, open **Agents > All agents > select the agent** to review its
+  tenant availability. This does not replace Studio's authoring controls.
+
+## Troubleshooting
+
+| Problem | What to check |
+| --- | --- |
+| Works in Preview, not for users | Publish the current agent, check its channel and use-sharing audience, and test with a recipient account. |
+| A shared skill changed but the agent did not | Accept the skill update in the consuming agent and republish it. Each agent has its own saved copy. |
+| A user cannot edit the skill | Use access is not author access; ask the owner to review the intended role. |
+| Markdown skill upload is unavailable | Check that the agent uses the Microsoft Copilot harness; other agent types have different skill features. |
 
 **Automation boundary:** general plugin support in Copilot Studio is not yet
 available. Its standard-harness solution/application lifecycle management
 (ALM) documentation does not establish
 an API for this harness's skill deployment. This example deliberately uses
 the documented maker/administrator workflow instead of inventing an endpoint.
+
+For completed tests and limitations, see [lab results](../../docs/lab-status.md).
 
 Sources: [Upload](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-add-existing),
 [sharing and updates](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage),
