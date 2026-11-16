@@ -158,8 +158,10 @@ The default build still packages only the original meeting-notes skill.
 Host-specific examples are separate from the root GitHub plugin's skill
 directory; adding one does not silently update previously deployed plugins.
 
-These are not Microsoft 365 app packages. Generate official Microsoft 365
-projects with the [scaffold script](scripts/New-Microsoft365Examples.ps1).
+These build outputs provide reusable skill archives, GitHub deployment
+bundles, synthetic test fixtures and package hashes. To create Microsoft 365
+app packages, generate projects with the
+[scaffold script](scripts/New-Microsoft365Examples.ps1).
 Provisioning, tenant-side package validation, publication, and sharing are
 separate authenticated actions.
 
