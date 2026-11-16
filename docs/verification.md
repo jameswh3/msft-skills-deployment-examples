@@ -58,5 +58,6 @@ API Center discovery and Foundry export are separate checks. Test remote
 toolbox skill loading only in a compatible client. Do not infer it from a
 successful MCP tool call.
 
-GitHub Copilot runtime is unavailable in this lab; retain that explicit gap
-even when repository publication and offline validation pass.
+Run GitHub Copilot runtime checks with an entitled account and a supported
+client. Record runtime verification separately from repository publication
+and offline validation.

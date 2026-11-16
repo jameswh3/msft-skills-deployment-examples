@@ -39,7 +39,7 @@ for the actual menus and commands. The common decisions are:
 
 ## Version and evidence record
 
-Keep detailed records outside the public repository:
+Maintain a deployment record with the following information:
 
 | Field | Purpose |
 | --- | --- |
@@ -52,11 +52,6 @@ Keep detailed records outside the public repository:
 | Observed invocation and output | Proof beyond package validation |
 | Previous package and agent version selection | How to restore reviewed behavior |
 | Block/uninstall verification | Whether fresh sessions can still invoke it |
-
-Do not commit tenant IDs, resource IDs, account details, tokens, environment
-files, screenshots containing tenant data, or model transcripts from real work.
-Use only synthetic test input. The public lab ledger should contain sanitized
-status and limitations.
 
 ## Withdrawing access, by product
 

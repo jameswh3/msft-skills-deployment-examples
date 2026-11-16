@@ -5,9 +5,7 @@ and GitHub products. The repository includes a shared meeting-notes skill
 and additional examples for tasks in SharePoint, Word, Excel and PowerPoint.
 
 Learn how reusable skill instructions reach users, where they are stored,
-who can manage them, and how updates work in each product. The examples can
-be used in your own organization; access to the repository author's lab is
-not required.
+who can manage them, and how updates work in each product.
 
 ## Start here
 
@@ -126,8 +124,8 @@ update/removal instructions.
 
 ## Developer quickstart: build packages locally
 
-Prerequisites: Node.js/npm and PowerShell 7. Node 24.15.0 is restored as a
-workspace-only tool; no global Node version switch is necessary.
+Prerequisites: Node.js/npm and PowerShell 7. WIQD scripts use a
+workspace-local Node 24.15.0 executable.
 
 ```powershell
 npm ci
@@ -154,7 +152,7 @@ Build output in `out`:
 - `host-fixtures/OGE-Pipeline-Skill-Demo.xlsx`: an editable synthetic Excel
   table built from the checked-in CSV, preserving its deliberate data issues.
 
-The default build still packages only the original meeting-notes skill.
+The default build packages the meeting-notes skill.
 Host-specific examples are separate from the root GitHub plugin's skill
 directory; adding one does not silently update previously deployed plugins.
 
@@ -178,15 +176,6 @@ successful deployment or an invocation test.
 
 - [Lifecycle and governance](docs/lifecycle-and-governance.md)
 - [Official sources and preview/toolchain caveats](docs/sources.md)
-
-No CI job provisions resources, changes enterprise policy, or deploys to a
-tenant. Keep real tenant/subscription IDs, environment files, authentication
-state, and detailed lab records outside this public repository.
-
-## Optional supporting material
-
-- [Presenter script](docs/demo-script.md): an optional tour of the retained
-  lab examples. It is not the installation or administration guide.
 
 ## Contributing
 

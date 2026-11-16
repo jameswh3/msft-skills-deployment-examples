@@ -16,7 +16,7 @@ CLI help before changing deployment commands.
 | Word | [Plugin capabilities and host constraints](https://learn.microsoft.com/microsoft-365/copilot/extensibility/plugin-type-skills), [Plugin distribution](https://learn.microsoft.com/microsoft-365/copilot/extensibility/deploy-plugin), [Microsoft's supplied Legal plugin and policy](https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-for-legal) |
 | Excel | [Native custom skills, OneDrive layout and management](https://support.microsoft.com/en-us/excel/copilot/copilot-in-excel-skills) |
 | PowerPoint | [Native custom skills, upload, scope and management](https://support.microsoft.com/en-us/powerpoint/copilot/copilot-in-powerpoint-skills) |
-| OneDrive file transfer | [Documented SharePoint folder/file REST operations](https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/working-with-folders-and-files-with-rest); used to copy the PowerPoint source into its discovered native folder, not to invent a skill registry |
+| OneDrive file transfer | [SharePoint folder/file REST operations](https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/working-with-folders-and-files-with-rest) |
 | Microsoft 365 governance | [Manage plugins, skills and MCP servers](https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers) |
 | WIQD | [Build a plugin](https://microsoft.github.io/wiqd/getting-started/build-a-plugin/), [installation and runtime prerequisites](https://microsoft.github.io/wiqd/getting-started/installation/) |
 | Studio | [Harnesses](https://learn.microsoft.com/microsoft-copilot-studio/harnesses-overview), [upload](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-add-existing), [marketplace/snapshots](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage), [publish](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/publication-publish-agent) |
@@ -40,8 +40,7 @@ CLI help before changing deployment commands.
 - GitHub `gh skill`: public preview, documented minimum 2.90.0.
 - Foundry Skills REST: `api-version=v1` plus `Skills=V1Preview` feature header.
 
-Keep package-lock.json committed; use `npm ci`. Do not globally upgrade tools
-or switch another user's active runtime/subscription to run these examples.
+Use `npm ci` to install the versions recorded in `package-lock.json`.
 
 ## Documentation differences handled deliberately
 
@@ -67,14 +66,14 @@ or switch another user's active runtime/subscription to run these examples.
 - The reviewed documentation does not establish Word-native skill creation.
   Creating a skill and consuming an externally authored skill through a plugin
   are separate capabilities.
-- Excel and PowerPoint OneDrive storage was observed in separate app folders;
-  do not assume a shared Office-wide custom-skill directory.
+- Excel and PowerPoint use separate app-specific OneDrive folders. Follow
+  each app's folder instructions.
 - Copilot Chat documentation specifies tenant-scoped SharePoint Embedded
   storage for uploaded skill files. This differs from native Office personal
   OneDrive storage; it does not establish creation within Word.
 - Neither the plugin picker nor a personal Chat upload establishes a Word-specific
   OneDrive watch-folder or an automatic Chat-upload-to-Word handoff.
-- The verified PowerPoint web UI labels its controls **Manage plugins** and
-  **Choose plugins**, while the support article says **Manage skills** and
-  **Choose skills**. Native custom listing, selection and saved output were
-  checked independently of that terminology difference.
+- PowerPoint can label its controls **Manage plugins** and **Choose plugins**,
+  while the support article says **Manage skills** and **Choose skills**.
+  Follow the labels available in your client and verify discovery, invocation
+  and saved output independently.
