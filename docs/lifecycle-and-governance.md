@@ -14,6 +14,9 @@ ability to edit it or install it for everyone.
 
 ## Common rollout
 
+The [platform consumption diagram](diagrams/skill-consumption.drawio) shows
+how packaged or stored skills reach each consuming experience.
+
 The deployment steps differ by product; use its [platform guide](../README.md#approaches)
 for the actual menus and commands. The common decisions are:
 
