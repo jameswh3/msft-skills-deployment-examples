@@ -534,8 +534,8 @@ Word-specific skill folder.
 
 The separate `word-project-brief` source requests saved document edits and
 native heading styles. It is not included in the meeting-notes plugin.
-A declarative agent containing that skill is an alternative packaging route;
-its package validation does not establish successful Word invocation or edits.
+Plugin availability does not establish successful skill invocation or saved
+document edits; test the requested behavior independently.
 
 See the [Word guide](../platforms/word/README.md) and separate
 [project-brief rubric](../samples/word/expected-behavior.md).

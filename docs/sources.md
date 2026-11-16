@@ -13,7 +13,7 @@ CLI help before changing deployment commands.
 | Declarative agents | [Skills/support matrix](https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-skills), [Toolkit integration](https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-declarative-agents-add-custom-skills) |
 | Cowork | [Author plugins](https://learn.microsoft.com/copilot/cowork/cowork-plugin-development), [administer plugins](https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins), [personal skills and sharing](https://learn.microsoft.com/copilot/cowork/cowork-customize) |
 | SharePoint | [Native site/personal skills and management](https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills), [availability/licensing and retired preview controls](https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started) |
-| Word | [Declarative agents supported in Word](https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-declarative-agents), [open document and Add selection](https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-document-interaction), [Agent Builder skill upload](https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder-add-skills), [Toolkit skill registration](https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-declarative-agents-add-custom-skills) |
+| Word | [Plugin capabilities and host constraints](https://learn.microsoft.com/microsoft-365/copilot/extensibility/plugin-type-skills), [Plugin distribution](https://learn.microsoft.com/microsoft-365/copilot/extensibility/deploy-plugin), [Microsoft's supplied Legal plugin and policy](https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-for-legal) |
 | Excel | [Native custom skills, OneDrive layout and management](https://support.microsoft.com/en-us/excel/copilot/copilot-in-excel-skills) |
 | PowerPoint | [Native custom skills, upload, scope and management](https://support.microsoft.com/en-us/powerpoint/copilot/copilot-in-powerpoint-skills) |
 | OneDrive file transfer | [Documented SharePoint folder/file REST operations](https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/working-with-folders-and-files-with-rest); used to copy the PowerPoint source into its discovered native folder, not to invent a skill registry |
@@ -61,21 +61,18 @@ or switch another user's active runtime/subscription to run these examples.
 - The general Copilot Chat skill builder article is not Word-specific
   documentation or proof that a Word client supports custom skills.
 - Word desktop's **Copilot pane > @ > Plugins** can expose installed/shared
-  skill packages independently of the documented declarative-agent route.
+  skill packages.
   Picker availability does not prove invocation or document edits; see the
   [Word guide](../platforms/word/README.md) for selection and host-specific checks.
 - The reviewed documentation does not establish Word-native skill creation.
   Creating a skill and consuming an externally authored skill through a plugin
-  or declarative agent are separate capabilities.
-- Word supplies document text/selection to a declarative agent. The document
-  interaction article does not establish arbitrary in-place text/style
-  editing by an attached skill; those results require separate verification.
+  are separate capabilities.
 - Excel and PowerPoint OneDrive storage was observed in separate app folders;
   do not assume a shared Office-wide custom-skill directory.
 - Copilot Chat documentation specifies tenant-scoped SharePoint Embedded
   storage for uploaded skill files. This differs from native Office personal
   OneDrive storage; it does not establish creation within Word.
-- Neither the plugin picker nor agent packaging establishes a Word-specific
+- Neither the plugin picker nor a personal Chat upload establishes a Word-specific
   OneDrive watch-folder or an automatic Chat-upload-to-Word handoff.
 - The verified PowerPoint web UI labels its controls **Manage plugins** and
   **Choose plugins**, while the support article says **Manage skills** and
