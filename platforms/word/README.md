@@ -34,9 +34,8 @@ PowerPoint folder instructions do not establish that behavior for Word.
    changes independently. Access to document text does not by itself prove
    that a skill can replace text or apply heading styles in the saved file.
 
-These are instructions for a deployed agent, not a claim that this
-repository's Word-specific example is already installed. Its validation
-status and document-editing limits are described below.
+The agent must contain the skill and be available to the signed-in user.
+Document-interaction limits are described below.
 
 ## Author and deploy: two documented agent-authoring options
 
@@ -130,23 +129,20 @@ the document or its heading styles were updated.
   OneDrive installation folder is established by the reviewed documentation.
   Use the documented agent-authoring route rather than guessing a path.
 
-## Compatibility and validation status
+## Microsoft's Legal plugin is a separate capability
 
-Word web in the lab displayed existing shared/managed packages under
-**Copilot pane > Add sources, skills, and more > Choose plugins** and
-**Copilot pane > Settings and more > Manage plugins**. Those observations
-are separate from the documented agent route above. The generic
-[Chat plugin guide](../microsoft-365/plugin/README.md) documents packaging and
-central assignment, but does not independently establish a Word-specific
-method for installing a standalone skill in Word.
+Microsoft supplies a Legal plugin for **Word desktop**, enabled by default
+for Microsoft 365 Copilot commercial subscribers. Administrators control it
+through **Microsoft 365 Apps admin center > Policy Management**, using the
+policy **Legal Skills in M365 Copilot in Word**. This policy controls
+Microsoft's supplied Legal plugin; it is not an upload or deployment setting
+for customer-authored plugins.
 
-Creating a skill by asking Word itself was not successful: the request
-returned an unsaved chat draft. That result does not rule out externally
-authored, agent-packaged skills. Likewise, Chat's upload instructions and
-SharePoint Embedded storage do not establish a Chat-upload-to-Word handoff.
+The [Chat/Cowork plugin guide](../microsoft-365/plugin/README.md) covers those
+products' packaging and central installation. Do not assume that installing
+such a plugin also registers a standalone skill inside Word, or that Chat's
+upload storage is a Word installation folder.
 
-**This example's source and archives validate locally. Its Word agent has
-not been packaged, deployed or invoked in the lab.** The documented route is
-now identified; Word deployment and saved-document verification remain
-separate work, not a completed installation. See the [lab
-results](../../docs/lab-status.md) for supporting evidence.
+Source: [Manage Copilot for legal](https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-for-legal).
+For deployment and runtime test evidence, see the separate
+[verification record](../../docs/lab-status.md).

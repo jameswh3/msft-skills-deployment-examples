@@ -23,7 +23,7 @@ user does not need VS Code or Azure CLI.
 - **Documented graphical interface:** in VS Code, open **Microsoft Foundry
   Toolkit** for the intended project, then **Tools > Skills > meeting-notes**.
   This is an extension in VS Code, not a Microsoft 365 admin center page.
-- **Lab-tested management route:** run this repository's
+- **API-based management:** run this repository's
   `Invoke-FoundrySkill.ps1` with **Inspect** to read the skill and its versions.
   The commands below show the other operations for developers.
 - **Which version an agent uses:** inspect that agent's saved definition.

@@ -58,8 +58,7 @@ automatic live synchronization.
 
 - Replace/edit the uploaded skill, Preview, and republish.
 - For an imported skill, open its details > More options > **Replace**, select
-  the reviewed source/package, and save the agent before testing. The lab
-  verified this workflow with revision 0.1.1.
+  the reviewed source/package, and save the agent before testing.
 - Keep the previous source/package for rollback; replace with that reviewed
   content, republish, and test.
 - Stop sharing the skill with other authors when appropriate. Remove it

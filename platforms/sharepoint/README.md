@@ -77,6 +77,7 @@ byte-identical to this source. Download/inspect the saved skill if needed.
 On **Settings > Site skills**, select the skill to find enable/disable,
 **Copy to sites**, and deletion actions. Open its details for editing,
 **Replace**, **Download**, and **Versions**.
+The details page's **Edit** menu offers **Edit** and **Edit with Copilot**.
 Use **Disable** to stop use on the site, **Copy to sites** to distribute
 a copy, **Replace** to upload reviewed instructions, and **Versions** to
 inspect or restore earlier content. Restoring creates a new current version
@@ -99,11 +100,11 @@ are not automatically kept synchronized.
 5. Verify the **Used personal skill** indicator and expected result.
    To check availability across sites, repeat on a second site you can access.
 
-In the lab, the creation card and runtime indicator exposed the saved skill's
-location. Its owner-specific OneDrive UI path was **Documents > Copilot >
-Agent Assets > Skills > sharepoint-personal-brief**. This was discovered and
-verified, not assumed as a universal system path. It is separate from the
-Excel/PowerPoint folders and Chat's SharePoint Embedded upload storage.
+Use the creation card or runtime indicator to open the saved skill's actual
+location. A personal skill's OneDrive path can appear as **Documents > Copilot >
+Agent Assets > Skills > sharepoint-personal-brief**; follow the supplied link
+rather than assuming a universal installation folder. This storage is separate
+from the Excel/PowerPoint folders and Chat's SharePoint Embedded upload storage.
 
 Review the actual saved instructions: Copilot may reformat or add to the
 instructions you supplied. For an update, revise the saved skill

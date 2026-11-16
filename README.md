@@ -65,7 +65,7 @@ agents run the skills and where their instructions are managed.
 | Cowork skills | Copilot Cowork conversations and tasks | An administrator installs a plugin containing the skill through Microsoft 365 admin center > Agents > Tools > Registry; users enable it in Cowork > Customize > Plugins | [Cowork](platforms/microsoft-365/plugin/README.md) |
 | SharePoint site skills | Copilot chat on the associated SharePoint site, for users with the required site/content permissions | A site owner creates the skill in Copilot in SharePoint and manages it from that site's Settings > Site skills | [SharePoint](platforms/sharepoint/README.md) |
 | SharePoint personal skills | Copilot in SharePoint, for an individual user across supported sites they can access | The user saves reusable instructions for their own use in Copilot in SharePoint; Open skill location on the saved card opens the source file in that user's OneDrive | [SharePoint](platforms/sharepoint/README.md) |
-| Declarative-agent skills in Word | A declarative agent opened in Word's Copilot pane | Attach the skill to a declarative agent through Agent Builder or Agents Toolkit, then distribute the agent. Documented route; this Word example is not yet deployed | [Word](platforms/word/README.md) |
+| Declarative-agent skills in Word | A declarative agent opened in Word's Copilot pane | Attach the skill to a declarative agent through Agent Builder or Agents Toolkit, then distribute the containing agent | [Word](platforms/word/README.md) |
 | Excel custom skills | Copilot in Excel, with the workbook open | Put the skill folder in the user's Excel-specific OneDrive folder, then use Copilot pane > Settings and more > Manage plugins > Custom skills > Refresh and turn on the skill | [Excel](platforms/excel/README.md) |
 | PowerPoint custom skills | Copilot in PowerPoint, with the presentation open | The user adds a skill through the Copilot pane's Manage skills/Manage plugins menu, by upload, form or its PowerPoint-specific OneDrive folder | [PowerPoint](platforms/powerpoint/README.md) |
 | Copilot Studio skills | An agent published from Copilot Studio to Teams or Microsoft 365 Copilot | The agent's author opens Build > Skills to upload instructions, then publishes and grants access to the agent; sharing skills with other authors is separate | [Studio](platforms/copilot-studio/README.md) |
@@ -126,10 +126,10 @@ identify every installed copy or agent version that needs changing. Follow
 the [management lifecycle](docs/lifecycle-and-governance.md) and each product's
 update/removal instructions.
 
-**Word status:** documentation supports packaging a skill in a declarative
-agent used in Word. This repository's Word-specific agent has not yet been
-deployed or tested, and its requested in-place editing behavior is not
-verified. The [Word guide](platforms/word/README.md) explains the route and limits.
+For Word, distinguish skills attached to a declarative agent from Microsoft's
+supplied Legal plugin. Neither establishes a general-purpose Word skill
+installation folder. The [Word guide](platforms/word/README.md) explains the
+deployment options and document-interaction limits.
 
 ## Developer quickstart: build packages locally
 

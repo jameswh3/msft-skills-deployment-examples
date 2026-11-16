@@ -13,12 +13,13 @@ repository.
 | Declarative agent | Agent schema v1.9; app passed 61 host rules; revision 0.1.1 package content verified; pilot baseline passed with **Using skills from** trace; tenant request approved and publication/preinstallation to All users completed; separate Available tenant-registry entry verified | Edge cases and excluded-user control not exercised |
 | Copilot Studio | Revision 0.1.1 replaced/saved; Preview baseline and ambiguity/conflict/injection checks passed with explicit **Used skill: meeting-notes** trace; authenticated Teams + Microsoft 365 channel published and installed; published-channel baseline passed with the same trace; organization-wide use access confirmed in sharing and admin registry | Other-recipient shared-skill snapshot/update acceptance and destructive revocation not exercised |
 | Foundry | Immutable versions 1-3 created; skill load observed in synthetic runs; default promotion/rollback and explicit consumer rebinding tested; refined revision 0.1.1 passed baseline and ambiguity/conflict/injection checks and was promoted/exported | Destructive revocation/removal deliberately not exercised on retained demo resources |
+| Foundry toolbox remote skills | Skill-only toolbox version 1 pins `meeting-notes` version 3; authenticated MCP initialization, skills-index discovery and instruction retrieval passed; default and version-specific endpoints returned identical skill text; a custom PowerShell client loaded the retrieved instructions and passed the meeting-notes baseline; anonymous retrieval returned HTTP 401 | Agent Framework SDK integration, toolbox promotion/rollback and excluded-user authorization not exercised; see the [remote-consumption details](#foundry-toolbox-remote-consumption) |
 | API Center | **Free** native registration and public Git integration verified; **Linked and syncing** discovered a separate `kind: skill` Testing asset with `apiSourceId` and explicit `**/SKILL.md` pattern; catalog-source retrieval and reviewed metadata/instruction-body parity with the deployed source/export verified | No universal remote loading or hosted execution adapter claimed; raw artifact hashes differ as documented in the [technical record](#api-center-catalog-verification-details) |
 | GitHub repository | Source pushed to public main; Windows CI validation, tests and packaging passed; contributor Write invitation sent | Invitation acceptance |
 | GitHub Copilot runtime | **Unavailable: no Copilot entitlement in this lab** | Must be tested in another entitled environment |
-| SharePoint site skill | Dedicated synthetic-content site and native site skill created; revised canonical file replaced in the product-created Agent Assets library with exact saved-byte SHA-256 verified; fresh **Used site skill sharepoint-site-review** trace observed, with four output sections and all five checklist rows, missing owner and conflicting 20/30 target | Dedicated Site skills management page and additional edge cases not yet exercised |
+| SharePoint site skill | Dedicated synthetic-content site and native site skill created; revised canonical file replaced in the product-created Agent Assets library with exact saved-byte SHA-256 verified; fresh **Used site skill sharepoint-site-review** trace observed, with four output sections and all five checklist rows, missing owner and conflicting 20/30 target; Site skills details showed current version 3.0, Enabled, Edit and Edit with Copilot; Versions showed 1.0/2.0/3.0 and Restore controls for prior versions | Replacement/restoration through these UI controls, disabling, cross-site copying and additional edge cases not exercised |
 | SharePoint personal skill | Documented site-home Copilot creation, reviewed definition and explicit personal-save confirmation succeeded; native **Skill created / Your skill** card and actual OneDrive source verified. Fresh chat showed **Used personal skill sharepoint-personal-brief**, three takeaways, a four-row Fact/Evidence/Caveat table, and three grounded open questions | Generated source is not byte-identical to the canonical package; see source-review note below. Cross-site portability and lifecycle changes not exercised |
-| Word workflow | Source and archives validate; Word web displays existing shared/managed packages. Documentation review establishes a route through a declarative agent containing the skill, authored with Agent Builder or Agents Toolkit and distributed as an agent | **Word agent packaging, deployment and invocation not performed.** In-place text/style edits remain unverified. Word-native creation returned only an unsaved draft; no Word OneDrive installation folder or Chat-upload handoff is established. See the [Word deployment guide](../platforms/word/README.md) |
+| Word workflow | Dedicated declarative agent provisioned successfully with Agents Toolkit; declarative manifest v1.9; app passed 61 host-validation rules; deployed package contains the exact canonical `word-project-brief` bytes. Word web's Copilot and plugin-discovery panes were opened | **Word skill invocation and saved text/style edits remain unverified.** Document-entry attempts did not persist, and the dedicated agent's page stayed blank in Edge. Provisioning is not a Word runtime test. Word-native creation returned only an unsaved draft; no Word OneDrive installation folder or Chat-upload handoff is established. Microsoft's supplied Legal plugin and its administrator policy were checked against documentation, not exercised in Word desktop. See the [Word deployment guide](../platforms/word/README.md) |
 | Excel pipeline review | Native app-specific OneDrive folder created; 1576-byte canonical source uploaded with exact SHA-256 parity, listed/refreshed/enabled in Custom skills and selected through the native picker; changes accepted and saved workbook independently decoded: source records preserved, eight findings in A11:D18, total B21=35000 and included count B22=6 | Initial chat miscounted affected source rows as six; saved findings cover all seven. Read-back corrected the count in prose but retained six in its chat table. No separate source-mount trace exposed in the inspected UI |
 | PowerPoint workflow | Canonical 1204-byte source saved in the discovered native app-specific OneDrive folder with exact SHA-256 parity; listed and enabled in Custom skills, selected through the native picker, and invoked with a short task request. Saved deck independently decoded: Executive summary first, original three source slides intact, five summary bullets of 10/12/12/11/14 words, common native title-and-content layout, preserved date and 20/30 conflict | No separate source-load trace observed; native selection, saved source and deck output are verified. Suggested next step was explicitly identified as an inference in chat, not a source decision |
 
@@ -78,6 +79,32 @@ output alone.
 Revision 0.1.1 strengthens missing-reference-date reporting after a live edge
 case exposed insufficient ambiguity handling. These are observed samples, not
 proof that model behavior or prompt-injection resistance is deterministic.
+
+## Foundry toolbox remote consumption
+
+The dedicated toolbox contains no executable tools and pins `meeting-notes`
+version 3. MCP initialization advertised Resources and the skills-discovery
+extension. `resources/list` returned the skill entry and `skill://index.json`;
+reading the index identified `skill://meeting-notes/SKILL.md`.
+`resources/read` retrieved that file successfully. Its instruction body
+matched the canonical source after normalizing line endings and removing
+the reconstructed frontmatter separator; this is not a raw-byte parity claim.
+
+A custom PowerShell MCP Resources client retrieved those instructions live
+and supplied them to an existing Azure OpenAI model as instructions for the
+synthetic meeting-notes input. The output passed the baseline rubric:
+three summary bullets, the support-group pilot decision, all three action
+items with the expected owners/dates or `Not specified`, and the open
+translation/success-criteria questions. This verifies remote instruction
+retrieval and consumption by that client, not automatic loading by every
+MCP client or the Agent Framework SDK integrations.
+
+The default consumer endpoint and pinned version endpoint returned identical
+skill text. `tools/list` returned no tools, demonstrating that successful tool
+discovery alone would miss this skill-only toolbox. A request without an
+authorization token returned HTTP 401. This checks authentication, not the
+permissions of a different signed-in user. No toolbox version promotion,
+rollback, removal or broader access assignment was performed.
 
 ## API Center catalog verification details
 

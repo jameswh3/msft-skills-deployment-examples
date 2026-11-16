@@ -112,9 +112,8 @@ sandbox execution. Check current minimum client versions before rollout.
 - **Old instructions still run:** distinguish a repository copy from an
   installed plugin and update the copy the client is actually using.
 
-**Validation status:** this lab has no GitHub Copilot entitlement. Static/package checks
-and GitHub repository publication can be verified; Copilot installation,
-policy enforcement, and invocation must remain explicitly untested.
+For deployment and runtime test evidence, see the separate
+[verification record](../../docs/lab-status.md).
 
 Sources: [Native skills](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills),
 [enterprise plugin management](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/use-managed-settings/manage-plugin-marketplaces-and-plugins),

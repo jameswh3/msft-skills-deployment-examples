@@ -39,7 +39,7 @@ and administrators configure its skill reference or server connection.
   **Platforms > Integrations > select the Git integration**.
 - **Stored skill versions:** in VS Code, open **Microsoft Foundry Toolkit**
   for the intended project, then **Tools > Skills > select the skill**, or
-  use the project's Skills API. The lab used the API.
+  use the project's Skills API.
 - **Remote connection:** configure the consuming application to use the
   chosen Foundry toolbox endpoint, not the API Center resource address.
 
@@ -62,10 +62,6 @@ reviewed skill source and compatibility information. The runtime connections
 above go to **Foundry**, not API Center. Git synchronization updates the
 catalog; it does not automatically create Foundry skill versions or attach
 them to agents/toolboxes.
-
-The lab verified Foundry native agent consumption and API Center catalog/Git
-synchronization. Toolbox-based remote skill consumption is documented but
-has not been deployed or runtime-tested in this lab.
 
 API Center is a searchable catalog; it does not run skills or serve their
 instructions to an agent at runtime. Registering a skill does not install it
@@ -139,7 +135,7 @@ Agent Framework documents .NET's `UseMcpSkills` and Python's
 | Microsoft Agent Framework agents and other clients implementing MCP Resources/skills discovery | Documented preview consumption through a Foundry toolbox's authenticated MCP endpoint; verify authentication, version and actual skill load. |
 | Microsoft 365 Chat/declarative agents/Cowork | Native packaging is documented; generic MCP tool connectivity is not proof of remote toolbox skill loading. |
 | Copilot Studio | Native upload/sharing is documented; do not assume MCP tool support loads remote skills. |
-| GitHub Copilot | Local/repository/plugin skills are documented; verify a specific client's remote discovery extension before claiming this path. Runtime lab testing is unavailable here. |
+| GitHub Copilot | Local/repository/plugin skills are documented; check that the specific client implements remote skill discovery before choosing the toolbox route. |
 
 ## C. Calling a hosted capability is a different pattern
 
