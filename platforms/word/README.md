@@ -2,7 +2,7 @@
 
 ## How Word consumes skills
 
-**Copilot in Word desktop can expose skills supplied by Microsoft 365 plugins,
+**Copilot in Word can expose skills supplied by Microsoft 365 plugins,
 including centrally deployed and owner-shared plugins, through its `@` >
 Plugins picker.** The plugin is the distributed package; the skill listed
 beneath it supplies the reusable instructions. Word is a consumption surface,
@@ -95,7 +95,7 @@ proof that a plugin implements the requested editing behavior.
 
 ## Microsoft's Legal plugin is a separate capability
 
-Microsoft supplies a Legal plugin for **Word desktop**, enabled by default
+Microsoft supplies a Legal plugin for **Word**, enabled by default
 for Microsoft 365 Copilot commercial subscribers. Administrators control it
 through **Microsoft 365 Apps admin center > Policy Management**, using the
 policy **Legal Skills in M365 Copilot in Word**. This policy controls

@@ -5,7 +5,7 @@ the plugin, or administrators can centrally assign/install it for users or
 groups. Users select its skill in Chat, Cowork or supported Word experiences.
 It is not a separate skill file each employee must manually copy.
 
-Word desktop can expose both centrally deployed and owner-shared plugins.
+Word can expose both centrally deployed and owner-shared plugins.
 Word is a consumption surface for their skills, not a separate Word-specific
 skill deployment mechanism. Management and updates follow the containing
 plugin's delivery method.
@@ -15,7 +15,7 @@ plugin's delivery method.
 - **Copilot Chat user:** select the installed skill/plugin in the chat's
   skills/plugin picker.
 - **Cowork user:** open **Customize > Plugins > Added > select the plugin**.
-- **Word desktop user:** in the **Copilot** pane, type `@`, search the plugin's
+- **Word user:** in the **Copilot** pane, type `@`, search the plugin's
   name, choose **Plugins**, and select the skill listed beneath that plugin.
 - **Administrator:** open **Microsoft 365 admin center > Agents > Tools >
   Registry > select the plugin > Users** to review who can use it and who
@@ -27,7 +27,7 @@ a starter project and its deployment files.
 
 ## Use the installed skill
 
-1. In Chat, select the installed skill/plugin. In Word desktop, use **Copilot
+1. In Chat, select the installed skill/plugin. In Word, use **Copilot
    pane > `@` > Plugins** and select its skill. In Cowork, open **Customize >
    Plugins > Added**, select the plugin and turn it on for your conversations.
    An organization-installed plugin can be present but turned off.

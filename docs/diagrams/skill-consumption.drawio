@@ -22,7 +22,7 @@
         <mxCell id="plugin-cowork" value="&lt;b&gt;Copilot Cowork&lt;/b&gt;&lt;br&gt;Use the plugin's skills in tasks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
           <mxGeometry x="560" y="110" width="340" height="56" as="geometry"/>
         </mxCell>
-        <mxCell id="plugin-word" value="&lt;b&gt;Copilot in Word desktop&lt;/b&gt;&lt;br&gt;Copilot pane &gt; @ &gt; Plugins" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
+        <mxCell id="plugin-word" value="&lt;b&gt;Copilot in Word&lt;/b&gt;&lt;br&gt;Copilot pane &gt; @ &gt; Plugins" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6C8EBF;fontColor=#24324B;fontSize=16;strokeWidth=2;" vertex="1" parent="m365">
           <mxGeometry x="560" y="180" width="340" height="56" as="geometry"/>
         </mxCell>
         <mxCell id="plugin-note" value="Shared plugin distribution and management; each experience loads the skills it supports." style="text;html=1;whiteSpace=wrap;align=left;fontSize=14;fontColor=#475569;" vertex="1" parent="m365">

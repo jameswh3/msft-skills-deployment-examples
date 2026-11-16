@@ -59,7 +59,7 @@ Use `npm ci` to install the versions recorded in `package-lock.json`.
   dropdown when disabled; do not infer identical revocation semantics.
 - The general Copilot Chat skill builder article is not Word-specific
   documentation or proof that a Word client supports custom skills.
-- Word desktop's **Copilot pane > @ > Plugins** can expose installed/shared
+- Word's **Copilot pane > @ > Plugins** can expose installed/shared
   skill packages.
   Picker availability does not prove invocation or document edits; see the
   [Word guide](../platforms/word/README.md) for selection and host-specific checks.
