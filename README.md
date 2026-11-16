@@ -124,15 +124,6 @@ identify every installed copy or agent version that needs changing. Follow
 the [management lifecycle](docs/lifecycle-and-governance.md) and each product's
 update/removal instructions.
 
-Word can expose skills supplied by centrally deployed or owner-shared
-Microsoft 365 plugins through **Copilot pane > `@` > Plugins**. Word is a
-consumption surface, not a separate skill format; management follows the
-containing plugin. Do not assume that personal Copilot Chat skill uploads
-automatically become available in Word. Customer-authored plugins are managed
-separately from Microsoft's supplied Legal plugin, and no general-purpose
-Word skill installation folder is established. The [Word guide](platforms/word/README.md)
-explains selection, distribution and document-interaction limits.
-
 ## Developer quickstart: build packages locally
 
 Prerequisites: Node.js/npm and PowerShell 7. Node 24.15.0 is restored as a
