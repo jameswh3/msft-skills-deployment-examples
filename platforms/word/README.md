@@ -1,6 +1,56 @@
-# Copilot in Word: project brief
+# Copilot in Word: plugin-provided and agent-attached skills
 
 ## How Word consumes skills
+
+**Word desktop can expose skills from installed or shared Microsoft 365
+plugins in its Copilot pane's `@` > Plugins picker.** A separate declarative
+agent is not required for this plugin route. The plugin is the distributed
+package; the skill listed beneath it supplies the reusable instructions.
+Availability depends on the account, assignment, app version and supported
+plugin capabilities.
+
+Word also supports skills attached to a declarative agent. That is a
+different packaging route, described below. Neither route establishes a
+Word-specific OneDrive folder where copying `SKILL.md` installs a skill.
+
+## Use a plugin-provided skill in Word
+
+1. Open a document and its **Copilot** pane.
+2. Type `@`, search for the plugin's name, and choose the **Plugins** tab.
+3. Select the skill beneath the intended plugin. For this repository's
+   centrally deployed sample, select **meeting-notes** beneath **OGE Meeting
+   Notes Managed**.
+4. Enter the task and supply its input. For example, ask
+   `Use meeting-notes to summarize these notes` and provide the
+   [synthetic meeting notes](../../samples/meeting-notes/input.md).
+5. Review the response and any skill-use activity. To test access to the open
+   document separately, put the notes in that document and ask the selected
+   skill to summarize the notes in it.
+
+The same skill name can appear beneath several plugins. Select the intended
+containing plugin rather than identifying a deployment by the skill name
+alone. Seeing an entry in the picker confirms availability, not that every
+capability works or that a request actually invoked it.
+
+The `meeting-notes` skill returns a draft in chat; it does not edit the Word
+document. The separate [word-project-brief skill](skills/word-project-brief/SKILL.md)
+requests document edits and heading styles. Installing `meeting-notes` does
+not install that other skill.
+
+## Deploy and maintain a plugin for Word users
+
+Use the [Microsoft 365 plugin packaging and administration
+guide](../microsoft-365/plugin/README.md). Administrators upload the approved
+Microsoft 365 app ZIP through **Microsoft 365 admin center > Agents > Tools >
+Registry** and assign/install it for the intended users. Users then select its
+skill through Word's picker; they do not upload the app ZIP into the document.
+
+Test Word as a separate target host. Availability in Chat or Cowork does not
+prove that all of a plugin's tools, scripts or editing operations work in Word.
+For updates, rebuild and distribute the containing plugin, then check a fresh
+Word conversation. Editing an unrelated OneDrive file does not update it.
+
+## Alternative: attach the skill to a declarative agent
 
 The documented agent-based route is **author a skill outside Word, attach it
 to a declarative agent, and make that agent available in Word's Copilot
@@ -17,13 +67,13 @@ agent. For a selected passage, the user selects text and chooses **Add
 selection** in the Copilot pane. See [document
 interaction](https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-document-interaction).
 
-**Word uses the skill through the agent, not through a documented folder
-that Word monitors for skill files.**
+**An agent-attached skill is scoped to its containing agent.** It is different
+from selecting a plugin-provided skill directly in Word's Copilot pane.
 The reviewed Microsoft documentation does not establish a Word-specific
 OneDrive directory where dropping `SKILL.md` installs a skill. Excel and
 PowerPoint folder instructions do not establish that behavior for Word.
 
-## Use a skill that your organization has deployed
+### Use an agent-attached skill
 
 1. Open a document you can access and its Copilot pane.
 2. Open the declarative agent supplied by your organization. The skill is
@@ -37,9 +87,9 @@ PowerPoint folder instructions do not establish that behavior for Word.
 The agent must contain the skill and be available to the signed-in user.
 Document-interaction limits are described below.
 
-## Author and deploy: two documented agent-authoring options
+### Author and deploy: two documented agent-authoring options
 
-### Option A: upload the skill through Agent Builder
+#### Option A: upload the skill through Agent Builder
 
 1. Run `npm run build:hosts` to generate the Word example's standalone skill
    ZIP under `out/host-examples/word/word-project-brief`. Choose the archive
@@ -58,7 +108,7 @@ Document-interaction limits are described below.
 Source: [Add skills in Agent
 Builder](https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder-add-skills).
 
-### Option B: package the skill with Microsoft 365 Agents Toolkit
+#### Option B: package the skill with Microsoft 365 Agents Toolkit
 
 1. In VS Code, select **Microsoft 365 Agents Toolkit > Create a New
    Agent/App > Declarative Agent > No Action** to create a dedicated project.
@@ -84,7 +134,7 @@ registration](https://learn.microsoft.com/microsoft-365/copilot/extensibility/bu
 The repository's existing Microsoft 365 scaffold script targets
 `meeting-notes`; it does not generate this Word agent.
 
-## Maintain and update the skill
+### Maintain and update an agent-attached skill
 
 - The author maintains the skill through **Agent Builder > Configure >
   Skills** or its registered directory in an Agents Toolkit project. Review and
@@ -118,6 +168,10 @@ the document or its heading styles were updated.
 
 ## Troubleshooting
 
+- **Plugin missing from the picker:** check **Copilot pane > `@` > Plugins**,
+  the signed-in account, plugin assignment/installation, and app availability.
+- **Several copies of the skill appear:** check the containing plugin's name.
+  A shared pilot and an organization-managed package are distinct deployments.
 - **Agent not visible in Word:** confirm the signed-in account, organization
   distribution/installation and recipient access to the agent.
 - **Skill unavailable inside the agent:** confirm it was added/registered
@@ -127,7 +181,7 @@ the document or its heading styles were updated.
   manually or claiming automatic document updates.
 - **Copying into an Office folder does nothing:** no Word-specific
   OneDrive installation folder is established by the reviewed documentation.
-  Use the documented agent-authoring route rather than guessing a path.
+  Use the plugin or agent packaging route rather than guessing a path.
 
 ## Microsoft's Legal plugin is a separate capability
 
@@ -138,11 +192,10 @@ policy **Legal Skills in M365 Copilot in Word**. This policy controls
 Microsoft's supplied Legal plugin; it is not an upload or deployment setting
 for customer-authored plugins.
 
-The [Chat/Cowork plugin guide](../microsoft-365/plugin/README.md) covers those
-products' packaging and central installation. Do not assume that installing
-such a plugin also registers a standalone skill inside Word, or that Chat's
-upload storage is a Word installation folder.
+Customer-authored skill plugins use the separate [Microsoft 365 plugin
+packaging and central installation route](../microsoft-365/plugin/README.md).
+Their skills can appear in Word's plugin picker; the Legal policy does not
+upload or assign those customer packages. Chat's upload storage is not a
+Word installation folder.
 
 Source: [Manage Copilot for legal](https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-for-legal).
-For deployment and runtime test evidence, see the separate
-[verification record](../../docs/lab-status.md).

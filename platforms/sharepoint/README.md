@@ -163,7 +163,5 @@ before a OneDrive folder upload where that installation method is supported.
 Neither is a Microsoft 365 app package, and storing a ZIP as a document does
 not install it.
 
-See [lab evidence](../../docs/lab-status.md) for completed tests and limitations.
-
 Sources: [Native skills](https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills),
 [availability and licensing](https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started).

@@ -1,7 +1,8 @@
-# Copilot Chat and Cowork plugin
+# Microsoft 365 skill plugins: Chat, Cowork and Word
 
 A plugin is the installable package containing the skill. Users select the
-installed skill/plugin in Chat or Cowork; administrators assign the containing
+installed skill/plugin in Chat, Cowork or supported Word experiences;
+administrators assign the containing
 package to users or groups. It is not a separate skill file each employee
 must manually copy.
 
@@ -10,6 +11,8 @@ must manually copy.
 - **Copilot Chat user:** select the installed skill/plugin in the chat's
   skills/plugin picker.
 - **Cowork user:** open **Customize > Plugins > Added > select the plugin**.
+- **Word desktop user:** in the **Copilot** pane, type `@`, search the plugin's
+  name, choose **Plugins**, and select the skill listed beneath that plugin.
 - **Administrator:** open **Microsoft 365 admin center > Agents > Tools >
   Registry > select the plugin > Users** to review who can use it and who
   has it installed. The plugin details contain block/uninstall controls.
@@ -20,7 +23,8 @@ a starter project and its deployment files.
 
 ## Use the installed skill
 
-1. In Chat, select the installed skill/plugin. In Cowork, open **Customize >
+1. In Chat, select the installed skill/plugin. In Word desktop, use **Copilot
+   pane > `@` > Plugins** and select its skill. In Cowork, open **Customize >
    Plugins > Added**, select the plugin and turn it on for your conversations.
    An organization-installed plugin can be present but turned off.
 2. Start a conversation or Cowork task. For the sample, ask
@@ -49,8 +53,12 @@ Have the approved Microsoft 365 app ZIP from its author; a standalone
    **Install** for the intended audience.
 4. If blocked, check **Agents > Settings > Agent and plugin access** for the
    relevant publisher category.
-5. Ask a recipient to find and run the installed skill. If supporting both
-   Chat and Cowork, verify both before expanding assignment.
+5. Ask a recipient to find and run the installed skill in each intended host:
+   Chat, Cowork and/or Word. Verify them separately before expanding assignment.
+
+For Word selection and document-editing boundaries, see the
+[Word guide](../../word/README.md). A plugin appearing in Word's picker does
+not establish that every tool or editing capability in that package works there.
 
 Updates and removal are covered below. If you need to build the package
 first, use the author instructions in the next two sections.
@@ -126,8 +134,6 @@ If a test package is already shared and you need a separate managed package,
 use a deliberately separate app identity and name for that new package;
 validate it before upload. Keep its identity stable for later updates. Do not
 repeatedly create new IDs to work around an update or access problem.
-The [lab results](../../../docs/lab-status.md) describe the specific collision
-and duplicate-source behavior observed in this repository's test environment.
 
 ## Update, rollback, and removal
 

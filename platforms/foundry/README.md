@@ -144,8 +144,5 @@ see [Foundry + API Center](../foundry-api-center/README.md).
 - **Feature unavailable:** check region, engine and preview support before
   changing organization permissions or provisioning replacement resources.
 
-The [lab results](../../docs/lab-status.md) describe the tests completed by
-this repository; they are not a requirement to use your own project.
-
 Sources: [Skills API](https://learn.microsoft.com/azure/foundry/agents/how-to/tools/skills),
 [Copilot harness](https://learn.microsoft.com/azure/foundry/agents/how-to/use-tools-skills-copilot-harness).

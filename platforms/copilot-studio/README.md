@@ -91,8 +91,6 @@ available. Its standard-harness solution/application lifecycle management
 an API for this harness's skill deployment. This example deliberately uses
 the documented maker/administrator workflow instead of inventing an endpoint.
 
-For completed tests and limitations, see [lab results](../../docs/lab-status.md).
-
 Sources: [Upload](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-add-existing),
 [sharing and updates](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage),
 [publishing](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/publication-publish-agent).

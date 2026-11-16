@@ -112,9 +112,6 @@ sandbox execution. Check current minimum client versions before rollout.
 - **Old instructions still run:** distinguish a repository copy from an
   installed plugin and update the copy the client is actually using.
 
-For deployment and runtime test evidence, see the separate
-[verification record](../../docs/lab-status.md).
-
 Sources: [Native skills](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills),
 [enterprise plugin management](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/use-managed-settings/manage-plugin-marketplaces-and-plugins),
 [client coverage](https://docs.github.com/en/copilot/reference/enterprise-administrators/enterprise-managed-settings),

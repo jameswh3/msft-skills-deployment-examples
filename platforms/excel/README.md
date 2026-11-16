@@ -115,5 +115,4 @@ in their own Excel skills folder and refresh Excel.
 - **Chat and worksheet disagree:** read the saved worksheet cells and request
   reconciliation. Do not rely on the chat's summary count alone.
 
-For completed test results and limitations, see [lab evidence](../../docs/lab-status.md).
 Source: [Copilot in Excel skills](https://support.microsoft.com/en-us/excel/copilot/copilot-in-excel-skills).

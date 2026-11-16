@@ -12,9 +12,9 @@ deployed it through each platform's native mechanism. I'll show what a user
 sees, then where an administrator or owner finds the deployed capability."
 
 Stops 1-7 use the shared meeting-notes example. Stops 8-12 cover separate
-SharePoint and Office workflows. Word is a documented deployment walkthrough,
-not an installed example in this lab; GitHub Copilot is not runtime-tested
-because the lab has no entitlement.
+SharePoint and Office workflows. The Word stop uses its plugin picker for the
+shared meeting-notes example and distinguishes the separate project-brief task.
+GitHub Copilot is not runtime-tested because the lab has no entitlement.
 
 This is a walkthrough of **existing deployments**, not an installation,
 approval, or provisioning tutorial. Do not upload, publish, update, block,
@@ -38,7 +38,7 @@ model usage or Copilot Credits.
 | [API Center](#7-additional-approach-foundry--azure-api-center) | Discover the skill and follow its source | Azure portal > API Centers > open the demo resource > Inventory > Assets > select the meeting-notes Skill entry. For Git sync: same resource > Platforms > Integrations > open the Git integration |
 | [SharePoint site skills](#8-sharepoint-site-skills) | Review a selected project brief against team standards | Open the OGE Skills Lab SharePoint site > Settings > Site skills > sharepoint-site-review > Overview or Versions (documented management page; not exercised in this lab) |
 | [SharePoint personal skills](#9-sharepoint-personal-skills) | Use the owner's preferred reading brief | OneDrive > My files > Documents > Copilot > Agent Assets > Skills > sharepoint-personal-brief > SKILL.md (observed lab path; also linked from the personal skill's chat indicator) |
-| [Word](#10-word-project-brief-skill) | Explain the documented agent-packaging route; this Word example is not yet deployed | Agent Builder > Configure > Skills, or VS Code > Microsoft 365 Agents Toolkit > Add Skill |
+| [Word](#10-word-skills-from-plugins) | Show Copilot pane > @ > Plugins > OGE Meeting Notes Managed > meeting-notes | Microsoft 365 admin center > Agents > Tools > Registry > select the plugin |
 | [Excel](#11-excel-pipeline-review-skill) | Show verified saved worksheet findings and totals | Excel > Copilot pane > Settings and more > Manage plugins > Custom skills > excel-pipeline-review. Open Skills OneDrive folder there to see its source |
 | [PowerPoint](#12-powerpoint-executive-story-skill) | Show verified four-slide deck and concise summary | PowerPoint > Copilot pane > Settings and more > Manage plugins > Custom skills > powerpoint-executive-story |
 
@@ -66,7 +66,6 @@ the catalog entry, not copies installed in consuming platforms.
   specific saved version was selected. **MCP** (Model Context Protocol) is the
   connection protocol used for the remote skill route in stop 7.
 
-Use the [lab evidence ledger](lab-status.md) for what was actually tested.
 UI labels can change. Preview status and client limitations are in the
 [support matrix](support-matrix.md) and individual platform guides.
 
@@ -104,7 +103,8 @@ UI labels can change. Preview status and client limitations are in the
 9. For the host-specific extension, open the dedicated SharePoint lab,
    **OGE-Pipeline-Skill-Demo.xlsx**, and the retained four-slide PowerPoint
    demo. Show the saved Office results or prepare fresh synthetic copies
-   before rerunning. Word is a labeled source walkthrough, not a live skill.
+   before rerunning. In Word, select the intended plugin's skill and distinguish
+   availability from a completed runtime test.
 
 Roles are not interchangeable: a normal user sees installed capabilities, a
 Studio maker sees agent/skill authoring, Microsoft 365 administrators see
@@ -241,8 +241,6 @@ or use the clean-recipient setup described above.
 **Say:** "Cowork and Chat share this plugin management surface; they are
 separate runtime experiences, not separate universal skill registries.
 Blocking does not promise to interrupt every already-running Cowork task."
-
-See the [source-attribution evidence](lab-status.md#cowork-source-attribution-limitation).
 
 ## 4. Copilot Studio
 
@@ -469,7 +467,6 @@ See the [SharePoint guide](../platforms/sharepoint/README.md) and
 **Used personal skill sharepoint-personal-brief** invocation were verified.
 The successful run used a fresh site-home chat and explicit save confirmation;
 an earlier library-chat refusal did not establish product-wide unavailability.
-See the [evidence ledger](lab-status.md) for generated-source differences.
 
 ### Show the owner's user experience
 
@@ -516,46 +513,32 @@ The walkthrough's chat-output prompts are rehearsal choices, not blanket
 restrictions in the skill instructions. Native permissions govern access;
 the skill supplies the review workflow and preferred output.
 
-## 10. Word project-brief skill
+## 10. Word skills from plugins
 
-**Lab status:** the new Word example has not been deployed or run in Word.
-The documented route is to attach its skill to a **declarative agent** (a
-configured Copilot assistant) and distribute that agent. This is separate
-from creating a skill inside Word, which the native attempt did not do.
-The [Word guide](../platforms/word/README.md) now gives the authoring and
-deployment steps. This stop explains those steps, not a completed deployment.
+### Show the user's experience
 
-### Explain the intended user experience
+1. Open Word's **Copilot** pane, type `@`, search for `OGE`, and select
+   **Plugins**.
+2. Select **meeting-notes** beneath **OGE Meeting Notes Managed**. The separate
+   **OGE Meeting Notes Skilldev** pilot contains another copy of that skill;
+   do not confuse the two sources.
+3. Supply the synthetic meeting notes and ask for a summary. Inspect skill-use
+   activity and evaluate the [meeting-notes rubric](../samples/meeting-notes/expected-behavior.md).
+   Showing the picker alone is not a completed invocation.
 
-1. Show the checked-in source and synthetic brief, explicitly identifying
-   the source as not installed.
-2. Explain that users would open the containing agent in Word's Copilot pane
-   and refer to the open document. Do not run this as an installed-skill demo
-   before the Word agent is deployed:
+### Show management and distinguish the project-brief task
 
-   ```text
-   Polish this project brief for the support-group sponsor.
-   ```
+Open **Microsoft 365 admin center > Agents > Tools > Registry** and inspect
+the containing plugin's assignment. This is plugin distribution, not a
+Word-specific skill folder.
 
-3. Word's documented agent integration supplies document text and the
-   **Add selection** button for selected text. A response should preserve the
-   scope/date, both conflicting targets and open decisions. The example also
-   requests actual Word heading styles and saved edits; those capabilities
-   must be verified separately, not inferred from access to document text.
+The separate `word-project-brief` source requests saved document edits and
+native heading styles. It is not included in the meeting-notes plugin.
+A declarative agent containing that skill is an alternative packaging route;
+its package validation does not establish successful Word invocation or edits.
 
-### Show management
-
-For authoring, show the documented path **Agent Builder > Configure > Skills >
-Add**, which accepts a skill ZIP, or **VS Code > Microsoft 365 Agents Toolkit >
-Add Skill**, which creates/registers a skill directory in an agent project.
-
-There is no deployed Word-specific agent to select in this lab yet. Existing
-packages under Word's **Settings and more > Manage plugins** are different
-examples. Do not claim a Word OneDrive installation folder or a Chat-upload
-handoff.
-
-See the [Word guide](../platforms/word/README.md) and
-[rubric](../samples/word/expected-behavior.md).
+See the [Word guide](../platforms/word/README.md) and separate
+[project-brief rubric](../samples/word/expected-behavior.md).
 
 ## 11. Excel pipeline-review skill
 
@@ -606,7 +589,7 @@ See the [Excel guide](../platforms/excel/README.md) and
 ## 12. PowerPoint executive-story skill
 
 **Lab status:** native skill selection and the saved four-slide output were
-verified; see the [ledger](lab-status.md). The retained lab deck already
+verified. The retained lab deck already
 contains the summary. Show that result, or prepare a fresh three-slide copy
 from the outline before rerunning so the request does not add a duplicate.
 
@@ -668,7 +651,7 @@ agent, a versioned project asset, enterprise policy, or a catalog entry
 depending on the platform. There is no single catalog toggle that installs,
 updates, or revokes every copy everywhere."
 
-Share the [repository](https://github.com/jameswh3/msft-skills-deployment-examples)
-and [evidence ledger](lab-status.md). Keep the Cowork source-attribution
+Share the [repository](https://github.com/jameswh3/msft-skills-deployment-examples).
+Keep the Cowork source-attribution
 limitation and the GitHub entitlement gap visible rather than describing
 all paths as equally verified.

@@ -75,7 +75,7 @@ Review/apply the proposed change and inspect the saved deck using the
 - Keep the presentation's existing theme and use a readable PowerPoint slide layout.
 
 Draft text in chat is not an inserted slide. An uploaded file is not proof
-of discovery or invocation; see [lab evidence](../../docs/lab-status.md).
+of discovery or invocation.
 
 ## Update and manage as the owner
 
@@ -107,5 +107,4 @@ not demonstrate an all-users skill-assignment control.
 - **Duplicate summary slide:** try the sample against a fresh three-slide
   copy; the previously saved result already contains its summary.
 
-For completed tests and limitations, see [lab evidence](../../docs/lab-status.md).
 Source: [Copilot in PowerPoint skills](https://support.microsoft.com/en-us/powerpoint/copilot/copilot-in-powerpoint-skills).

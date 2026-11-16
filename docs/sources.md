@@ -60,14 +60,13 @@ or switch another user's active runtime/subscription to run these examples.
   dropdown when disabled; do not infer identical revocation semantics.
 - The general Copilot Chat skill builder article is not Word-specific
   documentation or proof that a Word client supports custom skills.
-- Word web's plugin menus displayed existing shared/managed packages.
-  Separately, Microsoft documents skills attached to declarative agents and
-  declarative agents running in Word. That supplies an agent-packaging route,
-  not evidence of a Word-specific OneDrive watch-folder. The new Word source
-  has not been deployed through that route.
-- Asking Word itself to create/save a skill produced only an unsaved draft,
-  and the reviewed documentation does not establish Word-native creation.
-  That does not rule out consuming externally authored skills in an agent.
+- Word desktop's **Copilot pane > @ > Plugins** can expose installed/shared
+  skill packages independently of the documented declarative-agent route.
+  Picker availability does not prove invocation or document edits; see the
+  [Word guide](../platforms/word/README.md) for selection and host-specific checks.
+- The reviewed documentation does not establish Word-native skill creation.
+  Creating a skill and consuming an externally authored skill through a plugin
+  or declarative agent are separate capabilities.
 - Word supplies document text/selection to a declarative agent. The document
   interaction article does not establish arbitrary in-place text/style
   editing by an attached skill; those results require separate verification.
@@ -76,9 +75,8 @@ or switch another user's active runtime/subscription to run these examples.
 - Copilot Chat documentation specifies tenant-scoped SharePoint Embedded
   storage for uploaded skill files. This differs from native Office personal
   OneDrive storage; it does not establish creation within Word.
-- No further Word-native creation attempts or speculative Chat-upload-to-Word
-  handoff were performed. The later documentation review identifies agent
-  packaging without claiming a completed Word deployment.
+- Neither the plugin picker nor agent packaging establishes a Word-specific
+  OneDrive watch-folder or an automatic Chat-upload-to-Word handoff.
 - The verified PowerPoint web UI labels its controls **Manage plugins** and
   **Choose plugins**, while the support article says **Manage skills** and
   **Choose skills**. Native custom listing, selection and saved output were

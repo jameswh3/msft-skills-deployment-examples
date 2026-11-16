@@ -6,7 +6,7 @@ packaged and managed differently:
 
 | User experience | How to deploy it | Where the skill is maintained |
 | --- | --- | --- |
-| Select a skill/plugin in Copilot Chat or Cowork | Build a plugin package containing the skill | Microsoft 365 admin center > Agents > Tools > Registry > select the plugin |
+| Select a skill/plugin in Copilot Chat, Cowork or Word's plugin picker | Build a plugin package containing the skill | Microsoft 365 admin center > Agents > Tools > Registry > select the plugin |
 | Open a dedicated Copilot assistant | Bundle the skill inside a declarative agent and publish the agent | Agent Builder > Configure > Skills, or the registered skill directory in an Agents Toolkit project |
 
 ## Use an existing skill or agent
@@ -39,7 +39,7 @@ upload](https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-co
 
 ## Install and manage for other people
 
-- For Chat/Cowork plugins, use the [plugin installation and administration
+- For skill plugins used in Chat, Cowork or Word, use the [plugin installation and administration
   guide](plugin/README.md#install-for-users-as-an-administrator).
 - For a dedicated assistant, use the [declarative-agent
   guide](declarative-agent/README.md).
@@ -55,21 +55,22 @@ upload](https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-co
 - Check organization policy under **Microsoft 365 admin center > Agents >
   Settings > Agent and plugin access** if the item is blocked.
 - Select the skill explicitly and start a fresh conversation after updates.
-  Chat and Cowork must be checked separately.
+  Chat, Cowork and Word must be checked separately.
 
 ## Technical packaging details for authors
 
 For authors editing package configuration files (called manifests), the two
 registration properties are:
 
-- **Plugin skill:** `agentSkills` in the Microsoft 365 app manifest. Targets
-  standalone Copilot Chat and Cowork. [Plugin guide](plugin/README.md).
+- **Plugin skill:** `agentSkills` in the Microsoft 365 app manifest. Used by
+  standalone Copilot Chat, Cowork and Word's plugin picker where supported.
+  [Plugin guide](plugin/README.md).
 - **Agent-scoped skill:** `agent_skills` in the declarative-agent manifest.
   Targets the packaged agent. [Agent guide](declarative-agent/README.md).
 
 Do not interchange those properties or assume a personal upload installs a
 plugin for other people. Check that the intended user can find and run the
-skill separately in Chat, Cowork, and the dedicated agent.
+skill separately in Chat, Cowork, Word and the dedicated agent as applicable.
 
 Prerequisites include the intended Microsoft 365 tenant/account, appropriate
 licensing, permission to upload custom apps, and administrator access for

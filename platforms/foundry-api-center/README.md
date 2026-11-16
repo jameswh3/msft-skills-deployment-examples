@@ -175,10 +175,6 @@ check the integration status rather than assuming edits propagate to Foundry.
 - **New default has no effect:** check the agent or toolbox's selected
   version. Updating a catalog entry does not change those references.
 
-For the completed catalog tests, CLI differences and source/export comparisons,
-see the optional [technical lab
-record](../../docs/lab-status.md#api-center-catalog-verification-details).
-
 Sources: [Register skills](https://learn.microsoft.com/azure/api-center/register-discover-skills),
 [Git synchronization](https://learn.microsoft.com/azure/api-center/synchronize-assets-git),
 [API Center's design-time boundary](https://learn.microsoft.com/azure/api-center/overview),

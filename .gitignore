@@ -5,3 +5,4 @@ out/
 *.local.json
 *.log
 .DS_Store
+/docs/lab-status.md
